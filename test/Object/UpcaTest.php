@@ -43,7 +43,7 @@ class UpcaTest extends TestCommon
 
     public function testType()
     {
-        $this->assertSame('Upca', $this->_object->getType());
+        $this->assertSame('upca', $this->_object->getType());
     }
 
     public function testChecksum()
@@ -114,6 +114,8 @@ class UpcaTest extends TestCommon
     {
         $this->_object->setText('00123456789');
         $this->assertEquals(115, $this->_object->getWidth());
+        $this->_object->setWithQuietZones(false);
+        $this->assertEquals(115, $this->_object->getWidth(true));
     }
 
     public function testCompleteGeneration()

@@ -43,7 +43,7 @@ class Itf14Test extends TestCommon
 
     public function testType()
     {
-        $this->assertSame('Itf14', $this->_object->getType());
+        $this->assertSame('itf14', $this->_object->getType());
     }
 
     public function testChecksum()
@@ -135,6 +135,8 @@ class Itf14Test extends TestCommon
     {
         $this->_object->setText('0000123456789');
         $this->assertEquals(155, $this->_object->getWidth());
+        $this->_object->setWithQuietZones(false);
+        $this->assertEquals(135, $this->_object->getWidth(true));
     }
 
     public function testCompleteGeneration()

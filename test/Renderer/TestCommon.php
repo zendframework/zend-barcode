@@ -24,14 +24,11 @@
  * @namespace
  */
 namespace ZendTest\Barcode\Renderer;
-use ZendTest\Barcode\Object\_files as ObjectNSFiles;
+
+use ZendTest\Barcode\Object\TestAsset as TestAsset;
 use Zend\Barcode;
 use Zend\Barcode\Object;
 use Zend\Config;
-
-/**
- * Test helper
- */
 
 /**
  * @category   Zend
@@ -44,7 +41,7 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var \Zend\Barcode\Renderer\RendererInterface
+     * @var \Zend\Barcode\Renderer
      */
     protected $_renderer = null;
 
@@ -56,7 +53,7 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
         // message if timezone is not set within php.ini
         date_default_timezone_set('GMT');
 
-        Barcode\Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
+        Barcode\Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
         $this->_renderer = $this->_getRendererObject();
     }
 
@@ -226,7 +223,7 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
      */
     public function testRendererWithUnkownInstructionProvideByObject()
     {
-        $object = new ObjectNSFiles\BarcodeTest();
+        $object = new TestAsset\BarcodeTest();
         $object->setText('test');
         $object->addInstruction(array('type' => 'unknown'));
         $this->_renderer->setBarcode($object);

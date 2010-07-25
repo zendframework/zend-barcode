@@ -43,7 +43,7 @@ class Code25interleavedTest extends TestCommon
 
     public function testType()
     {
-        $this->assertSame('Code25interleaved', $this->_object->getType());
+        $this->assertSame('code25interleaved', $this->_object->getType());
     }
 
     public function testWithBearerBars()
@@ -169,6 +169,8 @@ class Code25interleavedTest extends TestCommon
     {
         $this->_object->setText('0123456789');
         $this->assertEquals(119, $this->_object->getWidth());
+        $this->_object->setWithQuietZones(false);
+        $this->assertEquals(99, $this->_object->getWidth(true));
     }
 
     public function testCompleteGeneration()

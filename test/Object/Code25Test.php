@@ -43,7 +43,7 @@ class Code25Test extends TestCommon
 
     public function testType()
     {
-        $this->assertSame('Code25', $this->_object->getType());
+        $this->assertSame('code25', $this->_object->getType());
     }
 
     public function testChecksum()
@@ -143,6 +143,8 @@ class Code25Test extends TestCommon
     {
         $this->_object->setText('0123456789');
         $this->assertEquals(180, $this->_object->getWidth());
+        $this->_object->setWithQuietZones(false);
+        $this->assertEquals(160, $this->_object->getWidth(true));
     }
 
     public function testCompleteGeneration()
