@@ -24,27 +24,30 @@
  * @namespace
  */
 namespace Zend\Barcode\Renderer;
-use Zend\PDF\Color;
-use Zend;
+use Zend\Pdf\Color,
+    Zend\Pdf\PdfDocument,
+    Zend\Pdf\Page,
+    Zend\Pdf\Font,
+    Zend;
 
 /**
  * Class for rendering the barcode in PDF resource
  *
  * @uses       \Zend\Barcode\Renderer\Exception
  * @uses       \Zend\Barcode\Renderer\AbstractRenderer
- * @uses       \Zend\PDF\PDFDocument
- * @uses       \Zend\PDF\Page
- * @uses       \Zend\PDF\Color\RGB
+ * @uses       \Zend\Pdf\PdfDocument
+ * @uses       \Zend\Pdf\Page
+ * @uses       \Zend\Pdf\Color\Rgb
  * @category   Zend
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class PDF extends AbstractRenderer
+class Pdf extends AbstractRenderer
 {
     /**
      * PDF resource
-     * @var \Zend\PDF\PDFDocument
+     * @var \Zend\Pdf\PdfDocument
      */
     protected $_resource = null;
 
@@ -68,9 +71,9 @@ class PDF extends AbstractRenderer
      */
     public function setResource($pdf, $page = 0)
     {
-        if (!$pdf instanceof Zend\PDF\PDFDocument) {
+        if (!$pdf instanceof PdfDocument) {
             throw new Exception(
-                'Invalid \Zend\PDF\PDFDocument resource provided to setResource()'
+                'Invalid \Zend\Pdf\PdfDocument resource provided to setResource()'
             );
         }
 
@@ -79,8 +82,8 @@ class PDF extends AbstractRenderer
 
         if (!count($this->_resource->pages)) {
             $this->_page = 0;
-            $this->_resource->pages[] = new Zend\PDF\Page(
-                Zend\PDF\Page::SIZE_A4
+            $this->_resource->pages[] = new Page(
+                Zend\Pdf\Page::SIZE_A4
             );
         }
         return $this;
@@ -113,9 +116,9 @@ class PDF extends AbstractRenderer
     protected function _initRenderer()
     {
         if ($this->_resource === null) {
-            $this->_resource = new Zend\PDF\PDFDocument();
-            $this->_resource->pages[] = new Zend\PDF\Page(
-                Zend\PDF\Page::SIZE_A4
+            $this->_resource = new PdfDocument();
+            $this->_resource->pages[] = new Page(
+                Page::SIZE_A4
             );
         }
 
@@ -147,7 +150,7 @@ class PDF extends AbstractRenderer
             }
         }
 
-        $color = new Color\RGB(
+        $color = new Color\Rgb(
             (($color & 0xFF0000) >> 16) / 255.0,
             (($color & 0x00FF00) >> 8) / 255.0,
             ($color & 0x0000FF) / 255.0
@@ -157,9 +160,9 @@ class PDF extends AbstractRenderer
         $page->setFillColor($color);
         $page->setLineWidth($this->_moduleSize);
 
-        $fillType = ($filled) 
-                  ? Zend\PDF\Page::SHAPE_DRAW_FILL_AND_STROKE
-                  : Zend\PDF\Page::SHAPE_DRAW_STROKE;
+        $fillType = ($filled)
+                  ? Page::SHAPE_DRAW_FILL_AND_STROKE
+                  : Page::SHAPE_DRAW_STROKE;
 
         $page->drawPolygon($x, $y, $fillType);
     }
@@ -184,7 +187,7 @@ class PDF extends AbstractRenderer
         $orientation = 0
     ) {
         $page  = $this->_resource->pages[$this->_page];
-        $color = new Color\RGB(
+        $color = new Color\Rgb(
             (($color & 0xFF0000) >> 16) / 255.0,
             (($color & 0x00FF00) >> 8) / 255.0,
             ($color & 0x0000FF) / 255.0
@@ -192,11 +195,11 @@ class PDF extends AbstractRenderer
 
         $page->setLineColor($color);
         $page->setFillColor($color);
-        $page->setFont(Zend\PDF\Font::fontWithPath($font), $size * $this->_moduleSize * 1.2);
+        $page->setFont(Font::fontWithPath($font), $size * $this->_moduleSize * 1.2);
 
         $width = $this->widthForStringUsingFontSize(
             $text,
-            Zend\PDF\Font::fontWithPath($font),
+            Font::fontWithPath($font),
             $size * $this->_moduleSize
         );
 
@@ -222,7 +225,7 @@ class PDF extends AbstractRenderer
      * Calculate the width of a string:
      * in case of using alignment parameter in drawText
      * @param string $text
-     * @param \Zend\PDF\Font $font
+     * @param \Zend\Pdf\Font $font
      * @param float $fontSize
      * @return float
      */
