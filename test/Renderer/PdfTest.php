@@ -24,7 +24,7 @@
  * @namespace
  */
 namespace ZendTest\Barcode\Renderer;
-use Zend\PDF;
+use Zend\Pdf;
 use Zend\Barcode;
 use Zend\Barcode\Object;
 
@@ -36,60 +36,61 @@ use Zend\Barcode\Object;
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class PDFTest extends TestCommon
+class PdfTest extends TestCommon
 {
     protected function _getRendererObject($options = null)
     {
-        return new \Zend\Barcode\Renderer\PDF($options);
+        return new \Zend\Barcode\Renderer\Pdf($options);
     }
 
     public function testType()
     {
-        $this->assertSame('PDF', $this->_renderer->getType());
+        $this->assertSame('pdf', $this->_renderer->getType());
     }
 
     public function testGoodPdfResource()
     {
-        $pdfResource = new PDF\PDFDocument();
+        $pdfResource = new Pdf\PdfDocument();
         $this->_renderer->setResource($pdfResource, 10);
     }
 
-    /**
-     * @expectedException \Zend\Barcode\Renderer\Exception
-     */
     public function testObjectPdfResource()
     {
+        $this->setExpectedException('\Zend\Barcode\Renderer\Exception');
         $pdfResource = new \StdClass();
         $this->_renderer->setResource($pdfResource);
     }
 
+    /**
+     * @group fml
+     */
     public function testDrawReturnResource()
     {
-        Barcode\Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
+        Barcode\Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
         $barcode = new Object\Code39(array('text' => '0123456789'));
         $this->_renderer->setBarcode($barcode);
         $resource = $this->_renderer->draw();
-        $this->assertTrue($resource instanceof PDF\PDFDocument);
+        $this->assertTrue($resource instanceof Pdf\PdfDocument);
         Barcode\Barcode::setBarcodeFont('');
     }
 
     public function testDrawWithExistantResourceReturnResource()
     {
-        Barcode\Barcode::setBarcodeFont(dirname(__FILE__) . '/../Object/_fonts/Vera.ttf');
+        Barcode\Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
         $barcode = new Object\Code39(array('text' => '0123456789'));
         $this->_renderer->setBarcode($barcode);
-        $pdfResource = new PDF\PDFDocument();
+        $pdfResource = new Pdf\PdfDocument();
         $this->_renderer->setResource($pdfResource);
         $resource = $this->_renderer->draw();
-        $this->assertTrue($resource instanceof PDF\PDFDocument);
+        $this->assertTrue($resource instanceof Pdf\PdfDocument);
         $this->assertSame($resource, $pdfResource);
         Barcode\Barcode::setBarcodeFont('');
     }
 
     protected function _getRendererWithWidth500AndHeight300()
     {
-        $pdf = new PDF\PDFDocument();
-        $pdf->pages[] = new PDF\Page('500:300:');
+        $pdf = new Pdf\PdfDocument();
+        $pdf->pages[] = new Pdf\Page('500:300:');
         return $this->_renderer->setResource($pdf);
     }
 
