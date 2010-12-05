@@ -14,44 +14,28 @@
  *
  * @category   Zend
  * @package    Zend_Barcode
- * @subpackage Object
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id$
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
 /**
  * @namespace
  */
-namespace Zend\Barcode\Object;
+namespace Zend\Barcode\Object\Exception;
+use Zend\Barcode\Object\Exception;
 
 /**
- * Class for generate Planet barcode
+ * Exception for Zend_Barcode component.
  *
- * @uses       \Zend\Barcode\Object\Postnet
+ * @uses       Zend\Exception
  * @category   Zend
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Planet extends Postnet
+class InvalidArgumentException
+    extends \InvalidArgumentException
+    implements Exception
 {
-
-    /**
-     * Coding map
-     * - 0 = half bar
-     * - 1 = complete bar
-     * @var array
-     */
-    protected $_codingMap = array(
-        0 => "00111",
-        1 => "11100",
-        2 => "11010",
-        3 => "11001",
-        4 => "10110",
-        5 => "10101",
-        6 => "10011",
-        7 => "01110",
-        8 => "01101",
-        9 => "01011"
-    );
 }
