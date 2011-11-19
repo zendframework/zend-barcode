@@ -15,27 +15,40 @@
  * @category   Zend
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id$
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/**
- * @namespace
- */
-namespace Zend\Barcode\Object\Exception;
+namespace Zend\Barcode;
 
-use Zend\Barcode\Object\Exception;
+use Zend\Loader\PluginBroker;
 
 /**
- * Exception for Zend_Barcode component.
+ * Broker for Barcode Object instances
  *
  * @category   Zend
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class OutOfRangeException
-    extends \OutOfRangeException
-    implements Exception
+class ObjectBroker extends PluginBroker
 {
+    /**
+     * @var string Default plugin loading strategy
+     */
+    protected $defaultClassLoader = 'Zend\Barcode\ObjectLoader';
+
+    /**
+     * Determine if we have a valid Object
+     *
+     * @param  mixed $plugin
+     * @return true
+     * @throws Exception
+     */
+    protected function validatePlugin($plugin)
+    {
+        if (!$plugin instanceof Object\AbstractObject) {
+            throw new Exception\InvalidArgumentException('Barcode Objects must extend Zend\Barcode\Object\AbstractObject');
+        }
+        return true;
+    }
 }
