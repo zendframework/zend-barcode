@@ -18,19 +18,17 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/**
- * @namespace
- */
-namespace Zend\Barcode\Renderer;
-
-use Zend\Barcode\Exception as BarcodeException;
+namespace Zend\Barcode\Exception;
 
 /**
+ * Exception for Zend_Barcode component.
+ *
  * @category   Zend
  * @package    Zend_Barcode
+ * @subpackage Exception
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-interface Exception extends BarcodeException
+interface ExceptionInterface
 {
 }
