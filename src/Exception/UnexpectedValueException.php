@@ -15,29 +15,21 @@
  * @category   Zend
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id$
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Zend\Barcode;
-
-use Zend\Loader\PluginClassLoader;
+namespace Zend\Barcode\Exception;
 
 /**
- * Plugin Class Loader implementation for Barcodes.
+ * Exception for Zend_Barcode component.
  *
  * @category   Zend
  * @package    Zend_Barcode
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class RendererLoader extends PluginClassLoader
+class UnexpectedValueException extends \UnexpectedValueException implements 
+    ExceptionInterface
 {
-    /**
-     * @var array Pre-aliased filter
-     */
-    protected $plugins = array(
-        'image' => 'Zend\Barcode\Renderer\Image',
-        'pdf'   => 'Zend\Barcode\Renderer\Pdf',
-        'svg'   => 'Zend\Barcode\Renderer\Svg'
-    );
 }
