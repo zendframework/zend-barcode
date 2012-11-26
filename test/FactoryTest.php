@@ -1,38 +1,27 @@
 <?php
 /**
- * Zend Framework
+ * Zend Framework (http://framework.zend.com/)
  *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Barcode
- * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @package   Zend_Barcode
  */
 
 namespace ZendTest\Barcode;
-use Zend\Barcode,
-    Zend\Barcode\Renderer,
-    Zend\Barcode\Object,
-    Zend\Config\Config,
-    Zend\Pdf;
+
+use ReflectionClass;
+use Zend\Barcode;
+use Zend\Barcode\Renderer;
+use Zend\Barcode\Object;
+use Zend\Config\Config;
+use ZendPdf as Pdf;
 
 /**
  * @category   Zend
  * @package    Zend_Barcode
  * @subpackage UnitTests
  * @group      Zend_Barcode
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -50,19 +39,21 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         // Set timezone to avoid "It is not safe to rely on the system's timezone settings."
         // message if timezone is not set within php.ini
         date_default_timezone_set('GMT');
+
+        // Reset plugin managers
+        $r = new ReflectionClass('Zend\Barcode\Barcode');
+
+        $rObjectPlugins = $r->getProperty('objectPlugins');
+        $rObjectPlugins->setAccessible(true);
+        $rObjectPlugins->setValue(null);
+
+        $rRendererPlugins = $r->getProperty('rendererPlugins');
+        $rRendererPlugins->setAccessible(true);
+        $rRendererPlugins->setValue(null);
     }
 
     public function tearDown()
     {
-        $objectPlugins = Barcode\Barcode::getObjectPluginManager();
-        $objectPlugins->setService('code25', null);
-        $objectPlugins->setService('code39', null);
-        $objectPlugins->setService('error', null);
-
-        $rendererPlugins = Barcode\Barcode::getRendererPluginManager();
-        $rendererPlugins->setService('image', null);
-        $rendererPlugins->setService('pdf', null);
-
         date_default_timezone_set($this->originaltimezone);
     }
 
@@ -74,6 +65,9 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($renderer->getBarcode() instanceof Object\Code39);
     }
 
+    /**
+     * @group fml
+     */
     public function testMinimalFactoryWithRenderer()
     {
         $renderer = Barcode\Barcode::factory('code39', 'pdf');
@@ -357,6 +351,10 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testProxyBarcodeRendererDrawAsPdf()
     {
+        if (!constant('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
+            $this->markTestSkipped('Enable TESTS_ZEND_BARCODE_PDF_SUPPORT to test PDF render');
+        }
+
         Barcode\Barcode::setBarcodeFont(__DIR__ . '/Object/_fonts/Vera.ttf');
         $resource = Barcode\Barcode::draw('code25', 'pdf', array('text' => '012345'));
         $this->assertTrue($resource instanceof Pdf\PdfDocument);
@@ -365,6 +363,10 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testProxyBarcodeRendererDrawAsPdfAutomaticallyRenderPdfIfException()
     {
+        if (!constant('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
+            $this->markTestSkipped('Enable TESTS_ZEND_BARCODE_PDF_SUPPORT to test PDF render');
+        }
+
         Barcode\Barcode::setBarcodeFont(__DIR__ . '/Object/_fonts/Vera.ttf');
         $resource = Barcode\Barcode::draw('code25', 'pdf');
         $this->assertTrue($resource instanceof Pdf\PdfDocument);
