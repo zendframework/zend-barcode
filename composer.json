@@ -13,19 +13,20 @@
         }
     },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.23",
         "zendframework/zend-stdlib": "self.version",
         "zendframework/zend-validator": "self.version"
     },
     "require-dev": {
         "zendframework/zend-servicemanager": "self.version",
         "zendframework/zendpdf": "*",
+        "zendframework/zend-validator": "self.version",
         "fabpot/php-cs-fixer": "1.7.*",
         "satooshi/php-coveralls": "dev-master",
         "phpunit/PHPUnit": "~4.0"
     },
     "suggest": {
-        "zendframework/zend-servicemanager": "Zend\\ServiceManager component, required when using the factory methods of Zend\\Barcode.",
+        "zendframework/zend-servicemanager": "Zend\\ServiceManager component",
         "zendframework/zendpdf": "ZendPdf component",
         "zendframework/zend-validator": "Zend\\Validator component"
     },
