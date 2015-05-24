@@ -18,6 +18,7 @@
         "zendframework/zend-validator": "~2.4"
     },
     "require-dev": {
+        "zendframework/zend-config": "~2.4",
         "zendframework/zend-servicemanager": "~2.4",
         "zendframework/zendpdf": "*",
         "fabpot/php-cs-fixer": "1.7.*",
