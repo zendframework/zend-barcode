@@ -1,7 +1,7 @@
 # zend-barcode
 
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-barcode.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-barcode)
-[![Coverage Status](https://coveralls.io/repos/zendframework/zend-barcode/badge.svg?branch=master)](https://coveralls.io/r/zendframework/zend-barcode)
+[![Coverage Status](https://coveralls.io/repos/zendframework/zend-barcode/badge.svg?branch=master)](https://coveralls.io/r/zendframework/zend-barcode?branch=master)
 
 `Zend\Barcode` provides a generic way to generate barcodes. The `Zend\Barcode`
 component is divided into two subcomponents: barcode objects and renderers.
