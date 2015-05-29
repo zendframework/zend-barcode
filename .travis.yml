@@ -2,6 +2,10 @@ sudo: false
 
 language: php
 
+env:
+  global:
+    - TESTS_ZEND_BARCODE_PDF_SUPPORT=true
+
 cache:
   directories:
     - $HOME/.composer/cache
