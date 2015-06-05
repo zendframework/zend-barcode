@@ -2,6 +2,10 @@ sudo: false
 
 language: php
 
+branches:
+  except:
+    - /^release-.*$/
+
 env:
   global:
     - TESTS_ZEND_BARCODE_PDF_SUPPORT=true
