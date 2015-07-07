@@ -1,6 +1,8 @@
-# Introduction to Zend\\Barcode
+Introduction to Zend\\Barcode
+=============================
 
-## Overview
+Overview
+--------
 
 `Zend\Barcode\Barcode` provides a generic way to generate barcodes. The `Zend\Barcode` component is
 divided into two subcomponents: barcode objects and renderers. Objects allow you to create barcodes
