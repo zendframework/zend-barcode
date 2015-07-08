@@ -64,8 +64,7 @@ are:
 |withChecksumInText|Boolean                          |FALSE                |Indicate whether or not the checksum is displayed in the textual representation                            |
 |text              |String                           |NULL                 |The text to represent as a barcode                                                                         |
 
- ..
-\_zend.barcode.barcode.common.options.barcodefont:
+
 
 ### Particular case of static setBarcodeFont()
 
