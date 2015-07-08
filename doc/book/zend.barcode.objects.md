@@ -116,7 +116,6 @@ Barcode::render(
 
 
 
-orphan  
 
 ## Description of shipped barcodes
 
