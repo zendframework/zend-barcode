@@ -66,6 +66,7 @@ Available options are:
 |imageType|String   |"png"        |Specify the image format. Can be "png", "jpeg", "jpg" or "gif".                                                  |
 
 
+
 ## Zend\\Barcode\\Renderer\\Pdf
 
 The *PDF* renderer will draw the instruction list of the barcode object in a *PDF* document. The
