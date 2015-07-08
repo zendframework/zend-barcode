@@ -180,11 +180,9 @@ Available options include:
 |--------------|---------|-------------|----------------------------------------------------------|
 |withBearerBars|Boolean  |FALSE        |Draw a thick bar at the top and the bottom of the barcode.|
 
- .. note:
 
-    If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will
-automatically prepend
-    the missing zero to the barcode text.
+> If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically 
+prepend the missing zero to the barcode text.
 
 ### Zend\\Barcode\\Object\\Ean2
 
