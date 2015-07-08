@@ -6,7 +6,6 @@
 .*.sw*
 .*.un~
 nbproject
-doc/html/
 tmp/
 clover.xml
 composer.lock
