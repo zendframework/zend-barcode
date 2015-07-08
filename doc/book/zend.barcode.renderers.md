@@ -1,5 +1,4 @@
-Zend\\Barcode Renderers
-=======================
+# Zend\\Barcode Renderers
 
 Renderers have some common options. These options can be set in three ways:
 
@@ -7,7 +6,7 @@ Renderers have some common options. These options can be set in three ways:
 - As an array passed to the `setOptions()` method.
 - As discrete values passed to individual setters.
 
-**Different ways to parameterize a renderer object**
+### Different ways to parameterize a renderer object
 
 ```php
 <?php
@@ -28,8 +27,7 @@ $renderer->setTopOffset(10);
 
 ```
 
-Common Options
---------------
+## Common Options
 
 In the following list, the values have no unit; we will use the term "unit." For example, the
 default value of the "thin bar" is "1 unit." The real units depend on the rendering support. The
@@ -53,8 +51,7 @@ prefixed with "get" (e.g. "getBarHeight"). Available options are:
 exists: `getType()`. It returns the name of the renderer class without the namespace (e.g.
 `Zend\Barcode\Renderer\Image` returns "image").
 
-Zend\\Barcode\\Renderer\\Image
-------------------------------
+## Zend\\Barcode\\Renderer\\Image
 
 The Image renderer will draw the instruction list of the barcode object in an image resource. The
 component requires the GD extension. The default width of a module is 1 pixel.
@@ -68,11 +65,8 @@ Available options are:
 |width    |Integer  |0            |Allow you to specify the width of the result image. If "0", the width will be calculated by the barcode object.  |
 |imageType|String   |"png"        |Specify the image format. Can be "png", "jpeg", "jpg" or "gif".                                                  |
 
- ..
-\_zend.barcode.renderers.pdf:
 
-Zend\\Barcode\\Renderer\\Pdf
-----------------------------
+## Zend\\Barcode\\Renderer\\Pdf
 
 The *PDF* renderer will draw the instruction list of the barcode object in a *PDF* document. The
 default width of a module is 0.5 point.

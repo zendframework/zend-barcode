@@ -1,5 +1,4 @@
-Zend\\Barcode Objects
-=====================
+# Zend\\Barcode Objects
 
 Barcode objects allow you to generate barcodes independently of the rendering support. After
 generation, you can retrieve the barcode as an array of drawing instructions that you can provide to
@@ -12,7 +11,7 @@ set in three ways:
 - As an array passed to the `setOptions()` method.
 - Via individual setters for each configuration type.
 
-**Different ways to parameterize a barcode object**
+### Different ways to parameterize a barcode object
 
 ```php
 <?php
@@ -34,8 +33,7 @@ $barcode->setText('ZEND-FRAMEWORK')
 
 ```
 
-Common Options
---------------
+## Common Options
 
 In the following list, the values have no units; we will use the term "unit." For example, the
 default value of the "thin bar" is "1 unit". The real units depend on the rendering support (see the
@@ -101,8 +99,7 @@ Barcode::render(
 
 ```
 
-Common Additional Getters
--------------------------
+## Common Additional Getters
 
 
 |Getter                             |Data Type|Description                                                                                                            |
@@ -121,8 +118,7 @@ Common Additional Getters
 
 orphan  
 
-Description of shipped barcodes
--------------------------------
+## Description of shipped barcodes
 
 You will find below detailed information about all barcode types shipped by default with Zend
 Framework.
