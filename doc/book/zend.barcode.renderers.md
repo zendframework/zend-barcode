@@ -65,8 +65,6 @@ Available options are:
 |width    |Integer  |0            |Allow you to specify the width of the result image. If "0", the width will be calculated by the barcode object.  |
 |imageType|String   |"png"        |Specify the image format. Can be "png", "jpeg", "jpg" or "gif".                                                  |
 
- ..
-\_zend.barcode.renderers.pdf:
 
 ## Zend\\Barcode\\Renderer\\Pdf
 
