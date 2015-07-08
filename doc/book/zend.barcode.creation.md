@@ -1,8 +1,6 @@
-Barcode creation using Zend\\Barcode\\Barcode class
-===================================================
+# Barcode creation using Zend\\Barcode\\Barcode class
 
-Using Zend\\Barcode\\Barcode::factory
--------------------------------------
+## Using Zend\\Barcode\\Barcode::factory
 
 `Zend\Barcode\Barcode` uses a factory method to create an instance of a renderer that extends
 `Zend\Barcode\Renderer\AbstractRenderer`. The factory method accepts five arguments.
@@ -17,7 +15,7 @@ object) (optional)
 - Boolean to indicate whether or not to automatically render errors. If an exception occurs, the
 provided barcode object will be replaced with an Error representation (optional default `TRUE`)
 
-**Getting a Renderer with Zend\\Barcode\\Barcode::factory()**
+### Getting a Renderer with Zend\\Barcode\\Barcode::factory()
 
 `Zend\Barcode\Barcode::factory()` instantiates barcode classes and renderers and ties them together.
 In this first example, we will use the **Code39** barcode type together with the **Image** renderer.
@@ -37,7 +35,7 @@ $renderer = Barcode::factory(
 
 ```
 
-**Using Zend\\Barcode\\Barcode::factory() with Zend\\Config\\Config objects**
+### Using Zend\\Barcode\\Barcode::factory() with Zend\\Config\\Config objects
 
 You may pass a `Zend\Config\Config` object to the factory in order to create the necessary objects.
 The following example is functionally equivalent to the previous.
@@ -59,14 +57,13 @@ $renderer = Barcode::factory($config);
 
 ```
 
-Drawing a barcode
------------------
+## Drawing a barcode
 
 When you **draw** the barcode, you retrieve the resource in which the barcode is drawn. To draw a
 barcode, you can call the `draw()` of the renderer, or simply use the proxy method provided by
 `Zend\Barcode\Barcode`.
 
-**Drawing a barcode with the renderer object**
+### Drawing a barcode with the renderer object
 
 ```php
 <?php
@@ -85,7 +82,7 @@ $imageResource = Barcode::factory(
 
 ```
 
-**Drawing a barcode with Zend\\Barcode\\Barcode::draw()**
+### Drawing a barcode with Zend\\Barcode\\Barcode::draw()
 
 ```php
 <?php
@@ -104,14 +101,13 @@ $imageResource = Barcode::draw(
 
 ```
 
-Rendering a barcode
--------------------
+## Rendering a barcode
 
 When you render a barcode, you draw the barcode, you send the headers and you send the resource
 (e.g. to a browser). To render a barcode, you can call the `render()` method of the renderer or
 simply use the proxy method provided by `Zend\Barcode\Barcode`.
 
-**Rendering a barcode with the renderer object**
+### Rendering a barcode with the renderer object
 
 ```php
 <?php
@@ -135,7 +131,7 @@ This will generate this barcode:
 
 ![image](../images/zend.barcode.introduction.example-1.png)
 
-**Rendering a barcode with Zend\\Barcode\\Barcode::render()**
+### Rendering a barcode with Zend\\Barcode\\Barcode::render()
 
 ```php
 <?php
