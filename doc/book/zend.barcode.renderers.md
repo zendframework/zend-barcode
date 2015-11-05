@@ -6,7 +6,7 @@ Renderers have some common options. These options can be set in three ways:
 - As an array passed to the `setOptions()` method.
 - As discrete values passed to individual setters.
 
-### Different ways to parameterize a renderer object
+## Different ways to parameterize a renderer object
 
 ```php
 <?php
