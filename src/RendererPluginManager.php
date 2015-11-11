@@ -10,6 +10,7 @@
 namespace Zend\Barcode;
 
 use Zend\ServiceManager\AbstractPluginManager;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Plugin manager implementation for barcode renderers.
@@ -23,40 +24,24 @@ class RendererPluginManager extends AbstractPluginManager
     /**
      * @var bool Ensure services are not shared
      */
-    protected $shareByDefault = false;
+    protected $sharedByDefault = false;
 
     /**
      * Default set of barcode renderers
      *
      * @var array
      */
-    protected $invokableClasses = [
-        'image' => 'Zend\Barcode\Renderer\Image',
-        'pdf'   => 'Zend\Barcode\Renderer\Pdf',
-        'svg'   => 'Zend\Barcode\Renderer\Svg'
+    protected $aliases = [
+        'image' => Renderer\Image::class,
+        'pdf'   => Renderer\Pdf::class,
+        'svg'   => Renderer\Svg::class
     ];
 
-    /**
-     * Validate the plugin
-     *
-     * Checks that the barcode parser loaded is an instance
-     * of Renderer\AbstractRenderer.
-     *
-     * @param  mixed $plugin
-     * @return void
-     * @throws Exception\InvalidArgumentException if invalid
-     */
-    public function validatePlugin($plugin)
-    {
-        if ($plugin instanceof Renderer\AbstractRenderer) {
-            // we're okay
-            return;
-        }
+    protected $factories = [
+        Renderer\Image::class => InvokableFactory::class,
+        Renderer\Pdf::class   => InvokableFactory::class,
+        Renderer\Svg::class   => InvokableFactory::class,
+    ];
 
-        throw new Exception\InvalidArgumentException(sprintf(
-            'Plugin of type %s is invalid; must extend %s\Renderer\AbstractRenderer',
-            (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
-            __NAMESPACE__
-        ));
-    }
+    protected $instanceOf = Renderer\AbstractRenderer::class;
 }
