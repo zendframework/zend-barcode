@@ -89,14 +89,14 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testFactoryWithoutAutomaticObjectExceptionRendering()
     {
-        $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
+        $this->setExpectedException('\Zend\ServiceManager\Exception\ExceptionInterface');
         $options = ['barHeight' => - 1];
         $renderer = Barcode\Barcode::factory('code39', 'image', $options, [], false);
     }
 
     public function testFactoryWithoutAutomaticRendererExceptionRendering()
     {
-        $this->setExpectedException('\Zend\Barcode\Renderer\Exception\ExceptionInterface');
+        $this->setExpectedException('\Zend\ServiceManager\Exception\ExceptionInterface');
         $this->checkGDRequirement();
         $options = ['imageType' => 'my'];
         $renderer = Barcode\Barcode::factory('code39', 'image', [], $options, false);
@@ -237,7 +237,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $plugins = Barcode\Barcode::getObjectPluginManager();
         $plugins->setInvokableClass('barcodeNamespaceWithoutExtendingObjectAbstract', 'ZendTest\Barcode\Object\TestAsset\BarcodeNamespaceWithoutExtendingObjectAbstract');
 
-        $this->setExpectedException('\Zend\Barcode\Exception\ExceptionInterface');
+        $this->setExpectedException('Zend\ServiceManager\Exception\InvalidServiceException');
         $barcode = Barcode\Barcode::makeBarcode('barcodeNamespaceWithoutExtendingObjectAbstract');
     }
 
@@ -319,7 +319,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $plugins = Barcode\Barcode::getRendererPluginManager();
         $plugins->setInvokableClass('rendererNamespaceWithoutExtendingRendererAbstract', 'ZendTest\Barcode\Renderer\TestAsset\RendererNamespaceWithoutExtendingRendererAbstract');
-        $this->setExpectedException('Zend\Barcode\Exception\ExceptionInterface');
+        $this->setExpectedException('Zend\ServiceManager\Exception\InvalidServiceException');
         $renderer = Barcode\Barcode::makeRenderer('rendererNamespaceWithoutExtendingRendererAbstract');
     }
 

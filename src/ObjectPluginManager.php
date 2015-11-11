@@ -10,6 +10,7 @@
 namespace Zend\Barcode;
 
 use Zend\ServiceManager\AbstractPluginManager;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Plugin manager implementation for barcode parsers.
@@ -23,55 +24,54 @@ class ObjectPluginManager extends AbstractPluginManager
     /**
      * @var bool Ensure services are not shared
      */
-    protected $shareByDefault = false;
+    protected $sharedByDefault = false;
 
     /**
-     * Default set of barcode parsers
+     * Default set of symmetric adapters
      *
      * @var array
      */
-    protected $invokableClasses = [
-        'codabar'           => 'Zend\Barcode\Object\Codabar',
-        'code128'           => 'Zend\Barcode\Object\Code128',
-        'code25'            => 'Zend\Barcode\Object\Code25',
-        'code25interleaved' => 'Zend\Barcode\Object\Code25interleaved',
-        'code39'            => 'Zend\Barcode\Object\Code39',
-        'ean13'             => 'Zend\Barcode\Object\Ean13',
-        'ean2'              => 'Zend\Barcode\Object\Ean2',
-        'ean5'              => 'Zend\Barcode\Object\Ean5',
-        'ean8'              => 'Zend\Barcode\Object\Ean8',
-        'error'             => 'Zend\Barcode\Object\Error',
-        'identcode'         => 'Zend\Barcode\Object\Identcode',
-        'itf14'             => 'Zend\Barcode\Object\Itf14',
-        'leitcode'          => 'Zend\Barcode\Object\Leitcode',
-        'planet'            => 'Zend\Barcode\Object\Planet',
-        'postnet'           => 'Zend\Barcode\Object\Postnet',
-        'royalmail'         => 'Zend\Barcode\Object\Royalmail',
-        'upca'              => 'Zend\Barcode\Object\Upca',
-        'upce'              => 'Zend\Barcode\Object\Upce',
+    protected $aliases = [
+        'codabar'           => Object\Codabar::class,
+        'code128'           => Object\Code128::class,
+        'code25'            => Object\Code25::class,
+        'code25interleaved' => Object\Code25interleaved::class,
+        'code39'            => Object\Code39::class,
+        'ean13'             => Object\Ean13::class,
+        'ean2'              => Object\Ean2::class,
+        'ean5'              => Object\Ean5::class,
+        'ean8'              => Object\Ean8::class,
+        'error'             => Object\Error::class,
+        'identcode'         => Object\Identcode::class,
+        'itf14'             => Object\Itf14::class,
+        'leitcode'          => Object\Leitcode::class,
+        'planet'            => Object\Planet::class,
+        'postnet'           => Object\Postnet::class,
+        'royalmail'         => Object\Royalmail::class,
+        'upca'              => Object\Upca::class,
+        'upce'              => Object\Upce::class,
     ];
 
-    /**
-     * Validate the plugin
-     *
-     * Checks that the barcode parser loaded is an instance
-     * of Object\AbstractObject.
-     *
-     * @param  mixed $plugin
-     * @return void
-     * @throws Exception\InvalidArgumentException if invalid
-     */
-    public function validatePlugin($plugin)
-    {
-        if ($plugin instanceof Object\AbstractObject) {
-            // we're okay
-            return;
-        }
+    protected $factories = [
+        Object\Codabar::class           => InvokableFactory::class,
+        Object\Code128::class           => InvokableFactory::class,
+        Object\Code25::class            => InvokableFactory::class,
+        Object\Code25interleaved::class => InvokableFactory::class,
+        Object\Code39::class            => InvokableFactory::class,
+        Object\Ean13::class             => InvokableFactory::class,
+        Object\Ean2::class              => InvokableFactory::class,
+        Object\Ean5::class              => InvokableFactory::class,
+        Object\Ean8::class              => InvokableFactory::class,
+        Object\Error::class             => InvokableFactory::class,
+        Object\Identcode::class         => InvokableFactory::class,
+        Object\Itf14::class             => InvokableFactory::class,
+        Object\Leitcode::class          => InvokableFactory::class,
+        Object\Planet::class            => InvokableFactory::class,
+        Object\Postnet::class           => InvokableFactory::class,
+        Object\Royalmail::class         => InvokableFactory::class,
+        Object\Upca::class              => InvokableFactory::class,
+        Object\Upce::class              => InvokableFactory::class
+    ];
 
-        throw new Exception\InvalidArgumentException(sprintf(
-            'Plugin of type %s is invalid; must extend %s\Object\AbstractObject',
-            (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
-            __NAMESPACE__
-        ));
-    }
+    protected $instanceOf = Object\AbstractObject::class;
 }

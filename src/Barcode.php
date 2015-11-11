@@ -12,6 +12,7 @@ namespace Zend\Barcode;
 use Traversable;
 use Zend\Barcode\Renderer\RendererInterface;
 use Zend\Stdlib\ArrayUtils;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class for generate Barcode
@@ -51,7 +52,7 @@ abstract class Barcode
     public static function getObjectPluginManager()
     {
         if (!static::$objectPlugins instanceof ObjectPluginManager) {
-            static::$objectPlugins = new ObjectPluginManager();
+            static::$objectPlugins = new ObjectPluginManager(new ServiceManager);
         }
 
         return static::$objectPlugins;
@@ -65,7 +66,7 @@ abstract class Barcode
     public static function getRendererPluginManager()
     {
         if (!static::$rendererPlugins instanceof RendererPluginManager) {
-            static::$rendererPlugins = new RendererPluginManager();
+            static::$rendererPlugins = new RendererPluginManager(new ServiceManager);
         }
 
         return static::$rendererPlugins;
@@ -128,7 +129,7 @@ abstract class Barcode
         try {
             $barcode  = static::makeBarcode($barcode, $barcodeConfig);
             $renderer = static::makeRenderer($renderer, $rendererConfig);
-        } catch (Exception\ExceptionInterface $e) {
+        } catch (\Exception $e) {
             if ($automaticRenderError && !($e instanceof Exception\RendererCreationException)) {
                 $barcode  = static::makeBarcode('error', ['text' => $e->getMessage()]);
                 $renderer = static::makeRenderer($renderer, []);
