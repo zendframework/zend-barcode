@@ -25,7 +25,7 @@ class ObjectPluginManager extends AbstractPluginManager
      * @var bool Ensure services are not shared
      */
     protected $sharedByDefault = false;
-  
+
     /**
      * Default set of symmetric adapters
      *
