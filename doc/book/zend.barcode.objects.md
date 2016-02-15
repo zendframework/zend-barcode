@@ -14,7 +14,6 @@ set in three ways:
 ### Different ways to parameterize a barcode object
 
 ```php
-<?php
 use Zend\Barcode\Object;
 
 $options = array('text' => 'ZEND-FRAMEWORK', 'barHeight' => 40);
@@ -73,7 +72,6 @@ You can set a common font for all your objects by using the static method
 objects by using the `setFont()` method.
 
 ```php
-<?php
 use Zend\Barcode\Barcode;
 
 // In your bootstrap:

@@ -21,7 +21,6 @@ provided barcode object will be replaced with an Error representation (optional 
 In this first example, we will use the **Code39** barcode type together with the **Image** renderer.
 
 ```php
-<?php
 use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
@@ -41,7 +40,6 @@ You may pass a `Zend\Config\Config` object to the factory in order to create the
 The following example is functionally equivalent to the previous.
 
 ```php
-<?php
 use Zend\Config\Config;
 use Zend\Barcode\Barcode;
 
@@ -66,7 +64,6 @@ barcode, you can call the `draw()` of the renderer, or simply use the proxy meth
 ### Drawing a barcode with the renderer object
 
 ```php
-<?php
 use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
@@ -85,7 +82,6 @@ $imageResource = Barcode::factory(
 ### Drawing a barcode with Zend\\Barcode\\Barcode::draw()
 
 ```php
-<?php
 use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
@@ -110,7 +106,6 @@ simply use the proxy method provided by `Zend\Barcode\Barcode`.
 ### Rendering a barcode with the renderer object
 
 ```php
-<?php
 use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
@@ -134,7 +129,6 @@ This will generate this barcode:
 ### Rendering a barcode with Zend\\Barcode\\Barcode::render()
 
 ```php
-<?php
 use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
