@@ -2,9 +2,9 @@
 
 Renderers have some common options. These options can be set in three ways:
 
-- As an array or a [Traversable](http://php.net/traversable) object passed to the constructor.
-- As an array passed to the `setOptions()` method.
-- As discrete values passed to individual setters.
+* As an array or a [Traversable](http://php.net/traversable) object passed to the constructor.
+* As an array passed to the `setOptions()` method.
+* As discrete values passed to individual setters.
 
 ### Different ways to parameterize a renderer object
 
