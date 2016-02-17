@@ -9,7 +9,6 @@ Renderers have some common options. These options can be set in three ways:
 ## Different ways to parameterize a renderer object
 
 ```php
-<?php
 use Zend\Barcode\Renderer;
 
 $options = array('topOffset' => 10);
