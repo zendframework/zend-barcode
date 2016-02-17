@@ -181,7 +181,8 @@ Available options include:
 |withBearerBars|Boolean  |FALSE        |Draw a thick bar at the top and the bottom of the barcode.|
 
 
-> If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically 
+> ### Note
+If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically 
 prepend the missing zero to the barcode text.
 
 ### Zend\\Barcode\\Object\\Ean2
@@ -198,7 +199,7 @@ and adds the following:
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 2, `Zend\Barcode\Object\Ean2` will automatically prepend
 the missing zero to the barcode text.
 
@@ -216,7 +217,7 @@ options, and adds the following:
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 5, `Zend\Barcode\Object\Ean5` will automatically prepend
 the missing zero to the barcode text.
 
@@ -234,7 +235,7 @@ options, and adds the following:
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 8, `Zend\Barcode\Object\Ean8` will automatically prepend
 the missing zero to the barcode text.
 
@@ -249,7 +250,7 @@ the missing zero to the barcode text.
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 13, `Zend\Barcode\Object\Ean13` will automatically prepend
 the missing zero to the barcode text.
 The option `withQuietZones` has no effect with this barcode.
@@ -263,7 +264,7 @@ The option `withQuietZones` has no effect with this barcode.
 - **Checksum:** optional (modulo 43)
 - **Length:** variable
 
-> ## Note
+> ### Note
 `Zend\Barcode\Object\Code39` will automatically add the start and stop characters ('\*') for you.
 
 There are no particular options for this barcode.
@@ -282,7 +283,7 @@ some of its capabilities; it also has a few particulars of its own.
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 12, `Zend\Barcode\Object\Identcode` will automatically
 prepend missing zeros to the barcode text.
 
@@ -300,7 +301,7 @@ some of its capabilities; it also has a few particulars of its own.
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 14, `Zend\Barcode\Object\Itf14` will automatically prepend
 missing zeros to the barcode text.
 
@@ -318,7 +319,7 @@ its capabilities; it also has a few particulars of its own.
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 14, `Zend\Barcode\Object\Leitcode` will automatically
 prepend missing zeros to the barcode text.
 
@@ -369,7 +370,7 @@ it also has a few particulars of its own.
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 12, `Zend\Barcode\Object\Upca` will automatically prepend
 missing zeros to the barcode text.
 The option `withQuietZones` has no effect with this barcode.
@@ -389,11 +390,11 @@ also has a few particulars of its own. The first character of the text to encode
 
 There are no particular options for this barcode.
 
-> ## Note
+> ### Note
 If the number of characters is lower than 8, `Zend\Barcode\Object\Upce` will automatically prepend
 missing zeros to the barcode text.
 
-> ## Note
+> ### Note
 If the first character of the text to encode is not 0 or 1, `Zend\Barcode\Object\Upce` will
 automatically replace it by 0.
 The option `withQuietZones` has no effect with this barcode.
