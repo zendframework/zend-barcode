@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Barcode Objects - zend-barcode</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-barcode</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../intro/">Introduction</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../usage/">Usage</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Barcode Objects</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../renderers/">Renderers</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="prev" href="../usage/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../renderers/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-barcode">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#barcode-objects">Barcode Objects</a></li>
+        
+            <li><a href="#different-ways-to-parameterize-a-barcode-object">Different ways to parameterize a barcode object</a></li>
+        
+            <li><a href="#common-options">Common Options</a></li>
+        
+            <li><a href="#common-additional-getters">Common Additional Getters</a></li>
+        
+            <li><a href="#description-of-shipped-barcodes">Description of shipped barcodes</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Barcode Objects</li>
+</ol>
+
+<nav class="hidden-lg">
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../usage/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../renderers/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+
+<h1 id="barcode-objects">Barcode Objects</h1>
+<p>Barcode objects allow you to generate barcodes independently of the rendering
+support. After generation, you can retrieve the barcode as an array of drawing
+instructions to provide to a renderer.</p>
+<p>Objects have a large number of options, most of which are common across all
+implementations. These options can be set in three ways:</p>
+<ul>
+<li>As an array or a <a href="http://php.net/traversable">Traversable</a> object passed to the constructor.</li>
+<li>As an array passed to the <code>setOptions()</code> method.</li>
+<li>Via individual setters for each configuration type.</li>
+</ul>
+<h2 id="different-ways-to-parameterize-a-barcode-object">Different ways to parameterize a barcode object</h2>
+<pre class="codehilite"><code class="language-php">use Zend\Barcode\Object;
+
+$options = ['text' =&gt; 'ZEND-FRAMEWORK', 'barHeight' =&gt; 40];
+
+// Case 1: constructor
+$barcode = new Object\Code39($options);
+
+// Case 2: setOptions()
+$barcode = new Object\Code39();
+$barcode-&gt;setOptions($options);
+
+// Case 3: individual setters
+$barcode = new Object\Code39();
+$barcode-&gt;setText('ZEND-FRAMEWORK')
+    -&gt;setBarHeight(40);</code></pre>
+
+
+<h2 id="common-options">Common Options</h2>
+<p>In the following list, the values have no units; as such, we will use the
+generic term "unit." For example, the default value of the "thin bar" is "1
+unit". The real units depend on the rendering support (see the [renderers
+documentation] (renderers.md) for more information).</p>
+<p>Setters are each named by uppercasing the initial letter of the option and
+prefixing the name with "set" (e.g. <code>barHeight</code> becomes <code>setBarHeight</code>). All
+options have a corresponding getter prefixed with "get" (e.g. <code>getBarHeight</code>).</p>
+<p>Available options are:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th align="left">Option</th>
+<th>Data Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>barcodeNamespace</code></td>
+<td>string</td>
+<td><code>Zend\Barcode\Object</code></td>
+<td>Namespace of the barcode; for example, if you need to extend the embedding objects.</td>
+</tr>
+<tr>
+<td align="left"><code>barHeight</code></td>
+<td>int</td>
+<td><code>50</code></td>
+<td>Height of the bars.</td>
+</tr>
+<tr>
+<td align="left"><code>barThickWidth</code></td>
+<td>int</td>
+<td><code>3</code></td>
+<td>Width of the thick bar.</td>
+</tr>
+<tr>
+<td align="left"><code>barThinWidth</code></td>
+<td>int</td>
+<td><code>1</code></td>
+<td>Width of the thin bar.</td>
+</tr>
+<tr>
+<td align="left"><code>factor</code></td>
+<td>int, float, string, or Bool</td>
+<td><code>1</code></td>
+<td>Factor by which to multiply bar widths and font sizes (<code>barHeight</code>, <code>barThinWidth</code>, <code>barThickWidth</code>, and <code>fontSize</code>).</td>
+</tr>
+<tr>
+<td align="left"><code>foreColor</code></td>
+<td>int</td>
+<td><code>0x000000</code> (black)</td>
+<td>Color of the bar and the text. Could be provided as an integer or as a HTML value (e.g. <code>#333333</code>).</td>
+</tr>
+<tr>
+<td align="left"><code>backgroundColor</code></td>
+<td>int or string</td>
+<td><code>0xFFFFFF</code> (white)</td>
+<td>Color of the background. Could be provided as an integer or as a HTML value (e.g. <code>#333333</code>).</td>
+</tr>
+<tr>
+<td align="left"><code>orientation</code></td>
+<td>int, float, string, or Bool</td>
+<td><code>0</code></td>
+<td>Orientation of the barcode.</td>
+</tr>
+<tr>
+<td align="left"><code>font</code></td>
+<td>string or Int</td>
+<td><code>NULL</code></td>
+<td>Font path to a TTF font or a number between 1 and 5 if using image generation with GD (internal fonts).</td>
+</tr>
+<tr>
+<td align="left"><code>fontSize</code></td>
+<td>float</td>
+<td><code>10</code></td>
+<td>Size of the font (not applicable with numeric fonts).</td>
+</tr>
+<tr>
+<td align="left"><code>withBorder</code></td>
+<td>bool</td>
+<td><code>FALSE</code></td>
+<td>Draw a border around the barcode and the quiet zones.</td>
+</tr>
+<tr>
+<td align="left"><code>withQuietZones</code></td>
+<td>bool</td>
+<td><code>TRUE</code></td>
+<td>Leave a quiet zone before and after the barcode.</td>
+</tr>
+<tr>
+<td align="left"><code>drawText</code></td>
+<td>bool</td>
+<td><code>TRUE</code></td>
+<td>Set if the text is displayed below the barcode.</td>
+</tr>
+<tr>
+<td align="left"><code>stretchText</code></td>
+<td>bool</td>
+<td><code>FALSE</code></td>
+<td>Specify if the text is stretched all along the barcode.</td>
+</tr>
+<tr>
+<td align="left"><code>withChecksum</code></td>
+<td>bool</td>
+<td><code>FALSE</code></td>
+<td>Indicate whether or not the checksum is automatically added to the barcode.</td>
+</tr>
+<tr>
+<td align="left"><code>withChecksumInText</code></td>
+<td>bool</td>
+<td><code>FALSE</code></td>
+<td>Indicate whether or not the checksum is displayed in the textual representation.</td>
+</tr>
+<tr>
+<td align="left"><code>text</code></td>
+<td>string</td>
+<td><code>NULL</code></td>
+<td>The text to represent as a barcode.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="setting-a-common-font-for-all-objects">Setting a common font for all objects</h3>
+<p>You can set a common font for all your objects by using the static method
+<code>Zend\Barcode\Barcode::setBarcodeFont()</code>. This value can be always be overridden
+for individual objects by using the <code>setFont()</code> method.</p>
+<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+
+// In your bootstrap:
+Barcode::setBarcodeFont('my_font.ttf');
+
+// Later in your code:
+Barcode::render(
+    'code39',
+    'pdf',
+    ['text' =&gt; 'ZEND-FRAMEWORK']
+); // will use 'my_font.ttf'
+
+// or:
+Barcode::render(
+    'code39',
+    'image',
+    [
+        'text' =&gt; 'ZEND-FRAMEWORK',
+        'font' =&gt; 3,
+    ]
+); // will use the 3rd GD internal font</code></pre>
+
+
+<h2 id="common-additional-getters">Common Additional Getters</h2>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th align="left">Getter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>getType()</code></td>
+<td>string</td>
+<td>Return the name of the barcode class without the namespace (e.g. <code>Zend\Barcode\Object\Code39</code> returns simply "code39").</td>
+</tr>
+<tr>
+<td align="left"><code>getRawText()</code></td>
+<td>string</td>
+<td>Return the original text provided to the object.</td>
+</tr>
+<tr>
+<td align="left"><code>getTextToDisplay()</code></td>
+<td>string</td>
+<td>Return the text to display, including, if activated, the checksum value.</td>
+</tr>
+<tr>
+<td align="left"><code>getQuietZone()</code></td>
+<td>int</td>
+<td>Return the size of the space needed before and after the barcode without any drawing.</td>
+</tr>
+<tr>
+<td align="left"><code>getInstructions()</code></td>
+<td>array</td>
+<td>Return drawing instructions as an array..</td>
+</tr>
+<tr>
+<td align="left"><code>getHeight($recalculate = false)</code></td>
+<td>int</td>
+<td>Return the height of the barcode calculated after possible rotation.</td>
+</tr>
+<tr>
+<td align="left"><code>getWidth($recalculate = false)</code></td>
+<td>int</td>
+<td>Return the width of the barcode calculated after possible rotation.</td>
+</tr>
+<tr>
+<td align="left"><code>getOffsetTop($recalculate = false)</code></td>
+<td>int</td>
+<td>Return the position of the top of the barcode calculated after possible rotation.</td>
+</tr>
+<tr>
+<td align="left"><code>getOffsetLeft($recalculate = false)</code></td>
+<td>int</td>
+<td>Return the position of the left of the barcode calculated after possible rotation.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="description-of-shipped-barcodes">Description of shipped barcodes</h2>
+<p>Below is detailed information on all barcode types supported. Unless otherwise
+noted, each barcode supports the general options outlined in the previous
+section, and no others.</p>
+<h3 id="zend92barcode92object92error">Zend\Barcode\Object\Error</h3>
+<p><img alt="error" src="../images/zend.barcode.objects.details.error.png" class="img-responsive"/></p>
+<p>This barcode is a special case. It is internally used to automatically render an
+exception caught by the component.</p>
+<h3 id="zend92barcode92object92code128">Zend\Barcode\Object\Code128</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.code128.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Code 128</li>
+<li><strong>Allowed characters:</strong> the complete ASCII-character set</li>
+<li><strong>Checksum:</strong> optional (modulo 103)</li>
+<li><strong>Length:</strong> variable</li>
+</ul>
+<h3 id="zend92barcode92object92codabar">Zend\Barcode\Object\Codabar</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.codabar.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Codabar (or Code 2 of 7)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789-\$:/.+</code> with <code>ABCD</code> as start and stop characters</li>
+<li><strong>Checksum:</strong> none</li>
+<li><strong>Length:</strong> variable</li>
+</ul>
+<h3 id="zend92barcode92object92code25">Zend\Barcode\Object\Code25</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.code25.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Code 25 (or Code 2 of 5 or Code 25 Industrial)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> optional (modulo 10)</li>
+<li><strong>Length:</strong> variable</li>
+</ul>
+<h3 id="zend92barcode92object92code25interleaved">Zend\Barcode\Object\Code25interleaved</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.int25.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Code25</code> (Code 2 of 5), with the
+following changes:</p>
+<ul>
+<li><strong>Name:</strong> Code 2 of 5 Interleaved</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> optional (modulo 10)</li>
+<li><strong>Length:</strong> variable (always even number of characters)</li>
+</ul>
+<p>It also defines the following additional option:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Data Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>withBearerBars</code></td>
+<td>bool</td>
+<td><code>FALSE</code></td>
+<td>Draw a thick bar at the top and the bottom of the barcode.</td>
+</tr>
+</tbody>
+</table></div>
+<p>If the number of characters is not even, <code>Zend\Barcode\Object\Code25interleaved</code>
+will automatically prepend the missing zero to the barcode text.</p>
+<h3 id="zend92barcode92object92ean2">Zend\Barcode\Object\Ean2</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.ean2.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Ean5</code> (<em>EAN</em> 5), with the following
+changes:</p>
+<ul>
+<li><strong>Name:</strong> <em>EAN</em>-2</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> Used internally, but not displayed</li>
+<li><strong>Length:</strong> 2 characters</li>
+</ul>
+<p>If the number of characters is lower than 2, <code>Zend\Barcode\Object\Ean2</code> will
+automatically prepend the missing zero to the barcode text.</p>
+<h3 id="zend92barcode92object92ean5">Zend\Barcode\Object\Ean5</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.ean5.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Ean13</code> (<em>EAN</em> 13), with the following
+changes:</p>
+<ul>
+<li><strong>Name:</strong> <em>EAN</em>-5</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> Used internally, but not displayed</li>
+<li><strong>Length:</strong> 5 characters</li>
+</ul>
+<p>If the number of characters is lower than 5, <code>Zend\Barcode\Object\Ean5</code> will
+automatically prepend zeroes to the barcode text until it reaches 5 characters.</p>
+<h3 id="zend92barcode92object92ean8">Zend\Barcode\Object\Ean8</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.ean8.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Ean13</code> (<em>EAN</em> 13), with the following
+changes:</p>
+<ul>
+<li><strong>Name:</strong> <em>EAN</em>-8</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 8 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 8, <code>Zend\Barcode\Object\Ean8</code> will
+automatically prepend zeros to the barcode text until it reaches 8 characters.</p>
+<h3 id="zend92barcode92object92ean13">Zend\Barcode\Object\Ean13</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.ean13.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> <em>EAN</em>-13</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 13 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 13, <code>Zend\Barcode\Object\Ean13</code> will
+automatically prepend zeros to the barcode text until it reaches 13 characters.</p>
+<p>The option <code>withQuietZones</code> has no effect with this barcode.</p>
+<h3 id="zend92barcode92object92code39">Zend\Barcode\Object\Code39</h3>
+<p><img alt="image" src="../images/zend.barcode.introduction.example-1.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Code 39</li>
+<li><strong>Allowed characters:</strong> <code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ -.\$/+%</code></li>
+<li><strong>Checksum:</strong> optional (modulo 43)</li>
+<li><strong>Length:</strong> variable</li>
+</ul>
+<p><code>Zend\Barcode\Object\Code39</code> automatically adds the start and stop characters
+(<code>*</code>) for you.</p>
+<h3 id="zend92barcode92object92identcode">Zend\Barcode\Object\Identcode</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.identcode.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Code25interleaved</code> (Code 2 of 5
+Interleaved), inheriting its capabilities and defining some of its own.</p>
+<ul>
+<li><strong>Name:</strong> Identcode (Deutsche Post Identcode)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10 different from Code25)</li>
+<li><strong>Length:</strong> 12 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 12, <code>Zend\Barcode\Object\Identcode</code>
+will automatically prepend missing zeros to the barcode text.</p>
+<h3 id="zend92barcode92object92itf14">Zend\Barcode\Object\Itf14</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.itf14.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Code25interleaved</code> (Code 2 of 5
+Interleaved), inheriting its capabilities and defining some of its own.</p>
+<ul>
+<li><strong>Name:</strong> <em>ITF</em>-14</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 14 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 14, <code>Zend\Barcode\Object\Itf14</code> will
+automatically prepend missing zeros to the barcode text.</p>
+<h3 id="zend92barcode92object92leitcode">Zend\Barcode\Object\Leitcode</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.leitcode.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Identcode</code> (Deutsche Post Identcode),
+inheriting its capabilities and defining some of its own:</p>
+<ul>
+<li><strong>Name:</strong> Leitcode (Deutsche Post Leitcode)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10 different from Code25)</li>
+<li><strong>Length:</strong> 14 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 14, <code>Zend\Barcode\Object\Leitcode</code>
+will automatically prepend missing zeros to the barcode text.</p>
+<h3 id="zend92barcode92object92planet">Zend\Barcode\Object\Planet</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.planet.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Planet (PostaL Alpha Numeric Encoding Technique)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 12 or 14 characters (including checksum)</li>
+</ul>
+<h3 id="zend92barcode92object92postnet">Zend\Barcode\Object\Postnet</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.postnet.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Postnet (POSTal Numeric Encoding Technique)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 6, 7, 10, or 12 characters (including checksum)</li>
+</ul>
+<h3 id="zend92barcode92object92royalmail">Zend\Barcode\Object\Royalmail</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.royalmail.png" class="img-responsive"/></p>
+<ul>
+<li><strong>Name:</strong> Royal Mail or <em>RM4SCC</em> (Royal Mail 4-State Customer Code)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</code></li>
+<li><strong>Checksum:</strong> mandatory</li>
+<li><strong>Length:</strong> variable</li>
+</ul>
+<h3 id="zend92barcode92object92upca">Zend\Barcode\Object\Upca</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.upca.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Ean13</code> (<em>EAN</em>-13), inheriting some of
+its capabilities and defining some of its own.</p>
+<ul>
+<li><strong>Name:</strong> <em>UPC</em>-A (Universal Product Code)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 12 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 12, <code>Zend\Barcode\Object\Upca</code> will
+automatically prepend missing zeros to the barcode text.</p>
+<p>The option <code>withQuietZones</code> has no effect with this barcode.</p>
+<h3 id="zend92barcode92object92upce">Zend\Barcode\Object\Upce</h3>
+<p><img alt="image" src="../images/zend.barcode.objects.details.upce.png" class="img-responsive"/></p>
+<p>This barcode extends <code>Zend\Barcode\Object\Upca</code> (<em>UPC</em>-A), inheriting some of
+its capabilities and defining some of its own. In particular, the first
+character of the text to encode is the system (0 or 1).</p>
+<ul>
+<li><strong>Name:</strong> <em>UPC</em>-E (Universal Product Code)</li>
+<li><strong>Allowed characters:</strong> <code>0123456789</code></li>
+<li><strong>Checksum:</strong> mandatory (modulo 10)</li>
+<li><strong>Length:</strong> 8 characters (including checksum)</li>
+</ul>
+<p>If the number of characters is lower than 8, <code>Zend\Barcode\Object\Upce</code> will
+automatically prepend missing zeros to the barcode text.</p>
+<p>If the first character of the text to encode is not 0 or 1, <code>Zend\Barcode\Object\Upce</code> will
+automatically replace it with 0.</p>
+<p>The option <code>withQuietZones</code> has no effect with this barcode.</p>
+
+<hr />
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../usage/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../renderers/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav></div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
