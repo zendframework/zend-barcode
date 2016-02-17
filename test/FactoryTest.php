@@ -11,9 +11,11 @@ namespace ZendTest\Barcode;
 
 use ReflectionClass;
 use Zend\Barcode;
+use Zend\Barcode\Exception\InvalidArgumentException;
 use Zend\Barcode\Renderer;
 use Zend\Barcode\Object;
 use Zend\Config\Config;
+use Zend\ServiceManager\Exception\InvalidServiceException;
 use ZendPdf as Pdf;
 
 /**
@@ -237,8 +239,16 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $plugins = Barcode\Barcode::getObjectPluginManager();
         $plugins->setInvokableClass('barcodeNamespaceWithoutExtendingObjectAbstract', 'ZendTest\Barcode\Object\TestAsset\BarcodeNamespaceWithoutExtendingObjectAbstract');
 
-        $this->setExpectedException('Zend\ServiceManager\Exception\InvalidServiceException');
-        $barcode = Barcode\Barcode::makeBarcode('barcodeNamespaceWithoutExtendingObjectAbstract');
+        try {
+            Barcode\Barcode::makeBarcode('barcodeNamespaceWithoutExtendingObjectAbstract');
+            $this->fail('Invalid barcode object should raise an exception');
+        } catch (InvalidServiceException $e) {
+            // V3 exception
+            $this->assertInstanceOf(InvalidServiceException::class, $e);
+        } catch (InvalidArgumentException $e) {
+            // V2 exception
+            $this->assertInstanceOf(InvalidArgumentException::class, $e);
+        }
     }
 
     public function testBarcodeObjectFactoryWithUnexistentBarcode()
@@ -319,8 +329,17 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $plugins = Barcode\Barcode::getRendererPluginManager();
         $plugins->setInvokableClass('rendererNamespaceWithoutExtendingRendererAbstract', 'ZendTest\Barcode\Renderer\TestAsset\RendererNamespaceWithoutExtendingRendererAbstract');
-        $this->setExpectedException('Zend\ServiceManager\Exception\InvalidServiceException');
-        $renderer = Barcode\Barcode::makeRenderer('rendererNamespaceWithoutExtendingRendererAbstract');
+
+        try {
+            Barcode\Barcode::makeRenderer('rendererNamespaceWithoutExtendingRendererAbstract');
+            $this->fail('Invalid barcode renderer should raise an exception');
+        } catch (InvalidServiceException $e) {
+            // V3 exception
+            $this->assertInstanceOf(InvalidServiceException::class, $e);
+        } catch (InvalidArgumentException $e) {
+            // V2 exception
+            $this->assertInstanceOf(InvalidArgumentException::class, $e);
+        }
     }
 
     public function testBarcodeRendererFactoryWithUnexistentRenderer()

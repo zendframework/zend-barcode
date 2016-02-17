@@ -76,7 +76,28 @@ class ObjectPluginManager extends AbstractPluginManager
         Object\Postnet::class           => InvokableFactory::class,
         Object\Royalmail::class         => InvokableFactory::class,
         Object\Upca::class              => InvokableFactory::class,
-        Object\Upce::class              => InvokableFactory::class
+        Object\Upce::class              => InvokableFactory::class,
+
+        // v2 canonical FQCNs
+
+        'zendbarcodeobjectcodabar'           => InvokableFactory::class,
+        'zendbarcodeobjectcode128'           => InvokableFactory::class,
+        'zendbarcodeobjectcode25'            => InvokableFactory::class,
+        'zendbarcodeobjectcode25interleaved' => InvokableFactory::class,
+        'zendbarcodeobjectcode39'            => InvokableFactory::class,
+        'zendbarcodeobjectean13'             => InvokableFactory::class,
+        'zendbarcodeobjectean2'              => InvokableFactory::class,
+        'zendbarcodeobjectean5'              => InvokableFactory::class,
+        'zendbarcodeobjectean8'              => InvokableFactory::class,
+        'zendbarcodeobjecterror'             => InvokableFactory::class,
+        'zendbarcodeobjectidentcode'         => InvokableFactory::class,
+        'zendbarcodeobjectitf14'             => InvokableFactory::class,
+        'zendbarcodeobjectleitcode'          => InvokableFactory::class,
+        'zendbarcodeobjectplanet'            => InvokableFactory::class,
+        'zendbarcodeobjectpostnet'           => InvokableFactory::class,
+        'zendbarcodeobjectroyalmail'         => InvokableFactory::class,
+        'zendbarcodeobjectupca'              => InvokableFactory::class,
+        'zendbarcodeobjectupce'              => InvokableFactory::class,
     ];
 
     protected $instanceOf = Object\AbstractObject::class;
@@ -86,17 +107,17 @@ class ObjectPluginManager extends AbstractPluginManager
      *
      * Validates against `$instanceOf`.
      *
-     * @param mixed $instance
+     * @param mixed $plugin
      * @throws InvalidServiceException
      */
-    public function validate($instance)
+    public function validate($plugin)
     {
-        if (! $instance instanceof $this->instanceOf) {
+        if (! $plugin instanceof $this->instanceOf) {
             throw new InvalidServiceException(sprintf(
                 '%s can only create instances of %s; %s is invalid',
                 get_class($this),
                 $this->instanceOf,
-                (is_object($instance) ? get_class($instance) : gettype($instance))
+                (is_object($plugin) ? get_class($plugin) : gettype($plugin))
             ));
         }
     }
@@ -106,11 +127,19 @@ class ObjectPluginManager extends AbstractPluginManager
      *
      * Proxies to `validate()`.
      *
-     * @param mixed $instance
-     * @throws InvalidServiceException
+     * @param mixed $plugin
+     * @throws Exception\InvalidArgumentException
      */
-    public function validatePlugin($instance)
+    public function validatePlugin($plugin)
     {
-        $this->validate($instance);
+        try {
+            $this->validate($plugin);
+        } catch (InvalidServiceException $e) {
+            throw new Exception\InvalidArgumentException(sprintf(
+                'Plugin of type %s is invalid; must extend %s',
+                (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
+                Object\AbstractObject::class
+            ), $e->getCode(), $e);
+        }
     }
 }
