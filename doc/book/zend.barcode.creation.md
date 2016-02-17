@@ -146,4 +146,3 @@ Barcode::render(
 ```
 
 This will generate the same barcode as the previous example.
-

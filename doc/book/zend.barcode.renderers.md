@@ -34,7 +34,6 @@ individual setters are obtained by uppercasing the initial letter of the option 
 name with "set" (e.g. "barHeight" =\> "setBarHeight"). All options have a correspondent getter
 prefixed with "get" (e.g. "getBarHeight"). Available options are:
 
-
 |Option              |Data Type            |Default Value          |Description                                                                                                                                                                                                 |
 |--------------------|---------------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |rendererNamespace   |String               |Zend\\Barcode\\Renderer|Namespace of the renderer; for example, if you need to extend the renderers                                                                                                                                 |
@@ -57,14 +56,11 @@ component requires the GD extension. The default width of a module is 1 pixel.
 
 Available options are:
 
-
 |Option   |Data Type|Default Value|Description                                                                                                      |
 |---------|---------|-------------|-----------------------------------------------------------------------------------------------------------------|
 |height   |Integer  |0            |Allow you to specify the height of the result image. If "0", the height will be calculated by the barcode object.|
 |width    |Integer  |0            |Allow you to specify the width of the result image. If "0", the width will be calculated by the barcode object.  |
 |imageType|String   |"png"        |Specify the image format. Can be "png", "jpeg", "jpg" or "gif".                                                  |
-
-
 
 ## Zend\\Barcode\\Renderer\\Pdf
 
@@ -72,4 +68,3 @@ The *PDF* renderer will draw the instruction list of the barcode object in a *PD
 default width of a module is 0.5 point.
 
 There are no particular options for this renderer.
-

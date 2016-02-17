@@ -63,8 +63,6 @@ are:
 |withChecksumInText|Boolean                          |FALSE                |Indicate whether or not the checksum is displayed in the textual representation                            |
 |text              |String                           |NULL                 |The text to represent as a barcode                                                                         |
 
-
-
 ### Particular case of static setBarcodeFont()
 
 You can set a common font for all your objects by using the static method
@@ -98,7 +96,6 @@ Barcode::render(
 
 ## Common Additional Getters
 
-
 |Getter                             |Data Type|Description                                                                                                            |
 |-----------------------------------|---------|-----------------------------------------------------------------------------------------------------------------------|
 |getType()                          |String   |Return the name of the barcode class without the namespace (e.g. Zend\\Barcode\\Object\\Code39 returns simply "code39")|
@@ -110,9 +107,6 @@ Barcode::render(
 |getWidth($recalculate = false)     |Integer  |Return the width of the barcode calculated after possible rotation                                                     |
 |getOffsetTop($recalculate = false) |Integer  |Return the position of the top of the barcode calculated after possible rotation                                       |
 |getOffsetLeft($recalculate = false)|Integer  |Return the position of the left of the barcode calculated after possible rotation                                      |
-
-
-
 
 ## Description of shipped barcodes
 
@@ -173,15 +167,13 @@ options, and adds the following:
 
 Available options include:
 
-
 |Option        |Data Type|Default Value|Description                                               |
 |--------------|---------|-------------|----------------------------------------------------------|
 |withBearerBars|Boolean  |FALSE        |Draw a thick bar at the top and the bottom of the barcode.|
 
-
 > ### Note
-If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically 
-prepend the missing zero to the barcode text.
+> If the number of characters is not even, ``Zend\Barcode\Object\Code25interleaved`` will automatically 
+> prepend the missing zero to the barcode text.
 
 ### Zend\\Barcode\\Object\\Ean2
 
@@ -396,4 +388,3 @@ missing zeros to the barcode text.
 If the first character of the text to encode is not 0 or 1, `Zend\Barcode\Object\Upce` will
 automatically replace it by 0.
 The option `withQuietZones` has no effect with this barcode.
-
