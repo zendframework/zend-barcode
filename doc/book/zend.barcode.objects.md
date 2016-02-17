@@ -11,7 +11,7 @@ set in three ways:
 - As an array passed to the `setOptions()` method.
 - Via individual setters for each configuration type.
 
-### Different ways to parameterize a barcode object
+## Different ways to parameterize a barcode object
 
 ```php
 <?php
