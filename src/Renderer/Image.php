@@ -21,9 +21,11 @@ class Image extends AbstractRenderer
      * List of authorized output format
      * @var array
      */
-    protected $allowedImageType = ['png',
+    protected $allowedImageType = [
+        'png',
         'jpeg',
-        'gif'  ];
+        'gif',
+    ];
 
     /**
      * Image format
