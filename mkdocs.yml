@@ -1,0 +1,13 @@
+docs_dir: doc/book
+site_dir: doc/html
+pages:
+    - index.md
+    - Introduction: intro.md
+    - Usage: usage.md
+    - Reference:
+        - 'Barcode Objects': objects.md
+        - 'Renderers': renderers.md
+site_name: zend-barcode
+site_description: Zend\Barcode
+repo_url: 'https://github.com/zendframework/zend-barcode'
+copyright: 'Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'

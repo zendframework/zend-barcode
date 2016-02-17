@@ -10,4 +10,4 @@ allow you to draw barcodes based on the support required.
 
 
 - File issues at https://github.com/zendframework/zend-barcode/issues
-- Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-barcode
+- Documentation is at https://zendframework.github.io/zend-barcode/
