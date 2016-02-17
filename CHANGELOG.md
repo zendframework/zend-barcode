@@ -2,11 +2,12 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.6.0 - TBD
+## 2.6.0 - 2016-02-17
 
 ### Added
 
-- Nothing.
+- [#23](https://github.com/zendframework/zend-barcode/pull/23) prepares and
+  publishes the documentation to https://zendframework.github.io/zend-barcode/
 
 ### Deprecated
 
