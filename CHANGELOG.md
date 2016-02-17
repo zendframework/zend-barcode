@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.0.0 - TBD
+## 2.6.0 - TBD
 
 ### Added
 
@@ -18,5 +18,6 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- [#12](https://github.com/zendframework/zend-barcode/pull/12) updates the code
-  base to the proposed v3 of zend-servicemanager.
+- [#12](https://github.com/zendframework/zend-barcode/pull/12) and
+  [#16](https://github.com/zendframework/zend-barcode/pull/16) update the code
+  base to be forwards-compatible with zend-servicemanager and zend-stdlib v3.
