@@ -7,9 +7,9 @@ a renderer.
 Objects have a large number of options. Most of them are common to all objects. These options can be
 set in three ways:
 
-- As an array or a [Traversable](http://php.net/traversable) object passed to the constructor.
-- As an array passed to the `setOptions()` method.
-- Via individual setters for each configuration type.
+* As an array or a [Traversable](http://php.net/traversable) object passed to the constructor.
+* As an array passed to the `setOptions()` method.
+* Via individual setters for each configuration type.
 
 ## Different ways to parameterize a barcode object
 
@@ -130,10 +130,10 @@ the `Zend\Barcode` component.
 
 ![image](../images/zend.barcode.objects.details.code128.png)
 
-- **Name:** Code 128
-- **Allowed characters:** the complete ASCII-character set
-- **Checksum:** optional (modulo 103)
-- **Length:** variable
+* **Name:** Code 128
+* **Allowed characters:** the complete ASCII-character set
+* **Checksum:** optional (modulo 103)
+* **Length:** variable
 
 There are no particular options for this barcode.
 
@@ -141,10 +141,10 @@ There are no particular options for this barcode.
 
 ![image](../images/zend.barcode.objects.details.codabar.png)
 
-- **Name:** Codabar (or Code 2 of 7)
-- **Allowed characters:**'0123456789-\$:/.+' with 'ABCD' as start and stop characters
-- **Checksum:** none
-- **Length:** variable
+* **Name:** Codabar (or Code 2 of 7)
+* **Allowed characters:**'0123456789-\$:/.+' with 'ABCD' as start and stop characters
+* **Checksum:** none
+* **Length:** variable
 
 There are no particular options for this barcode.
 
@@ -152,10 +152,10 @@ There are no particular options for this barcode.
 
 ![image](../images/zend.barcode.objects.details.code25.png)
 
-- **Name:** Code 25 (or Code 2 of 5 or Code 25 Industrial)
-- **Allowed characters:**'0123456789'
-- **Checksum:** optional (modulo 10)
-- **Length:** variable
+* **Name:** Code 25 (or Code 2 of 5 or Code 25 Industrial)
+* **Allowed characters:**'0123456789'
+* **Checksum:** optional (modulo 10)
+* **Length:** variable
 
 There are no particular options for this barcode.
 
@@ -166,10 +166,10 @@ There are no particular options for this barcode.
 This barcode extends `Zend\Barcode\Object\Code25` (Code 2 of 5), and has the same particulars and
 options, and adds the following:
 
-- **Name:** Code 2 of 5 Interleaved
-- **Allowed characters:**'0123456789'
-- **Checksum:** optional (modulo 10)
-- **Length:** variable (always even number of characters)
+* **Name:** Code 2 of 5 Interleaved
+* **Allowed characters:**'0123456789'
+* **Checksum:** optional (modulo 10)
+* **Length:** variable (always even number of characters)
 
 Available options include:
 
@@ -190,10 +190,10 @@ prepend the missing zero to the barcode text.
 This barcode extends `Zend\Barcode\Object\Ean5` (*EAN* 5), and has the same particulars and options,
 and adds the following:
 
-- **Name:** *EAN*-2
-- **Allowed characters:**'0123456789'
-- **Checksum:** only use internally but not displayed
-- **Length:** 2 characters
+* **Name:** *EAN*-2
+* **Allowed characters:**'0123456789'
+* **Checksum:** only use internally but not displayed
+* **Length:** 2 characters
 
 There are no particular options for this barcode.
 
@@ -208,10 +208,10 @@ the missing zero to the barcode text.
 This barcode extends `Zend\Barcode\Object\Ean13` (*EAN* 13), and has the same particulars and
 options, and adds the following:
 
-- **Name:** *EAN*-5
-- **Allowed characters:**'0123456789'
-- **Checksum:** only use internally but not displayed
-- **Length:** 5 characters
+* **Name:** *EAN*-5
+* **Allowed characters:**'0123456789'
+* **Checksum:** only use internally but not displayed
+* **Length:** 5 characters
 
 There are no particular options for this barcode.
 
@@ -226,10 +226,10 @@ the missing zero to the barcode text.
 This barcode extends `Zend\Barcode\Object\Ean13` (*EAN* 13), and has the same particulars and
 options, and adds the following:
 
-- **Name:** *EAN*-8
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 8 characters (including checksum)
+* **Name:** *EAN*-8
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 8 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -241,10 +241,10 @@ the missing zero to the barcode text.
 
 ![image](../images/zend.barcode.objects.details.ean13.png)
 
-- **Name:** *EAN*-13
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 13 characters (including checksum)
+* **Name:** *EAN*-13
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 13 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -257,10 +257,10 @@ The option `withQuietZones` has no effect with this barcode.
 
 ![image](../images/zend.barcode.introduction.example-1.png)
 
-- **Name:** Code 39
-- **Allowed characters:**'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ -.\$/+%'
-- **Checksum:** optional (modulo 43)
-- **Length:** variable
+* **Name:** Code 39
+* **Allowed characters:**'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ -.\$/+%'
+* **Checksum:** optional (modulo 43)
+* **Length:** variable
 
 > ### Note
 `Zend\Barcode\Object\Code39` will automatically add the start and stop characters ('\*') for you.
@@ -274,10 +274,10 @@ There are no particular options for this barcode.
 This barcode extends `Zend\Barcode\Object\Code25interleaved` (Code 2 of 5 Interleaved), and inherits
 some of its capabilities; it also has a few particulars of its own.
 
-- **Name:** Identcode (Deutsche Post Identcode)
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10 different from Code25)
-- **Length:** 12 characters (including checksum)
+* **Name:** Identcode (Deutsche Post Identcode)
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10 different from Code25)
+* **Length:** 12 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -292,10 +292,10 @@ prepend missing zeros to the barcode text.
 This barcode extends `Zend\Barcode\Object\Code25interleaved` (Code 2 of 5 Interleaved), and inherits
 some of its capabilities; it also has a few particulars of its own.
 
-- **Name:** *ITF*-14
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 14 characters (including checksum)
+* **Name:** *ITF*-14
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 14 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -310,10 +310,10 @@ missing zeros to the barcode text.
 This barcode extends `Zend\Barcode\Object\Identcode` (Deutsche Post Identcode), and inherits some of
 its capabilities; it also has a few particulars of its own.
 
-- **Name:** Leitcode (Deutsche Post Leitcode)
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10 different from Code25)
-- **Length:** 14 characters (including checksum)
+* **Name:** Leitcode (Deutsche Post Leitcode)
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10 different from Code25)
+* **Length:** 14 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -325,10 +325,10 @@ prepend missing zeros to the barcode text.
 
 ![image](../images/zend.barcode.objects.details.planet.png)
 
-- **Name:** Planet (PostaL Alpha Numeric Encoding Technique)
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 12 or 14 characters (including checksum)
+* **Name:** Planet (PostaL Alpha Numeric Encoding Technique)
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 12 or 14 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -336,10 +336,10 @@ There are no particular options for this barcode.
 
 ![image](../images/zend.barcode.objects.details.postnet.png)
 
-- **Name:** Postnet (POSTal Numeric Encoding Technique)
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 6, 7, 10 or 12 characters (including checksum)
+* **Name:** Postnet (POSTal Numeric Encoding Technique)
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 6, 7, 10 or 12 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -347,10 +347,10 @@ There are no particular options for this barcode.
 
 ![image](../images/zend.barcode.objects.details.royalmail.png)
 
-- **Name:** Royal Mail or *RM4SCC* (Royal Mail 4-State Customer Code)
-- **Allowed characters:**'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-- **Checksum:** mandatory
-- **Length:** variable
+* **Name:** Royal Mail or *RM4SCC* (Royal Mail 4-State Customer Code)
+* **Allowed characters:**'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+* **Checksum:** mandatory
+* **Length:** variable
 
 There are no particular options for this barcode.
 
@@ -361,10 +361,10 @@ There are no particular options for this barcode.
 This barcode extends `Zend\Barcode\Object\Ean13` (*EAN*-13), and inherits some of its capabilities;
 it also has a few particulars of its own.
 
-- **Name:** *UPC*-A (Universal Product Code)
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 12 characters (including checksum)
+* **Name:** *UPC*-A (Universal Product Code)
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 12 characters (including checksum)
 
 There are no particular options for this barcode.
 
@@ -381,10 +381,10 @@ This barcode extends `Zend\Barcode\Object\Upca` (*UPC*-A), and inherits some of 
 also has a few particulars of its own. The first character of the text to encode is the system (0 or
 1).
 
-- **Name:** *UPC*-E (Universal Product Code)
-- **Allowed characters:**'0123456789'
-- **Checksum:** mandatory (modulo 10)
-- **Length:** 8 characters (including checksum)
+* **Name:** *UPC*-E (Universal Product Code)
+* **Allowed characters:**'0123456789'
+* **Checksum:** mandatory (modulo 10)
+* **Length:** 8 characters (including checksum)
 
 There are no particular options for this barcode.
 

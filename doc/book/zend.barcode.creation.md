@@ -5,14 +5,14 @@
 `Zend\Barcode\Barcode` uses a factory method to create an instance of a renderer that extends
 `Zend\Barcode\Renderer\AbstractRenderer`. The factory method accepts five arguments.
 
-- The name of the barcode format (e.g., "code39") or a [Traversable](http://php.net/traversable)
+* The name of the barcode format (e.g., "code39") or a [Traversable](http://php.net/traversable)
 object (required)
-- The name of the renderer (e.g., "image") (required)
-- Options to pass to the barcode object (an array or a [Traversable](http://php.net/traversable)
+* The name of the renderer (e.g., "image") (required)
+* Options to pass to the barcode object (an array or a [Traversable](http://php.net/traversable)
 object) (optional)
-- Options to pass to the renderer object (an array or a [Traversable](http://php.net/traversable)
+* Options to pass to the renderer object (an array or a [Traversable](http://php.net/traversable)
 object) (optional)
-- Boolean to indicate whether or not to automatically render errors. If an exception occurs, the
+* Boolean to indicate whether or not to automatically render errors. If an exception occurs, the
 provided barcode object will be replaced with an Error representation (optional default `TRUE`)
 
 ### Getting a Renderer with Zend\\Barcode\\Barcode::factory()
