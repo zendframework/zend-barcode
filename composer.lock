@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a8e1fb26a6c816a4caa122882606ca54",
-    "content-hash": "c5a791e8f423005db90091cb4ac9c163",
+    "hash": "5ea3fe6325b0fb40871fb0995d7dfcb7",
+    "content-hash": "163e0f655a3aedb130c90662ec3697b2",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -310,6 +310,7 @@
                 }
             ],
             "description": "A script to automatically fix Symfony Coding Standard",
+            "abandoned": "friendsofphp/php-cs-fixer",
             "time": "2015-05-04 16:56:09"
         },
         {
