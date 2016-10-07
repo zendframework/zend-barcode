@@ -269,7 +269,7 @@ class Code128 extends AbstractObject
     /**
      * Set text to encode
      * @param string $value
-     * @return Code128
+     * @return Code128 Provides a fluent interface
      */
     public function setText($value)
     {

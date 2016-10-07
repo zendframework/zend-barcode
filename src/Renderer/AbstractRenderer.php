@@ -106,7 +106,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Set renderer state from options array
      * @param  array $options
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      */
     public function setOptions($options)
     {
@@ -123,7 +123,7 @@ abstract class AbstractRenderer implements RendererInterface
      * Set renderer namespace for autoloading
      *
      * @param string $namespace
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      */
     public function setRendererNamespace($namespace)
     {
@@ -146,7 +146,7 @@ abstract class AbstractRenderer implements RendererInterface
      * Will work for SVG and Image (png and gif only)
      *
      * @param $bool
-     * @return $this
+     * @return AbstractRenderer Provides a fluent interface
      */
     public function setTransparentBackground($bool)
     {
@@ -175,7 +175,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Manually adjust top position
      * @param  int $value
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      * @throws Exception\OutOfRangeException
      */
     public function setTopOffset($value)
@@ -201,7 +201,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Manually adjust left position
      * @param  int $value
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      * @throws Exception\OutOfRangeException
      */
     public function setLeftOffset($value)
@@ -227,7 +227,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Activate/Deactivate the automatic rendering of exception
      * @param  bool $value
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      */
     public function setAutomaticRenderError($value)
     {
@@ -238,7 +238,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Horizontal position of the barcode in the rendering resource
      * @param  string $value
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      * @throws Exception\UnexpectedValueException
      */
     public function setHorizontalPosition($value)
@@ -264,7 +264,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Vertical position of the barcode in the rendering resource
      * @param  string $value
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      * @throws Exception\UnexpectedValueException
      */
     public function setVerticalPosition($value)
@@ -290,7 +290,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Set the size of a module
      * @param float $value
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      * @throws Exception\OutOfRangeException
      */
     public function setModuleSize($value)
@@ -325,7 +325,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Set the barcode object
      * @param  Object\ObjectInterface $barcode
-     * @return AbstractRenderer
+     * @return AbstractRenderer Provides a fluent interface
      */
     public function setBarcode(Object\ObjectInterface $barcode)
     {
