@@ -182,7 +182,7 @@ class Code128 extends AbstractObject
         }
 
         for ($i = $pos; $i < $pos + $length; $i++) {
-            if (!is_numeric($string[$i])) {
+            if (! is_numeric($string[$i])) {
                 return false;
             }
         }
@@ -197,7 +197,7 @@ class Code128 extends AbstractObject
     protected function convertToBarcodeChars($string)
     {
         $string = (string) $string;
-        if (!strlen($string)) {
+        if (! strlen($string)) {
             return [];
         }
 
@@ -228,7 +228,7 @@ class Code128 extends AbstractObject
                     $currentCharset = 'C';
                 }
             } elseif (in_array($char, $this->charSets['B']) && $currentCharset != 'B'
-                  && !(in_array($char, $this->charSets['A']) && $currentCharset == 'A')) {
+                  && ! (in_array($char, $this->charSets['A']) && $currentCharset == 'A')) {
                 /**
                  * Switch to B as B contains the char and B is not the current charset.
                  */
@@ -240,7 +240,7 @@ class Code128 extends AbstractObject
                 $result[] = $code;
                 $currentCharset = 'B';
             } elseif (array_key_exists($char, $this->charSets['A']) && $currentCharset != 'A'
-                  && !(array_key_exists($char, $this->charSets['B']) && $currentCharset == 'B')) {
+                  && ! (array_key_exists($char, $this->charSets['B']) && $currentCharset == 'B')) {
                 /**
                  * Switch to C as C contains the char and C is not the current charset.
                  */

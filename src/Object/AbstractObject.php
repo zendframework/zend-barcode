@@ -688,7 +688,7 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setWithChecksum($value)
     {
-        if (!$this->mandatoryChecksum) {
+        if (! $this->mandatoryChecksum) {
             $this->withChecksum = (bool) $value;
         }
         return $this;
@@ -716,7 +716,7 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setWithChecksumInText($value)
     {
-        if (!$this->mandatoryChecksum) {
+        if (! $this->mandatoryChecksum) {
             $this->withChecksumInText = (bool) $value;
         }
         return $this;
@@ -745,7 +745,7 @@ abstract class AbstractObject implements ObjectInterface
     public function setFont($value)
     {
         if (is_int($value) && $value >= 1 && $value <= 5) {
-            if (!extension_loaded('gd')) {
+            if (! extension_loaded('gd')) {
                 throw new Exception\ExtensionNotLoadedException(
                     'GD extension is required to use numeric font'
                 );
@@ -791,7 +791,7 @@ abstract class AbstractObject implements ObjectInterface
             return $this;
         }
 
-        if (!is_numeric($value)) {
+        if (! is_numeric($value)) {
             throw new Exception\InvalidArgumentException(
                 'Font size must be a numeric value'
             );
@@ -924,7 +924,7 @@ abstract class AbstractObject implements ObjectInterface
         if ($value === null) {
             $value = $this->text;
         }
-        if (!strlen($value)) {
+        if (! strlen($value)) {
             throw new Exception\RuntimeException(
                 'A text must be provide to Barcode before drawing'
             );
@@ -942,7 +942,7 @@ abstract class AbstractObject implements ObjectInterface
     protected function checkRatio($min = 2, $max = 3)
     {
         $ratio = $this->barThickWidth / $this->barThinWidth;
-        if (!($ratio >= $min && $ratio <= $max)) {
+        if (! ($ratio >= $min && $ratio <= $max)) {
             throw new Exception\OutOfRangeException(sprintf(
                 'Ratio thick/thin bar must be between %0.1f and %0.1f (actual %0.3f)',
                 $min,
@@ -1277,7 +1277,7 @@ abstract class AbstractObject implements ObjectInterface
 
         $value = $this->addLeadingZeros($value, $withChecksum) . $checksumCharacter;
 
-        if (!$validator->isValid($value)) {
+        if (! $validator->isValid($value)) {
             $message = implode("\n", $validator->getMessages());
             throw new Exception\BarcodeValidationException($message);
         }

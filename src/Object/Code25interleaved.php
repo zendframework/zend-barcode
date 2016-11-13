@@ -118,7 +118,7 @@ class Code25interleaved extends Code25
      */
     protected function postDrawBarcode()
     {
-        if (!$this->withBearerBars) {
+        if (! $this->withBearerBars) {
             return;
         }
 

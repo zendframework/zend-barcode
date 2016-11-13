@@ -176,7 +176,7 @@ class Upce extends Ean13
 
         $value = $this->addLeadingZeros($value, true);
 
-        if (!$validator->isValid($value)) {
+        if (! $validator->isValid($value)) {
             $message = implode("\n", $validator->getMessages());
             throw new Exception\BarcodeValidationException($message);
         }

@@ -51,7 +51,7 @@ abstract class Barcode
      */
     public static function getObjectPluginManager()
     {
-        if (!static::$objectPlugins instanceof ObjectPluginManager) {
+        if (! static::$objectPlugins instanceof ObjectPluginManager) {
             static::$objectPlugins = new ObjectPluginManager(new ServiceManager);
         }
 
@@ -65,7 +65,7 @@ abstract class Barcode
      */
     public static function getRendererPluginManager()
     {
-        if (!static::$rendererPlugins instanceof RendererPluginManager) {
+        if (! static::$rendererPlugins instanceof RendererPluginManager) {
             static::$rendererPlugins = new RendererPluginManager(new ServiceManager);
         }
 
@@ -130,7 +130,7 @@ abstract class Barcode
             $barcode  = static::makeBarcode($barcode, $barcodeConfig);
             $renderer = static::makeRenderer($renderer, $rendererConfig);
         } catch (\Exception $e) {
-            if ($automaticRenderError && !($e instanceof Exception\RendererCreationException)) {
+            if ($automaticRenderError && ! ($e instanceof Exception\RendererCreationException)) {
                 $barcode  = static::makeBarcode('error', ['text' => $e->getMessage()]);
                 $renderer = static::makeRenderer($renderer, []);
             } else {
@@ -178,7 +178,7 @@ abstract class Barcode
         /*
          * Verify that barcode parameters are in an array.
          */
-        if (!is_array($barcodeConfig)) {
+        if (! is_array($barcodeConfig)) {
             throw new Exception\InvalidArgumentException(
                 'Barcode parameters must be in an array or a Traversable object'
             );
@@ -187,7 +187,7 @@ abstract class Barcode
         /*
          * Verify that a barcode name has been specified.
          */
-        if (!is_string($barcode) || empty($barcode)) {
+        if (! is_string($barcode) || empty($barcode)) {
             throw new Exception\InvalidArgumentException(
                 'Barcode name must be specified in a string'
             );
@@ -230,7 +230,7 @@ abstract class Barcode
         /*
          * Verify that barcode parameters are in an array.
          */
-        if (!is_array($rendererConfig)) {
+        if (! is_array($rendererConfig)) {
             throw new Exception\RendererCreationException(
                 'Barcode parameters must be in an array or a Traversable object'
             );
@@ -239,7 +239,7 @@ abstract class Barcode
         /*
          * Verify that a barcode name has been specified.
          */
-        if (!is_string($renderer) || empty($renderer)) {
+        if (! is_string($renderer) || empty($renderer)) {
             throw new Exception\RendererCreationException(
                 'Renderer name must be specified in a string'
             );

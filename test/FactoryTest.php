@@ -370,7 +370,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testProxyBarcodeRendererDrawAsPdf()
     {
-        if (!getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
+        if (! getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
             $this->markTestSkipped('Enable TESTS_ZEND_BARCODE_PDF_SUPPORT to test PDF render');
         }
 
@@ -382,7 +382,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testProxyBarcodeRendererDrawAsPdfAutomaticallyRenderPdfIfException()
     {
-        if (!getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
+        if (! getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
             $this->markTestSkipped('Enable TESTS_ZEND_BARCODE_PDF_SUPPORT to test PDF render');
         }
 
@@ -418,7 +418,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     protected function checkGDRequirement()
     {
-        if (!extension_loaded('gd')) {
+        if (! extension_loaded('gd')) {
             $this->markTestSkipped('This test requires the GD extension');
         }
     }
