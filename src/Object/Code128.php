@@ -175,8 +175,10 @@ class Code128 extends AbstractObject
      * @param int    $length Length to search
      * @return bool
      */
+    // @codingStandardsIgnoreStart
     protected static function _isDigit($string, $pos, $length = 2)
     {
+        // @codingStandardsIgnoreEnd
         if ($pos + $length > strlen($string)) {
             return false;
         }

@@ -1058,10 +1058,12 @@ abstract class AbstractObject implements ObjectInterface
         if ($this->offsetLeft === null || $recalculate) {
             $this->offsetLeft = - min(
                 [
+                    // @codingStandardsIgnoreStart
                     0 * cos($this->orientation / 180 * pi()) - 0 * sin($this->orientation / 180 * pi()),
                     0 * cos($this->orientation / 180 * pi()) - $this->calculateBarcodeHeight() * sin($this->orientation / 180 * pi()),
                     $this->calculateBarcodeWidth() * cos($this->orientation / 180 * pi()) - $this->calculateBarcodeHeight() * sin($this->orientation / 180 * pi()),
                     $this->calculateBarcodeWidth() * cos($this->orientation / 180 * pi()) - 0 * sin($this->orientation / 180 * pi()),
+                    // @codingStandardsIgnoreEnd
                 ]
             );
         }
@@ -1080,10 +1082,12 @@ abstract class AbstractObject implements ObjectInterface
         if ($this->offsetTop === null || $recalculate) {
             $this->offsetTop = - min(
                 [
+                    // @codingStandardsIgnoreStart
                     0 * cos($this->orientation / 180 * pi()) + 0 * sin($this->orientation / 180 * pi()),
                     $this->calculateBarcodeHeight() * cos($this->orientation / 180 * pi()) + 0 * sin($this->orientation / 180 * pi()),
                     $this->calculateBarcodeHeight() * cos($this->orientation / 180 * pi()) + $this->calculateBarcodeWidth() * sin($this->orientation / 180 * pi()),
                     0 * cos($this->orientation / 180 * pi()) + $this->calculateBarcodeWidth() * sin($this->orientation / 180 * pi()),
+                    // @codingStandardsIgnoreEnd
                 ]
             );
         }
