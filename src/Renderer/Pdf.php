@@ -42,7 +42,7 @@ class Pdf extends AbstractRenderer
      *
      * @param PdfDocument $pdf
      * @param int $page
-     * @return Pdf Provides a fluent interface
+     * @return self Provides a fluent interface
      */
     public function setResource(PdfDocument $pdf, $page = 0)
     {
