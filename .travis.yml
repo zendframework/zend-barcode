@@ -23,7 +23,6 @@ env:
     - secure: "OcQVNRTNC4jq+z7P2IvpUNB8RBA00wnlQb2NV5cq4yWqHOOS6yFdRttzklJocPJ8U6rrMFRgTSdnEXtJU4kpL1esR7Q5zS28bwogG1sCRGl0FYjmH6bc28pi5ayktiE/s8ycO6Bqg7qcX/uQDy2SbEIiWPk2Pg8YuKHu59lpQbqKHI45qfqALr0LcL6JdY5ktqX8ZuIe1S4Ovmylzir8T3FCKGFMFP86G580/aOhzxoMSlWVsWMhAh9RUVgPCmXxvwWh2s62GU2mPS9HJA6XcESp05pRQbjoifmvcnbrFx+AOMqmAhvlcrnozlwyKCbTLpTgpgDsjltNsEBYfolThHGNbTyZ9LpMGXVgTziVTbr+UqxjwXpBVPjbkpv4f1I3WwjqtJBOs1HIlNEgppug/Zyc6NfvCFL/ayXmQkdDSN7VpiFt88T9cIxw/2rmvSKi/qOtZv9Fhssucg2yufB9xLSWiGQt5+8aMbDUcBfwAuxoCg5C0YO05DQTWkb+ZAj7NOp7gGPWGJwWxY6lT+DKHVx7RcejcOczvxNPmnTPsCGE2EepTzZ+NwPubcoRWjx3DHe/vlU9dOSNGyUiW9ttocUj6eEiZTB2P9IsJ19gT+8dJ88gcSdRiaxNV+2LX+MBe3L4j5YzHzDH4reyPK1NR4m9Lmv1GCoQ04qozaCo0/U="
 
 matrix:
-  fast_finish: true
   include:
     - php: 5.5
       env:
@@ -43,16 +42,12 @@ matrix:
     - php: 7
       env:
         - SERVICE_MANAGER_VERSION="^2.7.5"
-    - php: hhvm 
-    - php: hhvm 
+    - php: hhvm
+    - php: hhvm
       env:
         - SERVICE_MANAGER_VERSION="^2.7.5"
   allow_failures:
     - php: hhvm
-
-notifications:
-  irc: "irc.freenode.org#zftalk.dev"
-  email: false
 
 before_install:
   - if [[ $EXECUTE_TEST_COVERALLS != 'true' ]]; then phpenv config-rm xdebug.ini || return 0 ; fi
@@ -75,3 +70,16 @@ after_success:
 
 after_script:
   - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/coveralls ; fi
+
+notifications:
+  email: false
+  irc:
+    channels:
+      - "irc.freenode.org#zftalk.dev"
+    on_success: change
+    on_failure: always
+  slack:
+    rooms:
+      - secure: "RbNi4glvNad8EIWGE+N6l+/d7GEm8Gb3qBNPlo2om6n2njfpzUWMt98pLrt3ETjscz53ICdEYoIL57qCb5A2/v6srzJoCMALW46wLRhHagKiwSQzlygwk4Ox2AQlldz7+TmYtWwrrSKmEzm8uUkoo6Eytok5CtxmPhK+eKKb2dY9M7SuN0mQBqQCU6PdOoWsjS2CTM9dSrBlU/i/dx2nJ07QK9GcSQV3QgAPY0HI5/jQEE0qfPC7Ap+unu5+cYwFgkzGiCMF6THggZUih2k5FUp2xjanmCzpEFxmB0FSaVOabD3FJ/7ABAzGA/Qcb31DZmMvPki/x9lsaHqel2Qcbr8PYjehJEmu20EIgudOCBuHBwczMYSXsJiUrnprYQ+pP1ENbumdSPTtysFh/ClRLtc2kc2LAUKjj2mjYNt+GfT09+llcLF5bjaYDWt8VTnyhW/U9UKZb18zwjPv3y6f9kBE+qMKQ4J27cC9O46OSxRp5/esHVvEZbsq3yC49RIhpAFZC5DwFSWVXv+nES03RIB+lSEJhJVChmao+VatlHmPRIZp/8nHwvDnOauopoqjRPxwDACGFfJ1kzlWw83DBOpMJsrMMHITAt/2Oj16cQspmn9u6bnUAwJJm5u6DCPO5xuP75lq/4GJ+DmAosdcbzQdJu/qpWPvMUYl0P4Y3Wo="
+    on_success: change
+    on_failure: always
