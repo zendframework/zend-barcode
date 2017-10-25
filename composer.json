@@ -1,7 +1,6 @@
 {
     "name": "zendframework/zend-barcode",
     "description": "provides a generic way to generate barcodes",
-    "type": "library",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf",
@@ -12,6 +11,7 @@
         "docs": "https://docs.zendframework.com/zend-barcode/",
         "issues": "https://github.com/zendframework/zend-barcode/issues",
         "source": "https://github.com/zendframework/zend-barcode",
+        "rss": "https://github.com/zendframework/zend-barcode/releases.atom",
         "slack": "https://zendframework-slack.herokuapp.com",
         "forum": "https://discourse.zendframework.com/c/questions/components"
     },
