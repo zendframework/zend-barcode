@@ -44,7 +44,7 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     public function tearDown()
     {
         Barcode\Barcode::setBarcodeFont(null);
-        if (!empty($this->originaltimezone)) {
+        if (! empty($this->originaltimezone)) {
             date_default_timezone_set($this->originaltimezone);
         }
     }
@@ -86,8 +86,10 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     {
         foreach (['left', 'center', 'right'] as $position) {
             $this->renderer->setHorizontalPosition($position);
-            $this->assertSame($position,
-                    $this->renderer->getHorizontalPosition());
+            $this->assertSame(
+                $position,
+                $this->renderer->getHorizontalPosition()
+            );
         }
     }
 
@@ -101,8 +103,10 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     {
         foreach (['top', 'middle', 'bottom'] as $position) {
             $this->renderer->setVerticalPosition($position);
-            $this->assertSame($position,
-                    $this->renderer->getVerticalPosition());
+            $this->assertSame(
+                $position,
+                $this->renderer->getVerticalPosition()
+            );
         }
     }
 
@@ -145,16 +149,18 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     public function testConstructorWithArray()
     {
         $renderer = $this->getRendererObject(
-                ['automaticRenderError' => true,
-                        'unkownProperty' => 'aValue']);
+            ['automaticRenderError' => true,
+            'unkownProperty' => 'aValue']
+        );
         $this->assertEquals(true, $renderer->getAutomaticRenderError());
     }
 
     public function testConstructorWithZendConfig()
     {
         $config = new Config\Config(
-                ['automaticRenderError' => true,
-                        'unkownProperty' => 'aValue']);
+            ['automaticRenderError' => true,
+            'unkownProperty' => 'aValue']
+        );
         $renderer = $this->getRendererObject($config);
         $this->assertEquals(true, $renderer->getAutomaticRenderError());
     }
@@ -163,8 +169,9 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(false, $this->renderer->getAutomaticRenderError());
         $this->renderer->setOptions(
-                ['automaticRenderError' => true,
-                        'unkownProperty' => 'aValue']);
+            ['automaticRenderError' => true,
+            'unkownProperty' => 'aValue']
+        );
         $this->assertEquals(true, $this->renderer->getAutomaticRenderError());
     }
 

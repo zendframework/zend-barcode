@@ -92,7 +92,7 @@ class Royalmail extends AbstractObject
         $barcodeTable = [];
 
         // Start character (1)
-        $barcodeTable[] = [1, $this->barThinWidth, 0, 5/8];
+        $barcodeTable[] = [1, $this->barThinWidth, 0, 5 / 8];
         $barcodeTable[] = [0, $this->barThinWidth, 0, 1];
 
         // Text to encode
@@ -100,7 +100,7 @@ class Royalmail extends AbstractObject
         foreach ($textTable as $char) {
             $bars = str_split($this->codingMap[$char]);
             foreach ($bars as $b) {
-                $barcodeTable[] = [1, $this->barThinWidth, ($b > 1 ? 3/8 : 0), ($b % 2 ? 5/8 : 1)];
+                $barcodeTable[] = [1, $this->barThinWidth, ($b > 1 ? 3 / 8 : 0), ($b % 2 ? 5 / 8 : 1)];
                 $barcodeTable[] = [0, $this->barThinWidth, 0, 1];
             }
         }

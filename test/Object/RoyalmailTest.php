@@ -103,7 +103,8 @@ class RoyalmailTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Royalmail_012345_border_instructions');
+            'Royalmail_012345_border_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -113,7 +114,8 @@ class RoyalmailTest extends TestCommon
         $this->object->setOrientation(60);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Royalmail_012345_oriented_instructions');
+            'Royalmail_012345_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -124,7 +126,8 @@ class RoyalmailTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Royalmail_012345_border_oriented_instructions');
+            'Royalmail_012345_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 

@@ -59,16 +59,18 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     public function testConstructorWithArray()
     {
         $object = $this->getBarcodeObject(
-                ['barHeight' => 150,
-                        'unkownProperty' => 'aValue']);
+            ['barHeight' => 150,
+            'unkownProperty' => 'aValue']
+        );
         $this->assertEquals(150, $object->getBarHeight());
     }
 
     public function testConstructorWithZendConfig()
     {
         $config = new Config\Config(
-                ['barHeight' => 150,
-                        'unkownProperty' => 'aValue']);
+            ['barHeight' => 150,
+            'unkownProperty' => 'aValue']
+        );
         $object = $this->getBarcodeObject($config);
         $this->assertEquals(150, $object->getBarHeight());
     }
@@ -76,8 +78,9 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     public function testSetOptions()
     {
         $this->object->setOptions(
-                ['barHeight' => 150,
-                        'unkownProperty' => 'aValue']);
+            ['barHeight' => 150,
+            'unkownProperty' => 'aValue']
+        );
         $this->assertEquals(150, $this->object->getBarHeight());
     }
 
@@ -268,14 +271,17 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     {
         if (! extension_loaded('gd')) {
             $this->markTestSkipped(
-                    'GD extension is required to run this test');
+                'GD extension is required to run this test'
+            );
         }
         $gdFontSize = [8 , 13 , 13 , 16 , 15];
         for ($i = 1; $i <= 5; $i ++) {
             $this->object->setFont($i);
             $this->assertSame($i, $this->object->getFont());
-            $this->assertSame($gdFontSize[$i - 1],
-                    $this->object->getFontSize());
+            $this->assertSame(
+                $gdFontSize[$i - 1],
+                $this->object->getFontSize()
+            );
         }
     }
 
@@ -307,7 +313,8 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     {
         if (extension_loaded('gd')) {
             $this->markTestSkipped(
-                    'GD extension must not be loaded to run this test');
+                'GD extension must not be loaded to run this test'
+            );
         }
         $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
         $this->object->setFont(1);
@@ -323,7 +330,8 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
     {
         if (! extension_loaded('gd')) {
             $this->markTestSkipped(
-                    'GD extension is required to run this test');
+                'GD extension is required to run this test'
+            );
         }
         $this->object->setFont(1);
         $this->object->setFontSize(22);
@@ -396,8 +404,15 @@ abstract class TestCommon extends \PHPUnit_Framework_TestCase
                 'font' => $font , 'color' => $color ,
                 'alignment' => $alignment ,
                 'orientation' => $orientation];
-        $object->addTestText($text, $size, $position, $font, $color, $alignment,
-                $orientation);
+        $object->addTestText(
+            $text,
+            $size,
+            $position,
+            $font,
+            $color,
+            $alignment,
+            $orientation
+        );
         $this->assertSame([$instructions], $object->getInstructions());
     }
 

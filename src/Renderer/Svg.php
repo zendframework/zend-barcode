@@ -56,7 +56,7 @@ class Svg extends AbstractRenderer
      */
     public function setHeight($value)
     {
-        if (!is_numeric($value) || intval($value) < 0) {
+        if (! is_numeric($value) || intval($value) < 0) {
             throw new Exception\OutOfRangeException(
                 'Svg height must be greater than or equals 0'
             );
@@ -84,7 +84,7 @@ class Svg extends AbstractRenderer
      */
     public function setWidth($value)
     {
-        if (!is_numeric($value) || intval($value) < 0) {
+        if (! is_numeric($value) || intval($value) < 0) {
             throw new Exception\OutOfRangeException(
                 'Svg width must be greater than or equals 0'
             );
@@ -325,7 +325,7 @@ class Svg extends AbstractRenderer
 
         // SVG passes a rect in as the first call to drawPolygon, we'll need to intercept
         // this and set transparency if necessary.
-        if (!$this->drawPolygonExecuted) {
+        if (! $this->drawPolygonExecuted) {
             if ($this->transparentBackground) {
                 $attributes['fill-opacity'] = '0';
             }
