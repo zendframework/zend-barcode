@@ -9,19 +9,28 @@
 
 namespace ZendTest\Barcode;
 
+use DOMDocument;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Zend\Barcode;
 use Zend\Barcode\Exception\InvalidArgumentException;
-use Zend\Barcode\Renderer;
 use Zend\Barcode\Object\Code25;
+use Zend\Barcode\Object\Code39;
+use Zend\Barcode\Object\Error;
+use Zend\Barcode\Renderer;
+use Zend\Barcode\Renderer\Image;
+use Zend\Barcode\Renderer\Pdf;
 use Zend\Config\Config;
+use Zend\ServiceManager\Exception\ExceptionInterface;
 use Zend\ServiceManager\Exception\InvalidServiceException;
-use ZendPdf as Pdf;
+use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use Zend\Barcode\Renderer\RendererInterface;
+use ZendPdf\PdfDocument;
 
 /**
  * @group      Zend_Barcode
  */
-class FactoryTest extends \PHPUnit_Framework_TestCase
+class FactoryTest extends TestCase
 {
     /**
      * Stores the original set timezone
@@ -38,7 +47,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         date_default_timezone_set('GMT');
 
         // Reset plugin managers
-        $r = new ReflectionClass('Zend\Barcode\Barcode');
+        $r = new ReflectionClass(Barcode\Barcode::class);
 
         $rObjectPlugins = $r->getProperty('objectPlugins');
         $rObjectPlugins->setAccessible(true);
@@ -58,8 +67,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->checkGDRequirement();
         $renderer = Barcode\Barcode::factory('code39');
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code39', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Code39::class, $renderer->getBarcode());
     }
 
     /**
@@ -68,8 +77,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testMinimalFactoryWithRenderer()
     {
         $renderer = Barcode\Barcode::factory('code39', 'pdf');
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Pdf', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code39', $renderer->getBarcode());
+        $this->assertInstanceOf(Pdf::class, $renderer);
+        $this->assertInstanceOf(Code39::class, $renderer->getBarcode());
     }
 
     public function testFactoryWithOptions()
@@ -85,20 +94,20 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->checkGDRequirement();
         $options = ['barHeight' => - 1];
         $renderer = Barcode\Barcode::factory('code39', 'image', $options);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Error', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Error::class, $renderer->getBarcode());
     }
 
     public function testFactoryWithoutAutomaticObjectExceptionRendering()
     {
-        $this->setExpectedException('\Zend\ServiceManager\Exception\ExceptionInterface');
+        $this->expectException(ExceptionInterface::class);
         $options = ['barHeight' => - 1];
         $renderer = Barcode\Barcode::factory('code39', 'image', $options, [], false);
     }
 
     public function testFactoryWithoutAutomaticRendererExceptionRendering()
     {
-        $this->setExpectedException('\Zend\ServiceManager\Exception\ExceptionInterface');
+        $this->expectException(ExceptionInterface::class);
         $this->checkGDRequirement();
         $options = ['imageType' => 'my'];
         $renderer = Barcode\Barcode::factory('code39', 'image', [], $options, false);
@@ -108,22 +117,27 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testFactoryWithZendConfig()
     {
         $this->checkGDRequirement();
-        $config = new Config(['barcode'  => 'code39',
-                                   'renderer' => 'image']);
+        $config = new Config([
+            'barcode'  => 'code39',
+            'renderer' => 'image',
+        ]);
         $renderer = Barcode\Barcode::factory($config);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code39', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Code39::class, $renderer->getBarcode());
     }
 
     public function testFactoryWithZendConfigAndObjectOptions()
     {
         $this->checkGDRequirement();
-        $config = new Config(['barcode'       => 'code25',
-                                   'barcodeParams' => [
-                                   'barHeight'     => 123]]);
+        $config = new Config([
+            'barcode'       => 'code25',
+            'barcodeParams' => [
+                'barHeight' => 123,
+            ],
+        ]);
         $renderer = Barcode\Barcode::factory($config);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code25', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Code25::class, $renderer->getBarcode());
         $this->assertEquals(123, $renderer->getBarcode()->getBarHeight());
     }
 
@@ -134,8 +148,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
                                    'rendererParams' => [
                                    'imageType'      => 'gif']]);
         $renderer = Barcode\Barcode::factory($config);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code25', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Code25::class, $renderer->getBarcode());
         $this->assertSame('gif', $renderer->getImageType());
     }
 
@@ -143,8 +157,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->checkGDRequirement();
         $renderer = Barcode\Barcode::factory(null);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Error', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Error::class, $renderer->getBarcode());
     }
 
     public function testFactoryWithoutBarcodeWithAutomaticExceptionRenderWithZendConfig()
@@ -152,8 +166,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->checkGDRequirement();
         $config = new Config(['barcode' => null]);
         $renderer = Barcode\Barcode::factory($config);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
-        $this->assertInstanceOf('Zend\Barcode\Object\Error', $renderer->getBarcode());
+        $this->assertInstanceOf(Image::class, $renderer);
+        $this->assertInstanceOf(Error::class, $renderer->getBarcode());
     }
 
     public function testFactoryWithExistingBarcodeObject()
@@ -174,7 +188,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testBarcodeObjectFactoryWithBarcodeAsString()
     {
         $barcode = Barcode\Barcode::makeBarcode('code25');
-        $this->assertInstanceOf('Zend\Barcode\Object\Code25', $barcode);
+        $this->assertInstanceOf(Code25::class, $barcode);
 
         // ensure makeBarcode creates unique instances
         $this->assertNotSame($barcode, Barcode\Barcode::makeBarcode('code25'));
@@ -183,7 +197,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testBarcodeObjectFactoryWithBarcodeAsStringAndConfigAsArray()
     {
         $barcode = Barcode\Barcode::makeBarcode('code25', ['barHeight' => 123]);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code25', $barcode);
+        $this->assertInstanceOf(Code25::class, $barcode);
         $this->assertSame(123, $barcode->getBarHeight());
     }
 
@@ -191,47 +205,50 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $config = new Config(['barHeight' => 123]);
         $barcode = Barcode\Barcode::makeBarcode('code25', $config);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code25', $barcode);
+        $this->assertInstanceOf(Code25::class, $barcode);
         $this->assertSame(123, $barcode->getBarHeight());
     }
 
     public function testBarcodeObjectFactoryWithBarcodeAsZendConfig()
     {
-        $config = new Config(['barcode' => 'code25',
-                                   'barcodeParams' => [
-                                   'barHeight' => 123]]);
+        $config = new Config([
+            'barcode'       => 'code25',
+            'barcodeParams' => [
+                'barHeight' => 123,
+            ],
+        ]);
         $barcode = Barcode\Barcode::makeBarcode($config);
-        $this->assertInstanceOf('Zend\Barcode\Object\Code25', $barcode);
+        $this->assertInstanceOf(Code25::class, $barcode);
         $this->assertSame(123, $barcode->getBarHeight());
     }
 
     public function testBarcodeObjectFactoryWithBarcodeAsZendConfigButNoBarcodeParameter()
     {
-        $this->setExpectedException('\Zend\Barcode\Exception\ExceptionInterface');
+        $this->expectException(\Zend\Barcode\Exception\ExceptionInterface::class);
         $config = new Config(['barcodeParams' => ['barHeight' => 123] ]);
         $barcode = Barcode\Barcode::makeBarcode($config);
     }
 
     public function testBarcodeObjectFactoryWithBarcodeAsZendConfigAndBadBarcodeParameters()
     {
-        $this->setExpectedException('\Zend\Barcode\Exception\ExceptionInterface');
+        $this->expectException(\Zend\Barcode\Exception\ExceptionInterface::class);
         $barcode = Barcode\Barcode::makeBarcode('code25', null);
     }
 
     public function testBarcodeObjectFactoryWithNamespace()
     {
         $plugins = Barcode\Barcode::getObjectPluginManager();
-        $plugins->setInvokableClass('barcodeNamespace', 'ZendTest\Barcode\Object\TestAsset\BarcodeNamespace');
+        $plugins->setInvokableClass('barcodeNamespace', Object\TestAsset\BarcodeNamespace::class);
         $barcode = Barcode\Barcode::makeBarcode('barcodeNamespace');
-        $this->assertInstanceOf('ZendTest\Barcode\Object\TestAsset\BarcodeNamespace', $barcode);
+        $this->assertInstanceOf(Object\TestAsset\BarcodeNamespace::class, $barcode);
     }
 
     public function testBarcodeObjectFactoryWithNamespaceExtendStandardLibray()
     {
         $plugins = Barcode\Barcode::getObjectPluginManager();
-        $plugins->setInvokableClass('error', 'ZendTest\Barcode\Object\TestAsset\Error');
+        $plugins->setInvokableClass('error', \ZendTest\Barcode\Object\TestAsset\Error::class);
         $barcode = Barcode\Barcode::makeBarcode('error');
-        $this->assertInstanceOf('ZendTest\Barcode\Object\TestAsset\Error', $barcode);
+        $this->assertInstanceOf(\ZendTest\Barcode\Object\TestAsset\Error::class, $barcode);
     }
 
     public function testBarcodeObjectFactoryWithNamespaceButWithoutExtendingObjectAbstract()
@@ -239,7 +256,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $plugins = Barcode\Barcode::getObjectPluginManager();
         $plugins->setInvokableClass(
             'barcodeNamespaceWithoutExtendingObjectAbstract',
-            'ZendTest\Barcode\Object\TestAsset\BarcodeNamespaceWithoutExtendingObjectAbstract'
+            Object\TestAsset\BarcodeNamespaceWithoutExtendingObjectAbstract::class
         );
 
         try {
@@ -256,7 +273,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testBarcodeObjectFactoryWithUnexistentBarcode()
     {
-        $this->setExpectedException('Zend\ServiceManager\Exception\ServiceNotFoundException');
+        $this->expectException(ServiceNotFoundException::class);
         $barcode = Barcode\Barcode::makeBarcode('zf123', []);
     }
 
@@ -272,7 +289,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->checkGDRequirement();
         $renderer = Barcode\Barcode::makeRenderer('image');
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
+        $this->assertInstanceOf(Image::class, $renderer);
 
         // ensure unique instance is created
         $this->assertNotSame($renderer, Barcode\Barcode::makeRenderer('image'));
@@ -283,7 +300,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->checkGDRequirement();
 
         $renderer = Barcode\Barcode::makeRenderer('image', ['imageType' => 'gif']);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
+        $this->assertInstanceOf(Image::class, $renderer);
         $this->assertSame('gif', $renderer->getImageType());
     }
 
@@ -292,30 +309,32 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $this->checkGDRequirement();
         $config = new Config(['imageType' => 'gif']);
         $renderer = Barcode\Barcode::makeRenderer('image', $config);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
+        $this->assertInstanceOf(Image::class, $renderer);
         $this->assertSame('gif', $renderer->getimageType());
     }
 
     public function testBarcodeRendererFactoryWithBarcodeAsZendConfig()
     {
         $this->checkGDRequirement();
-        $config = new Config(['renderer'       => 'image',
-                                   'rendererParams' => ['imageType' => 'gif']]);
+        $config = new Config([
+            'renderer'       => 'image',
+            'rendererParams' => ['imageType' => 'gif'],
+        ]);
         $renderer = Barcode\Barcode::makeRenderer($config);
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $renderer);
+        $this->assertInstanceOf(Image::class, $renderer);
         $this->assertSame('gif', $renderer->getimageType());
     }
 
     public function testBarcodeRendererFactoryWithBarcodeAsZendConfigButNoBarcodeParameter()
     {
-        $this->setExpectedException('\Zend\Barcode\Exception\ExceptionInterface');
+        $this->expectException(\Zend\Barcode\Exception\ExceptionInterface::class);
         $config = new Config(['rendererParams' => ['imageType' => 'gif'] ]);
         $renderer = Barcode\Barcode::makeRenderer($config);
     }
 
     public function testBarcodeRendererFactoryWithBarcodeAsZendConfigAndBadBarcodeParameters()
     {
-        $this->setExpectedException('\Zend\Barcode\Exception\ExceptionInterface');
+        $this->expectException(\Zend\Barcode\Exception\ExceptionInterface::class);
         $renderer = Barcode\Barcode::makeRenderer('image', null);
     }
 
@@ -325,7 +344,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $plugins = Barcode\Barcode::getRendererPluginManager();
         $plugins->setInvokableClass('rendererNamespace', 'ZendTest\Barcode\Renderer\TestAsset\RendererNamespace');
         $renderer = Barcode\Barcode::makeRenderer('rendererNamespace');
-        $this->assertInstanceOf('Zend\Barcode\Renderer\RendererInterface', $renderer);
+        $this->assertInstanceOf(RendererInterface::class, $renderer);
     }
 
     public function testBarcodeFactoryWithNamespaceButWithoutExtendingRendererAbstract()
@@ -350,7 +369,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testBarcodeRendererFactoryWithUnexistentRenderer()
     {
-        $this->setExpectedException('\Zend\ServiceManager\Exception\ServiceNotFoundException');
+        $this->expectException(ServiceNotFoundException::class);
         $renderer = Barcode\Barcode::makeRenderer('zend', []);
     }
 
@@ -394,7 +413,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
         Barcode\Barcode::setBarcodeFont(__DIR__ . '/Object/_fonts/Vera.ttf');
         $resource = Barcode\Barcode::draw('code25', 'pdf');
-        $this->assertInstanceOf('ZendPdf\PdfDocument', $resource);
+        $this->assertInstanceOf(PdfDocument::class, $resource);
         Barcode\Barcode::setBarcodeFont('');
     }
 
@@ -402,7 +421,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         Barcode\Barcode::setBarcodeFont(__DIR__ . '/Object/_fonts/Vera.ttf');
         $resource = Barcode\Barcode::draw('code25', 'svg', ['text' => '012345']);
-        $this->assertInstanceOf('DOMDocument', $resource);
+        $this->assertInstanceOf(DOMDocument::class, $resource);
         Barcode\Barcode::setBarcodeFont('');
     }
 
@@ -410,7 +429,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     {
         Barcode\Barcode::setBarcodeFont(__DIR__ . '/Object/_fonts/Vera.ttf');
         $resource = Barcode\Barcode::draw('code25', 'svg');
-        $this->assertInstanceOf('DOMDocument', $resource);
+        $this->assertInstanceOf(DOMDocument::class, $resource);
         Barcode\Barcode::setBarcodeFont('');
     }
 
