@@ -10,7 +10,7 @@
 namespace ZendTest\Barcode\Renderer;
 
 use Zend\Barcode;
-use Zend\Barcode\Object;
+use Zend\Barcode\Object\Code39;
 use Zend\Barcode\Renderer as RendererNS;
 
 /**
@@ -101,7 +101,7 @@ class ImageTest extends TestCommon
     public function testDrawReturnResource()
     {
         $this->checkTTFRequirement();
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->renderer->setBarcode($barcode);
         $resource = $this->renderer->draw();
         $this->assertInternalType('resource', $resource, 'Image must be a resource');
@@ -111,7 +111,7 @@ class ImageTest extends TestCommon
     public function testDrawWithExistantResourceReturnResource()
     {
         $this->checkTTFRequirement();
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->renderer->setBarcode($barcode);
         $imageResource = imagecreatetruecolor(500, 500);
         $this->renderer->setResource($imageResource);
@@ -123,7 +123,7 @@ class ImageTest extends TestCommon
 
     public function testGoodUserHeight()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(62, $barcode->getHeight());
         $this->renderer->setBarcode($barcode);
         $this->renderer->setHeight(62);
@@ -133,7 +133,7 @@ class ImageTest extends TestCommon
     public function testBadUserHeightLessThanBarcodeHeight()
     {
         $this->setExpectedException('\Zend\Barcode\Renderer\Exception\ExceptionInterface');
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(62, $barcode->getHeight());
         $this->renderer->setBarcode($barcode);
         $this->renderer->setHeight(61);
@@ -142,7 +142,7 @@ class ImageTest extends TestCommon
 
     public function testGoodUserWidth()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(211, $barcode->getWidth());
         $this->renderer->setBarcode($barcode);
         $this->renderer->setWidth(211);
@@ -152,7 +152,7 @@ class ImageTest extends TestCommon
     public function testBadUserWidthLessThanBarcodeWidth()
     {
         $this->setExpectedException('\Zend\Barcode\Renderer\Exception\ExceptionInterface');
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(211, $barcode->getWidth());
         $this->renderer->setBarcode($barcode);
         $this->renderer->setWidth(210);
@@ -161,7 +161,7 @@ class ImageTest extends TestCommon
 
     public function testGoodHeightOfUserResource()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(62, $barcode->getHeight());
         $imageResource = imagecreatetruecolor(500, 62);
         $this->renderer->setResource($imageResource);
@@ -172,7 +172,7 @@ class ImageTest extends TestCommon
     public function testBadHeightOfUserResource()
     {
         $this->setExpectedException('\Zend\Barcode\Renderer\Exception\ExceptionInterface');
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(62, $barcode->getHeight());
         $this->renderer->setBarcode($barcode);
         $imageResource = imagecreatetruecolor(500, 61);
@@ -182,7 +182,7 @@ class ImageTest extends TestCommon
 
     public function testGoodWidthOfUserResource()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(211, $barcode->getWidth());
         $imageResource = imagecreatetruecolor(211, 500);
         $this->renderer->setResource($imageResource);
@@ -193,7 +193,7 @@ class ImageTest extends TestCommon
     public function testBadWidthOfUserResource()
     {
         $this->setExpectedException('\Zend\Barcode\Renderer\Exception\ExceptionInterface');
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->assertEquals(211, $barcode->getWidth());
         $this->renderer->setBarcode($barcode);
         $imageResource = imagecreatetruecolor(210, 500);
@@ -205,7 +205,7 @@ class ImageTest extends TestCommon
     {
         $this->setExpectedException('\Zend\Barcode\Renderer\Exception\ExceptionInterface');
         Barcode\Barcode::setBarcodeFont(null);
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $barcode->setOrientation(1);
         $this->renderer->setBarcode($barcode);
         $this->renderer->draw();
@@ -283,7 +283,7 @@ class ImageTest extends TestCommon
      */
     public function testImageGifWithNoTransparency()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->renderer->setBarcode($barcode);
 
         $this->renderer->setTransparentBackground(false);
@@ -301,7 +301,7 @@ class ImageTest extends TestCommon
      */
     public function testImagePngWithNoTransparency()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->renderer->setBarcode($barcode);
 
         $this->renderer->setTransparentBackground(false);
@@ -319,7 +319,7 @@ class ImageTest extends TestCommon
      */
     public function testImageGifWithTransparency()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->renderer->setBarcode($barcode);
 
         $this->renderer->setTransparentBackground(true);
@@ -337,7 +337,7 @@ class ImageTest extends TestCommon
      */
     public function testImagePngWithTransparency()
     {
-        $barcode = new Object\Code39(['text' => '0123456789']);
+        $barcode = new Code39(['text' => '0123456789']);
         $this->renderer->setBarcode($barcode);
 
         $this->renderer->setTransparentBackground(true);
