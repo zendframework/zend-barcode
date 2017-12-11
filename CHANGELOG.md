@@ -36,7 +36,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#24](https://github.com/zendframework/zend-barcode/pull/24) updates the SVG
+  renderer to remove extraneous whitespace in `rgb()` declarations, as the
+  specification dis-allows whitespace, and many PDF readers/manipulators will
+  not correctly consume SVG definitions that include them.
 
 ## 2.6.0 - 2016-02-17
 

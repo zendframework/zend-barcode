@@ -126,9 +126,11 @@ class Svg extends AbstractRenderer
         $barcodeHeight = $this->barcode->getHeight(true);
 
         $backgroundColor = $this->barcode->getBackgroundColor();
-        $imageBackgroundColor = 'rgb(' . implode(', ', [($backgroundColor & 0xFF0000) >> 16,
-                                                             ($backgroundColor & 0x00FF00) >> 8,
-                                                             ($backgroundColor & 0x0000FF)]) . ')';
+        $imageBackgroundColor = sprintf('rgb(%s)', implode(',', [
+            ($backgroundColor & 0xFF0000) >> 16,
+            ($backgroundColor & 0x00FF00) >> 8,
+            ($backgroundColor & 0x0000FF)
+        ]));
 
         $width = $barcodeWidth;
         $height = $barcodeHeight;
@@ -304,7 +306,7 @@ class Svg extends AbstractRenderer
      */
     protected function drawPolygon($points, $color, $filled = true)
     {
-        $color = 'rgb(' . implode(', ', [($color & 0xFF0000) >> 16,
+        $color = 'rgb(' . implode(',', [($color & 0xFF0000) >> 16,
                                               ($color & 0x00FF00) >> 8,
                                               ($color & 0x0000FF)]) . ')';
         $orientation = $this->getBarcode()->getOrientation();
@@ -348,7 +350,7 @@ class Svg extends AbstractRenderer
      */
     protected function drawText($text, $size, $position, $font, $color, $alignment = 'center', $orientation = 0)
     {
-        $color = 'rgb(' . implode(', ', [($color & 0xFF0000) >> 16,
+        $color = 'rgb(' . implode(',', [($color & 0xFF0000) >> 16,
                                               ($color & 0x00FF00) >> 8,
                                               ($color & 0x0000FF)]) . ')';
         $attributes = [];
