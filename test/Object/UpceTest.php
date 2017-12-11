@@ -117,7 +117,8 @@ class UpceTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Upce_1234567_border_instructions');
+            'Upce_1234567_border_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -127,7 +128,8 @@ class UpceTest extends TestCommon
         $this->object->setOrientation(60);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Upce_1234567_oriented_instructions');
+            'Upce_1234567_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -138,7 +140,8 @@ class UpceTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Upce_1234567_border_oriented_instructions');
+            'Upce_1234567_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 

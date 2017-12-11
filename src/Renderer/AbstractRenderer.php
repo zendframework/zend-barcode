@@ -106,7 +106,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Set renderer state from options array
      * @param  array $options
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      */
     public function setOptions($options)
     {
@@ -123,7 +123,7 @@ abstract class AbstractRenderer implements RendererInterface
      * Set renderer namespace for autoloading
      *
      * @param string $namespace
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      */
     public function setRendererNamespace($namespace)
     {
@@ -146,7 +146,7 @@ abstract class AbstractRenderer implements RendererInterface
      * Will work for SVG and Image (png and gif only)
      *
      * @param $bool
-     * @return $this
+     * @return self Provides a fluent interface
      */
     public function setTransparentBackground($bool)
     {
@@ -175,12 +175,12 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Manually adjust top position
      * @param  int $value
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      * @throws Exception\OutOfRangeException
      */
     public function setTopOffset($value)
     {
-        if (!is_numeric($value) || intval($value) < 0) {
+        if (! is_numeric($value) || intval($value) < 0) {
             throw new Exception\OutOfRangeException(
                 'Vertical position must be greater than or equals 0'
             );
@@ -201,12 +201,12 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Manually adjust left position
      * @param  int $value
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      * @throws Exception\OutOfRangeException
      */
     public function setLeftOffset($value)
     {
-        if (!is_numeric($value) || intval($value) < 0) {
+        if (! is_numeric($value) || intval($value) < 0) {
             throw new Exception\OutOfRangeException(
                 'Horizontal position must be greater than or equals 0'
             );
@@ -227,7 +227,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Activate/Deactivate the automatic rendering of exception
      * @param  bool $value
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      */
     public function setAutomaticRenderError($value)
     {
@@ -238,12 +238,12 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Horizontal position of the barcode in the rendering resource
      * @param  string $value
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      * @throws Exception\UnexpectedValueException
      */
     public function setHorizontalPosition($value)
     {
-        if (!in_array($value, ['left', 'center', 'right'])) {
+        if (! in_array($value, ['left', 'center', 'right'])) {
             throw new Exception\UnexpectedValueException(
                 "Invalid barcode position provided must be 'left', 'center' or 'right'"
             );
@@ -264,12 +264,12 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Vertical position of the barcode in the rendering resource
      * @param  string $value
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      * @throws Exception\UnexpectedValueException
      */
     public function setVerticalPosition($value)
     {
-        if (!in_array($value, ['top', 'middle', 'bottom'])) {
+        if (! in_array($value, ['top', 'middle', 'bottom'])) {
             throw new Exception\UnexpectedValueException(
                 "Invalid barcode position provided must be 'top', 'middle' or 'bottom'"
             );
@@ -290,12 +290,12 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Set the size of a module
      * @param float $value
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      * @throws Exception\OutOfRangeException
      */
     public function setModuleSize($value)
     {
-        if (!is_numeric($value) || floatval($value) <= 0) {
+        if (! is_numeric($value) || floatval($value) <= 0) {
             throw new Exception\OutOfRangeException(
                 'Float size must be greater than 0'
             );
@@ -325,7 +325,7 @@ abstract class AbstractRenderer implements RendererInterface
     /**
      * Set the barcode object
      * @param  Object\ObjectInterface $barcode
-     * @return AbstractRenderer
+     * @return self Provides a fluent interface
      */
     public function setBarcode(ObjectInterface $barcode)
     {
@@ -422,7 +422,7 @@ abstract class AbstractRenderer implements RendererInterface
             $this->initRenderer();
             $this->drawInstructionList();
         } catch (BarcodeException\ExceptionInterface $e) {
-            if ($this->automaticRenderError && !($e instanceof BarcodeException\RendererCreationException)) {
+            if ($this->automaticRenderError && ! ($e instanceof BarcodeException\RendererCreationException)) {
                 $barcode = Barcode::makeBarcode(
                     'error',
                     ['text' => $e->getMessage()]

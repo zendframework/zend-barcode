@@ -41,15 +41,15 @@ class Pdf extends AbstractRenderer
      * Set a PDF resource to draw the barcode inside
      *
      * @param PdfDocument $pdf
-     * @param int     $page
-     * @return Pdf
+     * @param int $page
+     * @return self Provides a fluent interface
      */
     public function setResource(PdfDocument $pdf, $page = 0)
     {
         $this->resource = $pdf;
         $this->page     = intval($page);
 
-        if (!count($this->resource->pages)) {
+        if (! count($this->resource->pages)) {
             $this->page = 0;
             $this->resource->pages[] = new Page(
                 Page::SIZE_A4

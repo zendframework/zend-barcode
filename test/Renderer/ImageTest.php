@@ -20,7 +20,7 @@ class ImageTest extends TestCommon
 {
     public function setUp()
     {
-        if (!extension_loaded('gd')) {
+        if (! extension_loaded('gd')) {
             $this->markTestSkipped('\ZendTest\Barcode\Renderer\ImageTest requires the GD extension');
         }
         parent::setUp();
@@ -85,8 +85,10 @@ class ImageTest extends TestCommon
                        'png' => 'png'];
         foreach ($types as $type => $expectedType) {
             $this->renderer->setImageType($type);
-            $this->assertSame($expectedType,
-                    $this->renderer->getImageType());
+            $this->assertSame(
+                $expectedType,
+                $this->renderer->getImageType()
+            );
         }
     }
 
@@ -350,7 +352,7 @@ class ImageTest extends TestCommon
 
     protected function checkTTFRequirement()
     {
-        if (!function_exists('imagettfbbox')) {
+        if (! function_exists('imagettfbbox')) {
             $this->markTestSkipped('TTF (FreeType) support is required in order to run this test');
         }
     }
