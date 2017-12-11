@@ -41,6 +41,10 @@ All notable changes to this project will be documented in this file, in reverse 
   specification dis-allows whitespace, and many PDF readers/manipulators will
   not correctly consume SVG definitions that include them.
 
+- [#36](https://github.com/zendframework/zend-barcode/pull/36) provides several
+  minor changes to namespace imports for the `Zend\Barcode\Object` namespace to
+  ensure the package works on PHP 7.2.
+
 ## 2.6.0 - 2016-02-17
 
 ### Added

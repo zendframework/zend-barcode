@@ -13,7 +13,7 @@ use ReflectionClass;
 use Zend\Barcode;
 use Zend\Barcode\Exception\InvalidArgumentException;
 use Zend\Barcode\Renderer;
-use Zend\Barcode\Object;
+use Zend\Barcode\Object\Code25;
 use Zend\Config\Config;
 use Zend\ServiceManager\Exception\InvalidServiceException;
 use ZendPdf as Pdf;
@@ -159,14 +159,14 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testFactoryWithExistingBarcodeObject()
     {
         $this->checkGDRequirement();
-        $barcode = new Object\Code25();
+        $barcode = new Code25();
         $renderer = Barcode\Barcode::factory($barcode);
         $this->assertSame($barcode, $renderer->getBarcode());
     }
 
     public function testBarcodeObjectFactoryWithExistingBarcodeObject()
     {
-        $barcode = new Object\Code25();
+        $barcode = new Code25();
         $generatedBarcode = Barcode\Barcode::makeBarcode($barcode);
         $this->assertSame($barcode, $generatedBarcode);
     }
@@ -411,7 +411,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testProxyBarcodeObjectFont()
     {
         Barcode\Barcode::setBarcodeFont('my_font.ttf');
-        $barcode = new Object\Code25();
+        $barcode = new Code25();
         $this->assertSame('my_font.ttf', $barcode->getFont());
         Barcode\Barcode::setBarcodeFont('');
     }
