@@ -12,7 +12,7 @@ namespace Zend\Barcode\Renderer;
 use Traversable;
 use Zend\Barcode\Barcode;
 use Zend\Barcode\Exception as BarcodeException;
-use Zend\Barcode\Object;
+use Zend\Barcode\Object\ObjectInterface;
 use Zend\Stdlib\ArrayUtils;
 
 /**
@@ -327,7 +327,7 @@ abstract class AbstractRenderer implements RendererInterface
      * @param  Object\ObjectInterface $barcode
      * @return AbstractRenderer
      */
-    public function setBarcode(Object\ObjectInterface $barcode)
+    public function setBarcode(ObjectInterface $barcode)
     {
         $this->barcode = $barcode;
         return $this;
