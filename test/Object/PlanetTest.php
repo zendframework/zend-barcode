@@ -42,7 +42,7 @@ class PlanetTest extends TestCommon
 
     public function testSetTextWithoutGoodNumberOfCharacters()
     {
-        $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
+        $this->expectException('\Zend\Barcode\Object\Exception\ExceptionInterface');
         $this->object->setText('1234');
         $this->object->getText();
     }
@@ -75,7 +75,7 @@ class PlanetTest extends TestCommon
 
     public function testBadTextDetectedIfChecksumWished()
     {
-        $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
+        $this->expectException('\Zend\Barcode\Object\Exception\ExceptionInterface');
         $this->object->setText('a');
         $this->object->setWithChecksum(true);
         $this->object->getText();

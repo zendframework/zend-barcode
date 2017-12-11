@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.0 - TBD
+## 2.7.0 - 2017-12-11
 
 ### Added
 
@@ -18,7 +18,11 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#25](https://github.com/zendframework/zend-barcode/pull/25) removes support
+  for PHP 5.5.
+
+- [#38](https://github.com/zendframework/zend-barcode/pull/38) removes support
+  for HHVM.
 
 ### Fixed
 

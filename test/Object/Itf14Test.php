@@ -75,7 +75,7 @@ class Itf14Test extends TestCommon
 
     public function testBadTextDetectedIfChecksumWished()
     {
-        $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
+        $this->expectException('\Zend\Barcode\Object\Exception\ExceptionInterface');
         $this->object->setText('a');
         $this->object->setWithChecksum(true);
         $this->object->getText();
@@ -89,7 +89,7 @@ class Itf14Test extends TestCommon
 
     public function testCheckParamsWithLowRatio()
     {
-        $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
+        $this->expectException('\Zend\Barcode\Object\Exception\ExceptionInterface');
         $this->object->setText('0000123456789');
         $this->object->setBarThinWidth(21);
         $this->object->setBarThickWidth(40);
@@ -98,7 +98,7 @@ class Itf14Test extends TestCommon
 
     public function testCheckParamsWithHighRatio()
     {
-        $this->setExpectedException('\Zend\Barcode\Object\Exception\ExceptionInterface');
+        $this->expectException('\Zend\Barcode\Object\Exception\ExceptionInterface');
         $this->object->setText('0000123456789');
         $this->object->setBarThinWidth(20);
         $this->object->setBarThickWidth(61);
