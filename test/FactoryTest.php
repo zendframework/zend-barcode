@@ -27,7 +27,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
      * Stores the original set timezone
      * @var string
      */
-    private $_originaltimezone;
+    private $originaltimezone;
 
     public function setUp()
     {
@@ -237,7 +237,10 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testBarcodeObjectFactoryWithNamespaceButWithoutExtendingObjectAbstract()
     {
         $plugins = Barcode\Barcode::getObjectPluginManager();
-        $plugins->setInvokableClass('barcodeNamespaceWithoutExtendingObjectAbstract', 'ZendTest\Barcode\Object\TestAsset\BarcodeNamespaceWithoutExtendingObjectAbstract');
+        $plugins->setInvokableClass(
+            'barcodeNamespaceWithoutExtendingObjectAbstract',
+            'ZendTest\Barcode\Object\TestAsset\BarcodeNamespaceWithoutExtendingObjectAbstract'
+        );
 
         try {
             Barcode\Barcode::makeBarcode('barcodeNamespaceWithoutExtendingObjectAbstract');
@@ -328,7 +331,10 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
     public function testBarcodeFactoryWithNamespaceButWithoutExtendingRendererAbstract()
     {
         $plugins = Barcode\Barcode::getRendererPluginManager();
-        $plugins->setInvokableClass('rendererNamespaceWithoutExtendingRendererAbstract', 'ZendTest\Barcode\Renderer\TestAsset\RendererNamespaceWithoutExtendingRendererAbstract');
+        $plugins->setInvokableClass(
+            'rendererNamespaceWithoutExtendingRendererAbstract',
+            'ZendTest\Barcode\Renderer\TestAsset\RendererNamespaceWithoutExtendingRendererAbstract'
+        );
 
         try {
             Barcode\Barcode::makeRenderer('rendererNamespaceWithoutExtendingRendererAbstract');
@@ -370,7 +376,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testProxyBarcodeRendererDrawAsPdf()
     {
-        if (!getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
+        if (! getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
             $this->markTestSkipped('Enable TESTS_ZEND_BARCODE_PDF_SUPPORT to test PDF render');
         }
 
@@ -382,7 +388,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testProxyBarcodeRendererDrawAsPdfAutomaticallyRenderPdfIfException()
     {
-        if (!getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
+        if (! getenv('TESTS_ZEND_BARCODE_PDF_SUPPORT')) {
             $this->markTestSkipped('Enable TESTS_ZEND_BARCODE_PDF_SUPPORT to test PDF render');
         }
 
@@ -418,7 +424,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     protected function checkGDRequirement()
     {
-        if (!extension_loaded('gd')) {
+        if (! extension_loaded('gd')) {
             $this->markTestSkipped('This test requires the GD extension');
         }
     }

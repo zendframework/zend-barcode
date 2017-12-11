@@ -110,7 +110,8 @@ class IdentcodeTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Identcode_00123456789_border_instructions');
+            'Identcode_00123456789_border_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -120,7 +121,8 @@ class IdentcodeTest extends TestCommon
         $this->object->setOrientation(60);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Identcode_00123456789_oriented_instructions');
+            'Identcode_00123456789_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -131,7 +133,8 @@ class IdentcodeTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Identcode_00123456789_border_oriented_instructions');
+            'Identcode_00123456789_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 

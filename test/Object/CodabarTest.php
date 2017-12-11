@@ -84,7 +84,8 @@ class CodabarTest extends TestCommon
         $this->object->setStretchText(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Codabar_A0123456789B_stretchtext_instructions');
+            'Codabar_A0123456789B_stretchtext_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -94,7 +95,8 @@ class CodabarTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Codabar_A0123456789B_border_instructions');
+            'Codabar_A0123456789B_border_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -104,7 +106,8 @@ class CodabarTest extends TestCommon
         $this->object->setOrientation(60);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Codabar_A0123456789B_oriented_instructions');
+            'Codabar_A0123456789B_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -115,7 +118,8 @@ class CodabarTest extends TestCommon
         $this->object->setStretchText(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Codabar_A0123456789B_stretchtext_oriented_instructions');
+            'Codabar_A0123456789B_stretchtext_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 
@@ -126,7 +130,8 @@ class CodabarTest extends TestCommon
         $this->object->setWithBorder(true);
         $this->object->draw();
         $instructions = $this->loadInstructionsFile(
-                'Codabar_A0123456789B_border_oriented_instructions');
+            'Codabar_A0123456789B_border_oriented_instructions'
+        );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
 }
