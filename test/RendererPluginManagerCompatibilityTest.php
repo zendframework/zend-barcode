@@ -9,7 +9,7 @@
 
 namespace ZendTest\Barcode;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\Barcode\Exception\InvalidArgumentException;
 use Zend\Barcode\Renderer\AbstractRenderer;
 use Zend\Barcode\RendererPluginManager;
