@@ -126,9 +126,11 @@ class Svg extends AbstractRenderer
         $barcodeHeight = $this->barcode->getHeight(true);
 
         $backgroundColor = $this->barcode->getBackgroundColor();
-        $imageBackgroundColor = 'rgb(' . implode(',', [($backgroundColor & 0xFF0000) >> 16,
-                                                             ($backgroundColor & 0x00FF00) >> 8,
-                                                             ($backgroundColor & 0x0000FF)]) . ')';
+        $imageBackgroundColor = sprintf('rgb(%s)', implode(',', [
+            ($backgroundColor & 0xFF0000) >> 16,
+            ($backgroundColor & 0x00FF00) >> 8,
+            ($backgroundColor & 0x0000FF)
+        ]));
 
         $width = $barcodeWidth;
         $height = $barcodeHeight;
