@@ -1,5 +1,5 @@
-docs_dir: doc/book
-site_dir: doc/html
+docs_dir: docs/book
+site_dir: docs/html
 pages:
     - index.md
     - Introduction: intro.md
@@ -10,4 +10,4 @@ pages:
 site_name: zend-barcode
 site_description: Zend\Barcode
 repo_url: 'https://github.com/zendframework/zend-barcode'
-copyright: 'Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'
+copyright: 'Copyright (c) 2005-2017 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'
