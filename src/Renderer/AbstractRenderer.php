@@ -180,7 +180,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setTopOffset($value)
     {
-        if (!is_numeric($value) || intval($value) < 0) {
+        if (! is_numeric($value) || intval($value) < 0) {
             throw new Exception\OutOfRangeException(
                 'Vertical position must be greater than or equals 0'
             );
@@ -206,7 +206,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setLeftOffset($value)
     {
-        if (!is_numeric($value) || intval($value) < 0) {
+        if (! is_numeric($value) || intval($value) < 0) {
             throw new Exception\OutOfRangeException(
                 'Horizontal position must be greater than or equals 0'
             );
@@ -243,7 +243,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setHorizontalPosition($value)
     {
-        if (!in_array($value, ['left', 'center', 'right'])) {
+        if (! in_array($value, ['left', 'center', 'right'])) {
             throw new Exception\UnexpectedValueException(
                 "Invalid barcode position provided must be 'left', 'center' or 'right'"
             );
@@ -269,7 +269,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setVerticalPosition($value)
     {
-        if (!in_array($value, ['top', 'middle', 'bottom'])) {
+        if (! in_array($value, ['top', 'middle', 'bottom'])) {
             throw new Exception\UnexpectedValueException(
                 "Invalid barcode position provided must be 'top', 'middle' or 'bottom'"
             );
@@ -295,7 +295,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setModuleSize($value)
     {
-        if (!is_numeric($value) || floatval($value) <= 0) {
+        if (! is_numeric($value) || floatval($value) <= 0) {
             throw new Exception\OutOfRangeException(
                 'Float size must be greater than 0'
             );
@@ -422,7 +422,7 @@ abstract class AbstractRenderer implements RendererInterface
             $this->initRenderer();
             $this->drawInstructionList();
         } catch (BarcodeException\ExceptionInterface $e) {
-            if ($this->automaticRenderError && !($e instanceof BarcodeException\RendererCreationException)) {
+            if ($this->automaticRenderError && ! ($e instanceof BarcodeException\RendererCreationException)) {
                 $barcode = Barcode::makeBarcode(
                     'error',
                     ['text' => $e->getMessage()]

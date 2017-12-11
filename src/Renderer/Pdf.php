@@ -49,7 +49,7 @@ class Pdf extends AbstractRenderer
         $this->resource = $pdf;
         $this->page     = intval($page);
 
-        if (!count($this->resource->pages)) {
+        if (! count($this->resource->pages)) {
             $this->page = 0;
             $this->resource->pages[] = new Page(
                 Page::SIZE_A4
