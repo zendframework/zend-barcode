@@ -4,36 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zend\Barcode">  
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Barcode Objects - zend-barcode</title>
 
-    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link href="../css/base.css" rel="stylesheet">
-    <link href="../css/zf-web.css" rel="stylesheet">
-    <link href="../css/zf.css" rel="stylesheet">
-    <link href="../css/prism-zf.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            families: ['Open Sans', 'PT Sans']
-        }
-    });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/styles-482aa2add1.css">
 
     
 </head>
@@ -57,8 +36,8 @@
 
             <!-- Main title -->
             <span class="navbar-brand">
-              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
-              <a href="..">zend-barcode</a>
+                <a class="logo-link" href="https://framework.zend.com/" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+                <a href="..">zend-barcode</a>
             </span>
         </div>
 
@@ -170,11 +149,11 @@
         <div class="col-md-9" role="main">
 
 <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="..">zend-barcode</a> &raquo;</li>
+  <li><a href="..">zend-barcode</a></li>
   
     
       
-        <li>Reference &raquo;</li>
+        <li>Reference</li>
       
     
   
@@ -209,7 +188,6 @@ $barcode = new Object\Code39();
 $barcode-&gt;setText('ZEND-FRAMEWORK')
     -&gt;setBarHeight(40);</code></pre>
 
-
 <h2 id="common-options">Common Options</h2>
 <p>In the following list, the values have no units; as such, we will use the
 generic term "unit." For example, the default value of the "thin bar" is "1
@@ -223,113 +201,113 @@ options have a corresponding getter prefixed with "get" (e.g. <code>getBarHeight
 <thead>
 <tr>
 <th align="left">Option</th>
-<th>Data Type</th>
-<th>Default Value</th>
-<th>Description</th>
+<th align="center">Data Type</th>
+<th align="center">Default Value</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left"><code>barcodeNamespace</code></td>
-<td>string</td>
-<td><code>Zend\Barcode\Object</code></td>
-<td>Namespace of the barcode; for example, if you need to extend the embedding objects.</td>
+<td align="center">string</td>
+<td align="center"><code>Zend\Barcode\Object</code></td>
+<td align="left">Namespace of the barcode; for example, if you need to extend the embedding objects.</td>
 </tr>
 <tr>
 <td align="left"><code>barHeight</code></td>
-<td>int</td>
-<td><code>50</code></td>
-<td>Height of the bars.</td>
+<td align="center">int</td>
+<td align="center"><code>50</code></td>
+<td align="left">Height of the bars.</td>
 </tr>
 <tr>
 <td align="left"><code>barThickWidth</code></td>
-<td>int</td>
-<td><code>3</code></td>
-<td>Width of the thick bar.</td>
+<td align="center">int</td>
+<td align="center"><code>3</code></td>
+<td align="left">Width of the thick bar.</td>
 </tr>
 <tr>
 <td align="left"><code>barThinWidth</code></td>
-<td>int</td>
-<td><code>1</code></td>
-<td>Width of the thin bar.</td>
+<td align="center">int</td>
+<td align="center"><code>1</code></td>
+<td align="left">Width of the thin bar.</td>
 </tr>
 <tr>
 <td align="left"><code>factor</code></td>
-<td>int, float, string, or Bool</td>
-<td><code>1</code></td>
-<td>Factor by which to multiply bar widths and font sizes (<code>barHeight</code>, <code>barThinWidth</code>, <code>barThickWidth</code>, and <code>fontSize</code>).</td>
+<td align="center">int, float, string, or Bool</td>
+<td align="center"><code>1</code></td>
+<td align="left">Factor by which to multiply bar widths and font sizes (<code>barHeight</code>, <code>barThinWidth</code>, <code>barThickWidth</code>, and <code>fontSize</code>).</td>
 </tr>
 <tr>
 <td align="left"><code>foreColor</code></td>
-<td>int</td>
-<td><code>0x000000</code> (black)</td>
-<td>Color of the bar and the text. Could be provided as an integer or as a HTML value (e.g. <code>#333333</code>).</td>
+<td align="center">int</td>
+<td align="center"><code>0x000000</code> (black)</td>
+<td align="left">Color of the bar and the text. Could be provided as an integer or as a HTML value (e.g. <code>#333333</code>).</td>
 </tr>
 <tr>
 <td align="left"><code>backgroundColor</code></td>
-<td>int or string</td>
-<td><code>0xFFFFFF</code> (white)</td>
-<td>Color of the background. Could be provided as an integer or as a HTML value (e.g. <code>#333333</code>).</td>
+<td align="center">int or string</td>
+<td align="center"><code>0xFFFFFF</code> (white)</td>
+<td align="left">Color of the background. Could be provided as an integer or as a HTML value (e.g. <code>#333333</code>).</td>
 </tr>
 <tr>
 <td align="left"><code>orientation</code></td>
-<td>int, float, string, or Bool</td>
-<td><code>0</code></td>
-<td>Orientation of the barcode.</td>
+<td align="center">int, float, string, or Bool</td>
+<td align="center"><code>0</code></td>
+<td align="left">Orientation of the barcode.</td>
 </tr>
 <tr>
 <td align="left"><code>font</code></td>
-<td>string or Int</td>
-<td><code>NULL</code></td>
-<td>Font path to a TTF font or a number between 1 and 5 if using image generation with GD (internal fonts).</td>
+<td align="center">string or Int</td>
+<td align="center"><code>NULL</code></td>
+<td align="left">Font path to a TTF font or a number between 1 and 5 if using image generation with GD (internal fonts).</td>
 </tr>
 <tr>
 <td align="left"><code>fontSize</code></td>
-<td>float</td>
-<td><code>10</code></td>
-<td>Size of the font (not applicable with numeric fonts).</td>
+<td align="center">float</td>
+<td align="center"><code>10</code></td>
+<td align="left">Size of the font (not applicable with numeric fonts).</td>
 </tr>
 <tr>
 <td align="left"><code>withBorder</code></td>
-<td>bool</td>
-<td><code>FALSE</code></td>
-<td>Draw a border around the barcode and the quiet zones.</td>
+<td align="center">bool</td>
+<td align="center"><code>FALSE</code></td>
+<td align="left">Draw a border around the barcode and the quiet zones.</td>
 </tr>
 <tr>
 <td align="left"><code>withQuietZones</code></td>
-<td>bool</td>
-<td><code>TRUE</code></td>
-<td>Leave a quiet zone before and after the barcode.</td>
+<td align="center">bool</td>
+<td align="center"><code>TRUE</code></td>
+<td align="left">Leave a quiet zone before and after the barcode.</td>
 </tr>
 <tr>
 <td align="left"><code>drawText</code></td>
-<td>bool</td>
-<td><code>TRUE</code></td>
-<td>Set if the text is displayed below the barcode.</td>
+<td align="center">bool</td>
+<td align="center"><code>TRUE</code></td>
+<td align="left">Set if the text is displayed below the barcode.</td>
 </tr>
 <tr>
 <td align="left"><code>stretchText</code></td>
-<td>bool</td>
-<td><code>FALSE</code></td>
-<td>Specify if the text is stretched all along the barcode.</td>
+<td align="center">bool</td>
+<td align="center"><code>FALSE</code></td>
+<td align="left">Specify if the text is stretched all along the barcode.</td>
 </tr>
 <tr>
 <td align="left"><code>withChecksum</code></td>
-<td>bool</td>
-<td><code>FALSE</code></td>
-<td>Indicate whether or not the checksum is automatically added to the barcode.</td>
+<td align="center">bool</td>
+<td align="center"><code>FALSE</code></td>
+<td align="left">Indicate whether or not the checksum is automatically added to the barcode.</td>
 </tr>
 <tr>
 <td align="left"><code>withChecksumInText</code></td>
-<td>bool</td>
-<td><code>FALSE</code></td>
-<td>Indicate whether or not the checksum is displayed in the textual representation.</td>
+<td align="center">bool</td>
+<td align="center"><code>FALSE</code></td>
+<td align="left">Indicate whether or not the checksum is displayed in the textual representation.</td>
 </tr>
 <tr>
 <td align="left"><code>text</code></td>
-<td>string</td>
-<td><code>NULL</code></td>
-<td>The text to represent as a barcode.</td>
+<td align="center">string</td>
+<td align="center"><code>NULL</code></td>
+<td align="left">The text to represent as a barcode.</td>
 </tr>
 </tbody>
 </table></div>
@@ -359,61 +337,60 @@ Barcode::render(
     ]
 ); // will use the 3rd GD internal font</code></pre>
 
-
 <h2 id="common-additional-getters">Common Additional Getters</h2>
 <div class="table-responsive"><table>
 <thead>
 <tr>
 <th align="left">Getter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th align="center">Data Type</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left"><code>getType()</code></td>
-<td>string</td>
-<td>Return the name of the barcode class without the namespace (e.g. <code>Zend\Barcode\Object\Code39</code> returns simply "code39").</td>
+<td align="center">string</td>
+<td align="left">Return the name of the barcode class without the namespace (e.g. <code>Zend\Barcode\Object\Code39</code> returns simply "code39").</td>
 </tr>
 <tr>
 <td align="left"><code>getRawText()</code></td>
-<td>string</td>
-<td>Return the original text provided to the object.</td>
+<td align="center">string</td>
+<td align="left">Return the original text provided to the object.</td>
 </tr>
 <tr>
 <td align="left"><code>getTextToDisplay()</code></td>
-<td>string</td>
-<td>Return the text to display, including, if activated, the checksum value.</td>
+<td align="center">string</td>
+<td align="left">Return the text to display, including, if activated, the checksum value.</td>
 </tr>
 <tr>
 <td align="left"><code>getQuietZone()</code></td>
-<td>int</td>
-<td>Return the size of the space needed before and after the barcode without any drawing.</td>
+<td align="center">int</td>
+<td align="left">Return the size of the space needed before and after the barcode without any drawing.</td>
 </tr>
 <tr>
 <td align="left"><code>getInstructions()</code></td>
-<td>array</td>
-<td>Return drawing instructions as an array..</td>
+<td align="center">array</td>
+<td align="left">Return drawing instructions as an array..</td>
 </tr>
 <tr>
 <td align="left"><code>getHeight($recalculate = false)</code></td>
-<td>int</td>
-<td>Return the height of the barcode calculated after possible rotation.</td>
+<td align="center">int</td>
+<td align="left">Return the height of the barcode calculated after possible rotation.</td>
 </tr>
 <tr>
 <td align="left"><code>getWidth($recalculate = false)</code></td>
-<td>int</td>
-<td>Return the width of the barcode calculated after possible rotation.</td>
+<td align="center">int</td>
+<td align="left">Return the width of the barcode calculated after possible rotation.</td>
 </tr>
 <tr>
 <td align="left"><code>getOffsetTop($recalculate = false)</code></td>
-<td>int</td>
-<td>Return the position of the top of the barcode calculated after possible rotation.</td>
+<td align="center">int</td>
+<td align="left">Return the position of the top of the barcode calculated after possible rotation.</td>
 </tr>
 <tr>
 <td align="left"><code>getOffsetLeft($recalculate = false)</code></td>
-<td>int</td>
-<td>Return the position of the left of the barcode calculated after possible rotation.</td>
+<td align="center">int</td>
+<td align="left">Return the position of the left of the barcode calculated after possible rotation.</td>
 </tr>
 </tbody>
 </table></div>
@@ -464,17 +441,17 @@ following changes:</p>
 <thead>
 <tr>
 <th>Option</th>
-<th>Data Type</th>
-<th>Default Value</th>
-<th>Description</th>
+<th align="center">Data Type</th>
+<th align="center">Default Value</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>withBearerBars</code></td>
-<td>bool</td>
-<td><code>FALSE</code></td>
-<td>Draw a thick bar at the top and the bottom of the barcode.</td>
+<td align="center">bool</td>
+<td align="center"><code>FALSE</code></td>
+<td align="left">Draw a thick bar at the top and the bottom of the barcode.</td>
 </tr>
 </tbody>
 </table></div>
@@ -651,7 +628,7 @@ automatically replace it with 0.</p>
             <div class="col-lg-3">
               <p>
                 <strong>Zend Framework</strong><br />
-                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://framework.zend.com/">framework.zend.com</a><br />
                 <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
                 <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
                 <a href="https://apigility.org">apigility.org</a><br />
@@ -672,14 +649,15 @@ automatically replace it with 0.</p>
                 <h4>Copyright</h4>
                 <div class="hline-w"></div>
 
-                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2017 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
             </div>
 
             <div class="col-lg-4">
                 <h4>Contacts</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://discourse.zendframework.com" class="btn-social btn-outline" alt="Forum" title="Forum"><i class="fa fa-comments"></i></a>
+                    <a href="https://zendframework-slack.herokuapp.com" class="btn-social btn-outline" alt="Slack" title="Slack"><i class="fa fa-slack"></i></a>
                     <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
                     <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
                 </p>
@@ -688,14 +666,11 @@ automatically replace it with 0.</p>
     </div>
 </div>
 
-
-    <script src="../js/jquery-1.10.2.min.js"></script>
-    <script src="../js/bootstrap-3.0.3.min.js"></script>
-    <script src="../js/prism-zf.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '..';</script>
+    <script src="../js/scripts-0b6185f4a5.js"></script>
     <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-    <script src="../js/base.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -727,7 +702,7 @@ automatically replace it with 0.</p>
     <div class="zf-components">
   <div class="zf-components-grid">
     <div class="zf-logo">
-      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+      <a href="https://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
     </div>
 
     <div class="component-list"></div>
@@ -736,112 +711,6 @@ automatically replace it with 0.</p>
   </div>
 </div>
 
-    <script>
-  // Prepare the component list dropdown for display
-  $(function () {
-    var components = $(".zf-components"),
-        componentList = components.find(".component-list"),
-        sidebar = $(".bs-sidebar.affix"),
-        sidebarInitialPos = sidebar.css("position"),
-        hidden,
-        componentToggle = $(".component-toggle"),
-        navbar = $(".navbar-fixed-top"),
-        rollUpLink = $(".zf-components-rollup a");
-
-    // Initial setup on document load
-    components.insertBefore(navbar);
-    $(".zf-logo a").tooltip();
-    componentToggle.tooltip();
-    rollUpLink.attr({ href: "#", alt: "Hide component list" });
-
-    // Cast initial sidebar position value
-    if (undefined === sidebarInitialPos) {
-      sidebarInitialPos = "fixed";
-    }
-
-    // Setup onclick events to toggle list
-    componentToggle.click(toggleComponentList);
-    rollUpLink.click(toggleComponentList);
-
-    // Toggle the component list display
-    function toggleComponentList(event) {
-      event.preventDefault();
-
-      if (hidden === undefined) {
-        // Not loaded yet; load and display.
-        loadComponentList();
-        return;
-      }
-
-      if (hidden) {
-        // Hidden; display.
-        showComponentList();
-        return;
-      }
-
-      // Currently visible; hide
-      hideComponentList();
-    }
-
-    // Show the component list
-    function showComponentList() {
-      navbar.css({position: "relative"});
-      sidebar.css({position: "relative"});
-      components
-        .css({"margin-top": "-" + components.outerHeight() + "px"})
-        .show()
-        .animate({"margin-top": 0}, {
-          complete: function () {
-            componentToggle
-              .data("placement", "top")
-              .attr("data-original-title", "Hide component list");
-            hidden = false;
-          },
-          queue: false
-        });
-    }
-
-    // Hide the component list
-    function hideComponentList() {
-      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
-        complete: function () {
-          navbar.css({position: "fixed"});
-          sidebar.css({position: sidebarInitialPos});
-          componentToggle
-            .data("placement", "bottom")
-            .attr("data-original-title", "Show component list");
-          components.hide();
-          hidden = true;
-        },
-        queue: false
-      });
-      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
-    }
-
-    // Inject a component into the componet list DOM.
-    function injectComponent(index, component) {
-      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
-    }
-
-    // Parse the component list, build the DOM, and display it.
-    function parseComponentList(components) {
-      $.each(components, injectComponent);
-      showComponentList();
-    }
-
-    // Fetch the component list and display it.
-    function loadComponentList () {
-      $.ajax({
-        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
-        dataType: "text json",
-        success: parseComponentList,
-        error: function (e) {
-          console.log("Error occurred with XHR call", e);
-        }
-      });
-    }
-  });
-</script>
-    </body>
+</body>
 
 </html>
