@@ -3,7 +3,7 @@
         {
             "location": "/",
             "text": "zend-barcode\n\n\n\n\n\n\nZend\\Barcode\n provides a generic way to generate barcodes. The \nZend\\Barcode\n\ncomponent is divided into two subcomponents: barcode objects and renderers.\nObjects allow you to create barcodes independently of the renderer. Renderer\nallow you to draw barcodes based on the support required.\n\n\n\n\nFile issues at https://github.com/zendframework/zend-barcode/issues\n\n\nDocumentation is at https://docs.zendframework.com/zend-barcode/",
-            "title": "Home"
+            "title": "zend-barcode"
         },
         {
             "location": "/#zend-barcode",
