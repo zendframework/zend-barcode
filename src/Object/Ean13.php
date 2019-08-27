@@ -140,7 +140,7 @@ class Ean13 extends AbstractObject
         $checksum = 0;
 
         for ($i = strlen($text); $i > 0; $i --) {
-            $checksum += intval($text{$i - 1}) * $factor;
+            $checksum += intval($text[$i - 1]) * $factor;
             $factor    = 4 - $factor;
         }
 
@@ -170,7 +170,7 @@ class Ean13 extends AbstractObject
             $leftPosition = $this->getQuietZone() - $characterWidth;
             for ($i = 0; $i < $this->barcodeLength; $i ++) {
                 $this->addText(
-                    $text{$i},
+                    $text[$i],
                     $this->fontSize * $this->factor,
                     $this->rotate(
                         $leftPosition,

@@ -98,7 +98,7 @@ class Ean8 extends Ean13
             $leftPosition = $this->getQuietZone() + (3 * $this->barThinWidth) * $this->factor;
             for ($i = 0; $i < $this->barcodeLength; $i ++) {
                 $this->addText(
-                    $text{$i},
+                    $text[$i],
                     $this->fontSize * $this->factor,
                     $this->rotate(
                         $leftPosition,

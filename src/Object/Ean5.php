@@ -103,7 +103,7 @@ class Ean5 extends Ean13
         $checksum = 0;
 
         for ($i = 0; $i < $this->barcodeLength; $i ++) {
-            $checksum += intval($text{$i}) * ($i % 2 ? 9 : 3);
+            $checksum += intval($text[$i]) * ($i % 2 ? 9 : 3);
         }
 
         return ($checksum % 10);
