@@ -24,6 +24,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [#43](https://github.com/zendframework/zend-barcode/pull/43) fixes typo in exception message of `Zend\Barcode\Exception\UnexpectedValueException`.
 
+- [#44](https://github.com/zendframework/zend-barcode/pull/44) changes
+  curly braces in array and string offset access to square brackets
+  in order to prevent issues under the upcoming PHP 7.4 release.
+
 ## 2.7.0 - 2017-12-11
 
 ### Added
