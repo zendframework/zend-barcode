@@ -467,7 +467,7 @@ abstract class AbstractRenderer implements RendererInterface
                     break;
                 default:
                     throw new Exception\UnexpectedValueException(
-                        'Unkown drawing command'
+                        'Unknown drawing command'
                     );
             }
         }

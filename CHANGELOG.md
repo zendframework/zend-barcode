@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#43](https://github.com/zendframework/zend-barcode/pull/43) fixes typo in exception message of `Zend\Barcode\Exception\UnexpectedValueException`.
 
 ## 2.7.0 - 2017-12-11
 
