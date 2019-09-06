@@ -106,7 +106,7 @@ class Code25 extends AbstractObject
         $checksum = 0;
 
         for ($i = strlen($text); $i > 0; $i --) {
-            $checksum += intval($text{$i - 1}) * $factor;
+            $checksum += intval($text[$i - 1]) * $factor;
             $factor    = 4 - $factor;
         }
 
