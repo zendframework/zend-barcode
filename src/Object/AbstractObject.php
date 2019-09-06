@@ -1103,11 +1103,11 @@ abstract class AbstractObject implements ObjectInterface
      */
     protected function rotate($x1, $y1)
     {
-        $x2 = $x1 * cos($this->orientation / 180 * pi())
-            - $y1 * sin($this->orientation / 180 * pi())
+        $x2 = $x1 * round(cos($this->orientation / 180 * pi()), 6)
+            - $y1 * round(sin($this->orientation / 180 * pi()), 6)
             + $this->getOffsetLeft();
-        $y2 = $y1 * cos($this->orientation / 180 * pi())
-            + $x1 * sin($this->orientation / 180 * pi())
+        $y2 = $y1 * round(cos($this->orientation / 180 * pi()), 6)
+            + $x1 * round(sin($this->orientation / 180 * pi()), 6)
             + $this->getOffsetTop();
         return [intval($x2), intval($y2)];
     }

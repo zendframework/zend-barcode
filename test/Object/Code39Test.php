@@ -178,4 +178,16 @@ class Code39Test extends TestCommon
         );
         $this->assertEquals($instructions, $this->object->getInstructions());
     }
+
+    public function testCompleteGenerationWithOrientation270()
+    {
+        $this->object->setText('0123456789');
+        $this->object->setOrientation(270);
+        $this->object->draw();
+        $instructions = $this->loadInstructionsFile(
+            'Code39_0123456789_oriented_270_instructions'
+        );
+
+        $this->assertEquals($instructions, $this->object->getInstructions());
+    }
 }
