@@ -113,7 +113,7 @@ class Upca extends Ean13
                     $fontSize *= 0.8;
                 }
                 $this->addText(
-                    $text{$i},
+                    $text[$i],
                     $fontSize * $this->factor,
                     $this->rotate(
                         $leftPosition,
