@@ -26,9 +26,21 @@ class Ean5Test extends TestCommon
         $this->assertSame('ean5', $this->object->getType());
     }
 
-    public function testChecksum()
+    public function checksum()
     {
-        $this->assertSame(2, $this->object->getChecksum('45678'));
+        yield ['45678', 2];
+        yield ['5678', 0];
+        yield ['05678', 0];
+    }
+
+    /**
+     * @dataProvider checksum
+     * @var string $text
+     * @var int $checksum
+     */
+    public function testChecksum($text, $checksum)
+    {
+        $this->assertSame($checksum, $this->object->getChecksum($text));
     }
 
     public function testSetText()

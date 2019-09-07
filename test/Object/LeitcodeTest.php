@@ -26,9 +26,28 @@ class LeitcodeTest extends TestCommon
         $this->assertSame('leitcode', $this->object->getType());
     }
 
-    public function testChecksum()
+    public function checksum()
     {
-        $this->assertSame(8, $this->object->getChecksum('0123456789012'));
+        yield ['0123456789012', 8];
+        yield ['123456789012', 8];
+        yield ['709003', 4];
+        yield ['0709003', 4];
+        yield ['00709003', 4];
+        yield ['000709003', 4];
+        yield ['0000709003', 4];
+        yield ['00000709003', 4];
+        yield ['000000709003', 4];
+        yield ['0000000709003', 4];
+    }
+
+    /**
+     * @dataProvider checksum
+     * @param string $text
+     * @param int $checksum
+     */
+    public function testChecksum($text, $checksum)
+    {
+        $this->assertSame($checksum, $this->object->getChecksum($text));
     }
 
     public function testSetText()
