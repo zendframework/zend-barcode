@@ -127,4 +127,12 @@ class Ean5 extends Ean13
     {
         return $this->addLeadingZeros($this->text);
     }
+
+    /**
+     * @return string
+     */
+    public function getTextToDisplay()
+    {
+        return $this->getText();
+    }
 }

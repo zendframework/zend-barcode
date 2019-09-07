@@ -136,4 +136,24 @@ class Ean2Test extends TestCommon
         $this->object->setText('43');
         $this->assertEquals(62, $this->object->getHeight(true));
     }
+
+    public function testTextToDisplayWithChecksum()
+    {
+        $this->object->setText('1');
+        $this->object->setWithChecksum(true);
+
+        $this->assertSame('1', $this->object->getRawText());
+        $this->assertSame('01', $this->object->getText());
+        $this->assertSame('01', $this->object->getTextToDisplay());
+    }
+
+    public function testTextToDisplayWithoutChecksum()
+    {
+        $this->object->setText('1');
+        $this->object->setWithChecksum(false);
+
+        $this->assertSame('1', $this->object->getRawText());
+        $this->assertSame('01', $this->object->getText());
+        $this->assertSame('01', $this->object->getTextToDisplay());
+    }
 }
