@@ -193,6 +193,13 @@ abstract class AbstractObject implements ObjectInterface
     protected $withChecksumInText = false;
 
     /**
+     * Whether checksum is provided with the input text or not.
+     *
+     * @var bool
+     */
+    protected $providedChecksum = false;
+
+    /**
      * Fix barcode length (numeric or string like 'even')
      *
      * @var int | string
@@ -576,7 +583,7 @@ abstract class AbstractObject implements ObjectInterface
     public function getText()
     {
         $text = $this->text;
-        if ($this->withChecksum) {
+        if ($this->withChecksum && ! $this->providedChecksum) {
             $text .= $this->getChecksum($this->text);
         }
         return $this->addLeadingZeros($text);
@@ -624,6 +631,8 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function getTextToDisplay()
     {
+        $this->checkText($this->text);
+
         if ($this->withChecksumInText) {
             return $this->getText();
         }
@@ -731,6 +740,25 @@ abstract class AbstractObject implements ObjectInterface
     public function getWithChecksumInText()
     {
         return $this->withChecksumInText;
+    }
+
+    /**
+     * @param bool $value
+     * @return $this
+     */
+    public function setProvidedChecksum($value)
+    {
+        $this->providedChecksum = (bool) $value;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getProvidedChecksum()
+    {
+        return $this->providedChecksum;
     }
 
     /**
@@ -1269,12 +1297,12 @@ abstract class AbstractObject implements ObjectInterface
 
         $validator = new BarcodeValidator([
             'adapter'  => $validatorName,
-            'usechecksum' => false,
+            'usechecksum' => $this->providedChecksum,
         ]);
 
         $checksumCharacter = '';
         $withChecksum = false;
-        if ($this->mandatoryChecksum) {
+        if ($this->mandatoryChecksum && ! $this->providedChecksum) {
             $checksumCharacter = $this->substituteChecksumCharacter;
             $withChecksum = true;
         }

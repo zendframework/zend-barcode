@@ -260,6 +260,19 @@ abstract class TestCommon extends TestCase
         $this->assertSame(true, $this->object->getWithChecksumInText());
     }
 
+    public function testProvidedChecksumFalseByDefault()
+    {
+        self::assertFalse($this->object->getProvidedChecksum());
+    }
+
+    public function testProvidedChecksum()
+    {
+        $this->object->setProvidedChecksum(1);
+        self::assertTrue($this->object->getProvidedChecksum());
+        $this->object->setProvidedChecksum(true);
+        self::assertTrue($this->object->getProvidedChecksum());
+    }
+
     public function testWithoutQuietZones()
     {
         $this->object->setWithQuietZones(0);

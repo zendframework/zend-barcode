@@ -10,6 +10,7 @@
 namespace ZendTest\Barcode\Object;
 
 use Zend\Barcode;
+use Zend\Barcode\Object\Exception\BarcodeValidationException;
 
 /**
  * @group      Zend_Barcode
@@ -136,5 +137,28 @@ class RoyalmailTest extends TestCommon
         // Checksum activated => text needed
         $this->object->setText('012345');
         $this->assertEquals(20, $this->object->getHeight(true));
+    }
+
+    public function testChecksumIsNotProvided()
+    {
+        $this->object->setText('123456');
+        self::assertSame('1234562', $this->object->getTextToDisplay());
+    }
+
+    public function testProvidedChecksum()
+    {
+        $this->object->setProvidedChecksum(true);
+        $this->object->setText('1234562');
+        self::assertSame('1234562', $this->object->getTextToDisplay());
+    }
+
+    public function testProvidedChecksumInvalid()
+    {
+        $this->object->setProvidedChecksum(true);
+        $this->object->setText('1234567');
+
+        $this->expectException(BarcodeValidationException::class);
+        $this->expectExceptionMessage('The input failed checksum validation');
+        $this->object->getTextToDisplay();
     }
 }
