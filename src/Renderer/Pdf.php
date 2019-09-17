@@ -18,6 +18,8 @@ use ZendPdf\PdfDocument;
  * Class for rendering the barcode in PDF resource
  *
  * @deprecated since 2.8.0; to be removed in 3.0.0.
+ *     PDF Renderer is using abandoned ZendPdf library.
+ *     Because of that we have to deprecate PDF renderer.
  */
 class Pdf extends AbstractRenderer
 {
