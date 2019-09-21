@@ -1,13 +1,12 @@
 docs_dir: docs/book
 site_dir: docs/html
 pages:
-    - index.md
+    - Home: index.md
     - Introduction: intro.md
     - Usage: usage.md
     - Reference:
         - 'Barcode Objects': objects.md
         - 'Renderers': renderers.md
 site_name: zend-barcode
-site_description: Zend\Barcode
+site_description: 'Programmatically create and render barcodes as images or in PDFs'
 repo_url: 'https://github.com/zendframework/zend-barcode'
-copyright: 'Copyright (c) 2005-2017 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'
