@@ -1,6 +1,6 @@
 {
     "name": "zendframework/zend-barcode",
-    "description": "provides a generic way to generate barcodes",
+    "description": "Programmatically create and render barcodes as images or in PDFs",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf",
