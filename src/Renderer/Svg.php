@@ -315,10 +315,10 @@ class Svg extends AbstractRenderer
             $points[0][1] + $this->topOffset,
             $points[1][0] + $this->leftOffset,
             $points[1][1] + $this->topOffset,
-            $points[2][0] + $this->leftOffset + cos(-$orientation),
-            $points[2][1] + $this->topOffset - sin($orientation),
-            $points[3][0] + $this->leftOffset + cos(-$orientation),
-            $points[3][1] + $this->topOffset - sin($orientation),
+            $points[2][0] + $this->leftOffset + cos(-$orientation / 180 * pi()),
+            $points[2][1] + $this->topOffset + sin($orientation / 180 * pi()),
+            $points[3][0] + $this->leftOffset + cos(-$orientation / 180 * pi()),
+            $points[3][1] + $this->topOffset + sin($orientation / 180 * pi()),
         ];
         $newPoints = implode(' ', $newPoints);
         $attributes = [];
