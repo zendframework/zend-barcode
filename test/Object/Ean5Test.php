@@ -136,4 +136,24 @@ class Ean5Test extends TestCommon
         $this->object->setText('45678');
         $this->assertEquals(62, $this->object->getHeight(true));
     }
+
+    public function testTextToDisplayWithChecksum()
+    {
+        $this->object->setText('123');
+        $this->object->setWithChecksum(true);
+
+        $this->assertSame('123', $this->object->getRawText());
+        $this->assertSame('00123', $this->object->getText());
+        $this->assertSame('00123', $this->object->getTextToDisplay());
+    }
+
+    public function testTextToDisplayWithoutChecksum()
+    {
+        $this->object->setText('123');
+        $this->object->setWithChecksum(false);
+
+        $this->assertSame('123', $this->object->getRawText());
+        $this->assertSame('00123', $this->object->getText());
+        $this->assertSame('00123', $this->object->getTextToDisplay());
+    }
 }
