@@ -53,10 +53,12 @@ class Identcode extends Code25interleaved
     public function getChecksum($text)
     {
         $this->checkText($text);
+        $text = $this->addLeadingZeros($text, true);
+
         $checksum = 0;
 
         for ($i = strlen($text); $i > 0; $i --) {
-            $checksum += intval($text[$i - 1]) * (($i % 2) ? 4 : 9);
+            $checksum += (int) $text[$i - 1] * (($i % 2) ? 4 : 9);
         }
 
         $checksum = (10 - ($checksum % 10)) % 10;
