@@ -26,9 +26,25 @@ class IdentcodeTest extends TestCommon
         $this->assertSame('identcode', $this->object->getType());
     }
 
-    public function testChecksum()
+    public function checksum()
     {
-        $this->assertSame(6, $this->object->getChecksum('12345678901'));
+        yield ['12345678901', 6];
+        yield ['709003', 4];
+        yield ['0709003', 4];
+        yield ['00709003', 4];
+        yield ['000709003', 4];
+        yield ['0000709003', 4];
+        yield ['00000709003', 4];
+    }
+
+    /**
+     * @dataProvider checksum
+     * @param string $text
+     * @param int $checksum
+     */
+    public function testChecksum($text, $checksum)
+    {
+        $this->assertSame($checksum, $this->object->getChecksum($text));
     }
 
     public function testSetText()
