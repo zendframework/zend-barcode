@@ -50,6 +50,9 @@ All notable changes to this project will be documented in this file, in reverse 
   curly braces in array and string offset access to square brackets
   in order to prevent issues under the upcoming PHP 7.4 release.
 
+- [#45](https://github.com/zendframework/zend-barcode/pull/45) fixes
+  rotation calculations.
+
 - [#46](https://github.com/zendframework/zend-barcode/pull/46) fixes
   generating checksum for EAN5 and Identcode/Leitcode. These barcodes
   have fixed length and checksum generator must use also leading zeros. 

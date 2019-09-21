@@ -333,14 +333,16 @@ class Image extends AbstractRenderer
      */
     protected function drawPolygon($points, $color, $filled = true)
     {
-        $newPoints = [$points[0][0] + $this->leftOffset,
+        $newPoints = [
+            $points[0][0] + $this->leftOffset,
             $points[0][1] + $this->topOffset,
             $points[1][0] + $this->leftOffset,
             $points[1][1] + $this->topOffset,
             $points[2][0] + $this->leftOffset,
             $points[2][1] + $this->topOffset,
             $points[3][0] + $this->leftOffset,
-            $points[3][1] + $this->topOffset,   ];
+            $points[3][1] + $this->topOffset,
+        ];
 
         $allocatedColor = imagecolorallocate(
             $this->resource,

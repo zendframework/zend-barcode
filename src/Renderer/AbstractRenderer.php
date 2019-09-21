@@ -70,7 +70,7 @@ abstract class AbstractRenderer implements RendererInterface
 
     /**
      * Barcode object
-     * @var Object\ObjectInterface
+     * @var ObjectInterface
      */
     protected $barcode;
 
