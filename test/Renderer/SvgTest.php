@@ -59,6 +59,19 @@ class SvgTest extends TestCommon
         $this->assertEquals($svgCompare, $svgOutput);
     }
 
+    public function testSvgOrientation()
+    {
+        $svgCompare = file_get_contents(__DIR__ . '/_files/svg_oriented.xml');
+
+        Barcode\Barcode::setBarcodeFont(__DIR__ . '/../Object/_fonts/Vera.ttf');
+        $barcode = new Code39(['text' => '0123456789', 'orientation' => 270]);
+        $this->renderer->setBarcode($barcode);
+        $this->renderer->setTransparentBackground(true);
+        $this->assertTrue($this->renderer->getTransparentBackground());
+        $svgOutput = $this->renderer->draw()->saveXML();
+        $this->assertEquals($svgCompare, $svgOutput);
+    }
+
     public function testType()
     {
         $this->assertSame('svg', $this->renderer->getType());
