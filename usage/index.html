@@ -237,14 +237,6 @@
             <ul class="toc__list">
                 
                     <li class="toc__entry">
-                        <a href="#getting-a-renderer-with-zend92barcode92barcodefactory" class="toc__link">Getting a Renderer with Zend\Barcode\Barcode::factory()</a>
-                    </li>
-                
-                    <li class="toc__entry">
-                        <a href="#using-zend-config" class="toc__link">Using zend-config</a>
-                    </li>
-                
-                    <li class="toc__entry">
                         <a href="#drawing-a-barcode" class="toc__link">Drawing a barcode</a>
                     </li>
                 
@@ -277,12 +269,12 @@ method accepts five arguments:</p>
   representation (optional default <code>TRUE</code>).</li>
 </ul>
 <p>On success, the factory method returns an instance of the renderer.</p>
-<h3 id="getting-a-renderer-with-zend92barcode92barcodefactory">Getting a Renderer with Zend\Barcode\Barcode::factory()</h3>
+<h3>Getting a Renderer with Zend\Barcode\Barcode::factory()</h3>
 <p><code>Zend\Barcode\Barcode::factory()</code> instantiates both the barcode and renderer
 instance, and binds them.</p>
 <p>In this first example, we will use the <strong>Code39</strong> barcode type together with the
 <strong>Image</strong> renderer.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
 
 // Only the text to draw is required.
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -294,13 +286,12 @@ $renderer = Barcode::factory(
     'image',
     $barcodeOptions,
     $rendererOptions
-);</code></pre>
-
-<h3 id="using-zend-config">Using zend-config</h3>
+);</code></pre></p>
+<h3>Using zend-config</h3>
 <p>You may pass a <code>Zend\Config\Config</code> instance to the factory in order to create
 the necessary objects. The following example is functionally equivalent to the
 previous.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+<p> <pre class=codehilite><code class=language-php>use Zend\Config\Config;
 use Zend\Barcode\Barcode;
 
 // Using a single Zend\Config\Config object:
@@ -311,15 +302,13 @@ $config = new Config([
     'rendererParams' =&gt; ['imageType' =&gt; 'gif'],
 ]);
 
-$renderer = Barcode::factory($config);
-</code></pre>
-
+$renderer = Barcode::factory($config);</code></pre></p>
 <h2 id="drawing-a-barcode">Drawing a barcode</h2>
 <p>When you <strong>draw</strong> the barcode, you retrieve the resource in which the barcode is
 drawn. To draw a barcode, call the <code>draw()</code> of the renderer, or use the proxy
 method provided by <code>Zend\Barcode\Barcode</code>.</p>
-<h3 id="drawing-a-barcode-with-the-renderer-object">Drawing a barcode with the renderer object</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+<h3>Drawing a barcode with the renderer object</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
 
 // Only the text to draw is required.
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -334,12 +323,10 @@ $renderer = Barcode::factory(
     $barcodeOptions,
     $rendererOptions
 );
-$imageResource = $renderer-&gt;draw();
-</code></pre>
-
-<h3 id="drawing-a-barcode-with-zend92barcode92barcodedraw">Drawing a barcode with Zend\Barcode\Barcode::draw()</h3>
+$imageResource = $renderer-&gt;draw();</code></pre></p>
+<h3>Drawing a barcode with Zend\Barcode\Barcode::draw()</h3>
 <p>The static <code>draw()</code> method is a shortcut for calling <code>factory()</code> + <code>draw()</code>:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
 
 // Only the text to draw is required.
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -353,17 +340,15 @@ $imageResource = Barcode::draw(
     'image',
     $barcodeOptions,
     $rendererOptions
-);
-</code></pre>
-
+);</code></pre></p>
 <h2 id="rendering-a-barcode">Rendering a barcode</h2>
 <p>In the previous section, we were <em>drawing</em>, which <em>returns</em> the resource
 representing the barcode, but does not actually <em>emit</em> it (e.g., to the
 browser).</p>
 <p>To emit the barcode, call the <code>render()</code> method of the renderer, or use
 the proxy method provided by <code>Zend\Barcode\Barcode</code>.</p>
-<h3 id="rendering-a-barcode-with-the-renderer-object">Rendering a barcode with the renderer object</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+<h3>Rendering a barcode with the renderer object</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -377,13 +362,11 @@ Barcode::factory(
     'image',
     $barcodeOptions,
     $rendererOptions
-)-&gt;render();
-</code></pre>
-
+)-&gt;render();</code></pre></p>
 <p>This will generate the following barcode:</p>
 <p><img alt="image" src="../images/zend.barcode.introduction.example-1.png" class="img-responsive"/></p>
-<h3 id="rendering-a-barcode-with-zend92barcode92barcoderender">Rendering a barcode with Zend\Barcode\Barcode::render()</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+<h3>Rendering a barcode with Zend\Barcode\Barcode::render()</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -397,9 +380,7 @@ Barcode::render(
     'image',
     $barcodeOptions,
     $rendererOptions
-);
-</code></pre>
-
+);</code></pre></p>
 <p>This will generate the same barcode as the previous example.</p>
 
 
@@ -434,7 +415,7 @@ Barcode::render(
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-barcode/edit/master/docs/usage.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-barcode/edit/master/docs/book/usage.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

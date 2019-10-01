@@ -279,7 +279,7 @@ implementations. These options can be set in three ways:</p>
 <li>Via individual setters for each configuration type.</li>
 </ul>
 <h2 id="different-ways-to-parameterize-a-barcode-object">Different ways to parameterize a barcode object</h2>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Object;
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Object;
 
 $options = ['text' =&gt; 'ZEND-FRAMEWORK', 'barHeight' =&gt; 40];
 
@@ -293,8 +293,7 @@ $barcode-&gt;setOptions($options);
 // Case 3: individual setters
 $barcode = new Object\Code39();
 $barcode-&gt;setText('ZEND-FRAMEWORK')
-    -&gt;setBarHeight(40);</code></pre>
-
+    -&gt;setBarHeight(40);</code></pre></p>
 <h2 id="common-options">Common Options</h2>
 <p>In the following list, the values have no units; as such, we will use the
 generic term "unit." For example, the default value of the "thin bar" is "1
@@ -418,11 +417,11 @@ options have a corresponding getter prefixed with "get" (e.g. <code>getBarHeight
 </tr>
 </tbody>
 </table></div>
-<h3 id="setting-a-common-font-for-all-objects">Setting a common font for all objects</h3>
+<h3>Setting a common font for all objects</h3>
 <p>You can set a common font for all your objects by using the static method
 <code>Zend\Barcode\Barcode::setBarcodeFont()</code>. This value can be always be overridden
 for individual objects by using the <code>setFont()</code> method.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Barcode\Barcode;
+<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
 
 // In your bootstrap:
 Barcode::setBarcodeFont('my_font.ttf');
@@ -442,8 +441,7 @@ Barcode::render(
         'text' =&gt; 'ZEND-FRAMEWORK',
         'font' =&gt; 3,
     ]
-); // will use the 3rd GD internal font</code></pre>
-
+); // will use the 3rd GD internal font</code></pre></p>
 <h2 id="common-additional-getters">Common Additional Getters</h2>
 <div class="table-responsive"><table>
 <thead>
@@ -505,11 +503,11 @@ Barcode::render(
 <p>Below is detailed information on all barcode types supported. Unless otherwise
 noted, each barcode supports the general options outlined in the previous
 section, and no others.</p>
-<h3 id="zend92barcode92object92error">Zend\Barcode\Object\Error</h3>
+<h3>Zend\Barcode\Object\Error</h3>
 <p><img alt="error" src="../images/zend.barcode.objects.details.error.png" class="img-responsive"/></p>
 <p>This barcode is a special case. It is internally used to automatically render an
 exception caught by the component.</p>
-<h3 id="zend92barcode92object92code128">Zend\Barcode\Object\Code128</h3>
+<h3>Zend\Barcode\Object\Code128</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.code128.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Code 128</li>
@@ -517,7 +515,7 @@ exception caught by the component.</p>
 <li><strong>Checksum:</strong> optional (modulo 103)</li>
 <li><strong>Length:</strong> variable</li>
 </ul>
-<h3 id="zend92barcode92object92codabar">Zend\Barcode\Object\Codabar</h3>
+<h3>Zend\Barcode\Object\Codabar</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.codabar.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Codabar (or Code 2 of 7)</li>
@@ -525,7 +523,7 @@ exception caught by the component.</p>
 <li><strong>Checksum:</strong> none</li>
 <li><strong>Length:</strong> variable</li>
 </ul>
-<h3 id="zend92barcode92object92code25">Zend\Barcode\Object\Code25</h3>
+<h3>Zend\Barcode\Object\Code25</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.code25.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Code 25 (or Code 2 of 5 or Code 25 Industrial)</li>
@@ -533,7 +531,7 @@ exception caught by the component.</p>
 <li><strong>Checksum:</strong> optional (modulo 10)</li>
 <li><strong>Length:</strong> variable</li>
 </ul>
-<h3 id="zend92barcode92object92code25interleaved">Zend\Barcode\Object\Code25interleaved</h3>
+<h3>Zend\Barcode\Object\Code25interleaved</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.int25.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Code25</code> (Code 2 of 5), with the
 following changes:</p>
@@ -564,7 +562,7 @@ following changes:</p>
 </table></div>
 <p>If the number of characters is not even, <code>Zend\Barcode\Object\Code25interleaved</code>
 will automatically prepend the missing zero to the barcode text.</p>
-<h3 id="zend92barcode92object92ean2">Zend\Barcode\Object\Ean2</h3>
+<h3>Zend\Barcode\Object\Ean2</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.ean2.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Ean5</code> (<em>EAN</em> 5), with the following
 changes:</p>
@@ -576,7 +574,7 @@ changes:</p>
 </ul>
 <p>If the number of characters is lower than 2, <code>Zend\Barcode\Object\Ean2</code> will
 automatically prepend the missing zero to the barcode text.</p>
-<h3 id="zend92barcode92object92ean5">Zend\Barcode\Object\Ean5</h3>
+<h3>Zend\Barcode\Object\Ean5</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.ean5.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Ean13</code> (<em>EAN</em> 13), with the following
 changes:</p>
@@ -588,7 +586,7 @@ changes:</p>
 </ul>
 <p>If the number of characters is lower than 5, <code>Zend\Barcode\Object\Ean5</code> will
 automatically prepend zeroes to the barcode text until it reaches 5 characters.</p>
-<h3 id="zend92barcode92object92ean8">Zend\Barcode\Object\Ean8</h3>
+<h3>Zend\Barcode\Object\Ean8</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.ean8.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Ean13</code> (<em>EAN</em> 13), with the following
 changes:</p>
@@ -600,7 +598,7 @@ changes:</p>
 </ul>
 <p>If the number of characters is lower than 8, <code>Zend\Barcode\Object\Ean8</code> will
 automatically prepend zeros to the barcode text until it reaches 8 characters.</p>
-<h3 id="zend92barcode92object92ean13">Zend\Barcode\Object\Ean13</h3>
+<h3>Zend\Barcode\Object\Ean13</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.ean13.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> <em>EAN</em>-13</li>
@@ -611,7 +609,7 @@ automatically prepend zeros to the barcode text until it reaches 8 characters.</
 <p>If the number of characters is lower than 13, <code>Zend\Barcode\Object\Ean13</code> will
 automatically prepend zeros to the barcode text until it reaches 13 characters.</p>
 <p>The option <code>withQuietZones</code> has no effect with this barcode.</p>
-<h3 id="zend92barcode92object92code39">Zend\Barcode\Object\Code39</h3>
+<h3>Zend\Barcode\Object\Code39</h3>
 <p><img alt="image" src="../images/zend.barcode.introduction.example-1.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Code 39</li>
@@ -621,7 +619,7 @@ automatically prepend zeros to the barcode text until it reaches 13 characters.<
 </ul>
 <p><code>Zend\Barcode\Object\Code39</code> automatically adds the start and stop characters
 (<code>*</code>) for you.</p>
-<h3 id="zend92barcode92object92identcode">Zend\Barcode\Object\Identcode</h3>
+<h3>Zend\Barcode\Object\Identcode</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.identcode.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Code25interleaved</code> (Code 2 of 5
 Interleaved), inheriting its capabilities and defining some of its own.</p>
@@ -633,7 +631,7 @@ Interleaved), inheriting its capabilities and defining some of its own.</p>
 </ul>
 <p>If the number of characters is lower than 12, <code>Zend\Barcode\Object\Identcode</code>
 will automatically prepend missing zeros to the barcode text.</p>
-<h3 id="zend92barcode92object92itf14">Zend\Barcode\Object\Itf14</h3>
+<h3>Zend\Barcode\Object\Itf14</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.itf14.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Code25interleaved</code> (Code 2 of 5
 Interleaved), inheriting its capabilities and defining some of its own.</p>
@@ -645,7 +643,7 @@ Interleaved), inheriting its capabilities and defining some of its own.</p>
 </ul>
 <p>If the number of characters is lower than 14, <code>Zend\Barcode\Object\Itf14</code> will
 automatically prepend missing zeros to the barcode text.</p>
-<h3 id="zend92barcode92object92leitcode">Zend\Barcode\Object\Leitcode</h3>
+<h3>Zend\Barcode\Object\Leitcode</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.leitcode.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Identcode</code> (Deutsche Post Identcode),
 inheriting its capabilities and defining some of its own:</p>
@@ -657,7 +655,7 @@ inheriting its capabilities and defining some of its own:</p>
 </ul>
 <p>If the number of characters is lower than 14, <code>Zend\Barcode\Object\Leitcode</code>
 will automatically prepend missing zeros to the barcode text.</p>
-<h3 id="zend92barcode92object92planet">Zend\Barcode\Object\Planet</h3>
+<h3>Zend\Barcode\Object\Planet</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.planet.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Planet (PostaL Alpha Numeric Encoding Technique)</li>
@@ -665,7 +663,7 @@ will automatically prepend missing zeros to the barcode text.</p>
 <li><strong>Checksum:</strong> mandatory (modulo 10)</li>
 <li><strong>Length:</strong> 12 or 14 characters (including checksum)</li>
 </ul>
-<h3 id="zend92barcode92object92postnet">Zend\Barcode\Object\Postnet</h3>
+<h3>Zend\Barcode\Object\Postnet</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.postnet.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Postnet (POSTal Numeric Encoding Technique)</li>
@@ -673,7 +671,7 @@ will automatically prepend missing zeros to the barcode text.</p>
 <li><strong>Checksum:</strong> mandatory (modulo 10)</li>
 <li><strong>Length:</strong> 6, 7, 10, or 12 characters (including checksum)</li>
 </ul>
-<h3 id="zend92barcode92object92royalmail">Zend\Barcode\Object\Royalmail</h3>
+<h3>Zend\Barcode\Object\Royalmail</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.royalmail.png" class="img-responsive"/></p>
 <ul>
 <li><strong>Name:</strong> Royal Mail or <em>RM4SCC</em> (Royal Mail 4-State Customer Code)</li>
@@ -681,7 +679,7 @@ will automatically prepend missing zeros to the barcode text.</p>
 <li><strong>Checksum:</strong> mandatory</li>
 <li><strong>Length:</strong> variable</li>
 </ul>
-<h3 id="zend92barcode92object92upca">Zend\Barcode\Object\Upca</h3>
+<h3>Zend\Barcode\Object\Upca</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.upca.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Ean13</code> (<em>EAN</em>-13), inheriting some of
 its capabilities and defining some of its own.</p>
@@ -694,7 +692,7 @@ its capabilities and defining some of its own.</p>
 <p>If the number of characters is lower than 12, <code>Zend\Barcode\Object\Upca</code> will
 automatically prepend missing zeros to the barcode text.</p>
 <p>The option <code>withQuietZones</code> has no effect with this barcode.</p>
-<h3 id="zend92barcode92object92upce">Zend\Barcode\Object\Upce</h3>
+<h3>Zend\Barcode\Object\Upce</h3>
 <p><img alt="image" src="../images/zend.barcode.objects.details.upce.png" class="img-responsive"/></p>
 <p>This barcode extends <code>Zend\Barcode\Object\Upca</code> (<em>UPC</em>-A), inheriting some of
 its capabilities and defining some of its own. In particular, the first
@@ -743,7 +741,7 @@ automatically replace it with 0.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-barcode/edit/master/docs/objects.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-barcode/edit/master/docs/book/objects.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
