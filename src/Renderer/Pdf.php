@@ -14,6 +14,10 @@ use ZendPdf\PdfDocument;
 
 /**
  * Class for rendering the barcode in PDF resource
+ *
+ * @deprecated since 2.8.0; to be removed in 3.0.0.
+ *     This renderer is using the now abandoned ZendPdf library.
+ *     As such, this renderer is now deprecated.
  */
 class Pdf extends AbstractRenderer
 {
