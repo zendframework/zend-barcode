@@ -77,8 +77,10 @@ Option      | Data Type | Default Value | Description
 >
 > - since 2.8.0, to be removed in 3.0.0.
 >
-> PDF Renderer is using abandoned ZendPdf library. Because of that we have to deprecate PDF renderer.
-> We are planning to release another PDF renderer with version 3 using another PDF generator library. 
+> The PDF Renderer is using the now abandoned ZendPdf library. Because of that,
+> we are deprecating the PDF renderer, and plan to release a new extension
+> library providing PDF renderering capabilities using a 3rd party PDF library
+> in the future.
 
 The PDF renderer will draw the instruction list of the barcode object in a PDF
 document. The default width of a module is 0.5 point.

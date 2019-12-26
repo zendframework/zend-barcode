@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2019 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -18,8 +18,8 @@ use ZendPdf\PdfDocument;
  * Class for rendering the barcode in PDF resource
  *
  * @deprecated since 2.8.0; to be removed in 3.0.0.
- *     PDF Renderer is using abandoned ZendPdf library.
- *     Because of that we have to deprecate PDF renderer.
+ *     This renderer is using the now abandoned ZendPdf library.
+ *     As such, this renderer is now deprecated.
  */
 class Pdf extends AbstractRenderer
 {
