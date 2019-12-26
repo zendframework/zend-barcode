@@ -2,33 +2,11 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.8.0 - TBD
+## 2.8.0 - 2019-12-26
 
 ### Added
 
 - [#48](https://github.com/zendframework/zend-barcode/pull/48) adds the methods `setProvidedChecksum(bool $value)` (and the option `providedChecksum`) and `getProvidedChecksum()`. These allow indicating that the barcode text includes a checksum value for purposes of validation.
-
-### Changed
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
-## 2.7.2 - TBD
-
-### Added
-
-- Nothing.
 
 ### Changed
 
