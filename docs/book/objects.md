@@ -63,7 +63,33 @@ Option               | Data Type                   | Default Value         | Des
 `stretchText`        | bool                        | `FALSE`               | Specify if the text is stretched all along the barcode.
 `withChecksum`       | bool                        | `FALSE`               | Indicate whether or not the checksum is automatically added to the barcode.
 `withChecksumInText` | bool                        | `FALSE`               | Indicate whether or not the checksum is displayed in the textual representation.
+`providedChecksum`   | bool                        | `FALSE`               | Indicate whether or not the checksum is provided with the barcode text. (Available since 2.8.0)
 `text`               | string                      | `NULL`                | The text to represent as a barcode.
+
+### Text with checksum
+
+> Available since 2.8.0
+
+With barcodes where checksum is mandatory
+(*EAN* 8, *EAN* 13, *ITF* 14, Leitcode, Identcode, *UPC*-A, *UPC*-E, Postnet, Royalmail)
+you can provide text with checksum:
+
+```php
+$barcode = new Ean13([
+    'text' => '1234567890128',
+    'providedChecksum' => true,
+]);
+```
+
+where `8` is checksum. Without checksum it will be:
+
+```php
+$barcode = new Ean13([
+    'text' => '123456789012',
+]);
+```
+
+and the final result of the rendered barcode is the same.
 
 ### Setting a common font for all objects
 

@@ -8,6 +8,7 @@
 namespace ZendTest\Barcode\Object;
 
 use Zend\Barcode;
+use Zend\Barcode\Object\Exception\BarcodeValidationException;
 
 /**
  * @group      Zend_Barcode
@@ -204,5 +205,28 @@ class Itf14Test extends TestCommon
         // Checksum activated => text needed
         $this->object->setText('0000123456789');
         $this->assertEquals(62, $this->object->getHeight(true));
+    }
+
+    public function testChecksumIsNotProvided()
+    {
+        $this->object->setText('1234567890123');
+        self::assertSame('12345678901231', $this->object->getTextToDisplay());
+    }
+
+    public function testProvidedChecksum()
+    {
+        $this->object->setProvidedChecksum(true);
+        $this->object->setText('12345678901231');
+        self::assertSame('12345678901231', $this->object->getTextToDisplay());
+    }
+
+    public function testProvidedChecksumInvalid()
+    {
+        $this->object->setProvidedChecksum(true);
+        $this->object->setText('12345678901234');
+
+        $this->expectException(BarcodeValidationException::class);
+        $this->expectExceptionMessage('The input failed checksum validation');
+        $this->object->getTextToDisplay();
     }
 }

@@ -8,6 +8,7 @@
 namespace ZendTest\Barcode\Object;
 
 use Zend\Barcode\Object\Ean8;
+use Zend\Barcode\Object\Exception\BarcodeValidationException;
 
 /**
  * @group      Zend_Barcode
@@ -140,5 +141,28 @@ class Ean8Test extends TestCommon
         // Checksum activated => text needed
         $this->object->setText('123456');
         $this->assertEquals(62, $this->object->getHeight(true));
+    }
+
+    public function testChecksumIsNotProvided()
+    {
+        $this->object->setText('1234567');
+        self::assertSame('12345670', $this->object->getTextToDisplay());
+    }
+
+    public function testProvidedChecksum()
+    {
+        $this->object->setProvidedChecksum(true);
+        $this->object->setText('12345670');
+        self::assertSame('12345670', $this->object->getTextToDisplay());
+    }
+
+    public function testProvidedChecksumInvalid()
+    {
+        $this->object->setProvidedChecksum(true);
+        $this->object->setText('12345678');
+
+        $this->expectException(BarcodeValidationException::class);
+        $this->expectExceptionMessage('The input failed checksum validation');
+        $this->object->getTextToDisplay();
     }
 }
