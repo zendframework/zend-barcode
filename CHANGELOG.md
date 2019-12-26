@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Deprecated
 
-- Nothing.
+- [#49](https://github.com/zendframework/zend-barcode/pull/49) deprecates `Zend\Barcode\Renderer\Pdf`. The renderer uses the now-abandoned zendframework/zendpdf package, and, as such, is deprecated as well, and scheduled for removal with version 3.0.0. We will release a separate PDF renderer package at a later date that consumes a 3rd party PDF library.
 
 ### Removed
 
