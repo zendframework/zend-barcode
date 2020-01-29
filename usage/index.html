@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically create and render barcodes as images or in PDFs">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-barcode/usage/">
+    <link rel="canonical" href="https://docs.zendframework.com/usage/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Usage - zend-barcode - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -189,9 +189,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-barcode/">laminas/laminas-barcode.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -274,7 +274,7 @@ method accepts five arguments:</p>
 instance, and binds them.</p>
 <p>In this first example, we will use the <strong>Code39</strong> barcode type together with the
 <strong>Image</strong> renderer.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
+<pre><code class="language-php">use Zend\Barcode\Barcode;
 
 // Only the text to draw is required.
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -286,12 +286,17 @@ $renderer = Barcode::factory(
     'image',
     $barcodeOptions,
     $rendererOptions
-);</code></pre></p>
-<h3>Using zend-config</h3>
-<p>You may pass a <code>Zend\Config\Config</code> instance to the factory in order to create
+);
+```
+
+### Using zend-config
+
+You may pass a `Zend\Config\Config` instance to the factory in order to create
 the necessary objects. The following example is functionally equivalent to the
-previous.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Config\Config;
+previous.
+
+```php
+use Zend\Config\Config;
 use Zend\Barcode\Barcode;
 
 // Using a single Zend\Config\Config object:
@@ -302,13 +307,15 @@ $config = new Config([
     'rendererParams' =&gt; ['imageType' =&gt; 'gif'],
 ]);
 
-$renderer = Barcode::factory($config);</code></pre></p>
+$renderer = Barcode::factory($config);
+</code></pre>
+
 <h2 id="drawing-a-barcode">Drawing a barcode</h2>
 <p>When you <strong>draw</strong> the barcode, you retrieve the resource in which the barcode is
 drawn. To draw a barcode, call the <code>draw()</code> of the renderer, or use the proxy
 method provided by <code>Zend\Barcode\Barcode</code>.</p>
 <h3>Drawing a barcode with the renderer object</h3>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
+<pre><code class="language-php">use Zend\Barcode\Barcode;
 
 // Only the text to draw is required.
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -323,10 +330,12 @@ $renderer = Barcode::factory(
     $barcodeOptions,
     $rendererOptions
 );
-$imageResource = $renderer-&gt;draw();</code></pre></p>
+$imageResource = $renderer-&gt;draw();
+</code></pre>
+
 <h3>Drawing a barcode with Zend\Barcode\Barcode::draw()</h3>
 <p>The static <code>draw()</code> method is a shortcut for calling <code>factory()</code> + <code>draw()</code>:</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
+<pre><code class="language-php">use Zend\Barcode\Barcode;
 
 // Only the text to draw is required.
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -340,7 +349,9 @@ $imageResource = Barcode::draw(
     'image',
     $barcodeOptions,
     $rendererOptions
-);</code></pre></p>
+);
+</code></pre>
+
 <h2 id="rendering-a-barcode">Rendering a barcode</h2>
 <p>In the previous section, we were <em>drawing</em>, which <em>returns</em> the resource
 representing the barcode, but does not actually <em>emit</em> it (e.g., to the
@@ -348,7 +359,7 @@ browser).</p>
 <p>To emit the barcode, call the <code>render()</code> method of the renderer, or use
 the proxy method provided by <code>Zend\Barcode\Barcode</code>.</p>
 <h3>Rendering a barcode with the renderer object</h3>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
+<pre><code class="language-php">use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -362,11 +373,13 @@ Barcode::factory(
     'image',
     $barcodeOptions,
     $rendererOptions
-)-&gt;render();</code></pre></p>
+)-&gt;render();
+</code></pre>
+
 <p>This will generate the following barcode:</p>
 <p><img alt="image" src="../images/zend.barcode.introduction.example-1.png" class="img-responsive"/></p>
 <h3>Rendering a barcode with Zend\Barcode\Barcode::render()</h3>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
+<pre><code class="language-php">use Zend\Barcode\Barcode;
 
 // Only the text to draw is required
 $barcodeOptions = ['text' =&gt; 'ZEND-FRAMEWORK'];
@@ -380,7 +393,9 @@ Barcode::render(
     'image',
     $barcodeOptions,
     $rendererOptions
-);</code></pre></p>
+);
+</code></pre>
+
 <p>This will generate the same barcode as the previous example.</p>
 
 
@@ -537,7 +552,7 @@ Barcode::render(
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -545,10 +560,10 @@ Barcode::render(
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -556,27 +571,28 @@ Barcode::render(
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-barcode';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

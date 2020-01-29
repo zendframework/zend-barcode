@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Programmatically create and render barcodes as images or in PDFs">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-barcode/objects/">
+    <link rel="canonical" href="https://docs.zendframework.com/objects/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Barcode Objects - zend-barcode - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -189,9 +189,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-barcode/">laminas/laminas-barcode.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -279,7 +279,7 @@ implementations. These options can be set in three ways:</p>
 <li>Via individual setters for each configuration type.</li>
 </ul>
 <h2 id="different-ways-to-parameterize-a-barcode-object">Different ways to parameterize a barcode object</h2>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Object;
+<pre><code class="language-php">use Zend\Barcode\Object;
 
 $options = ['text' =&gt; 'ZEND-FRAMEWORK', 'barHeight' =&gt; 40];
 
@@ -293,7 +293,9 @@ $barcode-&gt;setOptions($options);
 // Case 3: individual setters
 $barcode = new Object\Code39();
 $barcode-&gt;setText('ZEND-FRAMEWORK')
-    -&gt;setBarHeight(40);</code></pre></p>
+    -&gt;setBarHeight(40);
+</code></pre>
+
 <h2 id="common-options">Common Options</h2>
 <p>In the following list, the values have no units; as such, we will use the
 generic term "unit." For example, the default value of the "thin bar" is "1
@@ -410,6 +412,12 @@ options have a corresponding getter prefixed with "get" (e.g. <code>getBarHeight
 <td align="left">Indicate whether or not the checksum is displayed in the textual representation.</td>
 </tr>
 <tr>
+<td align="left"><code>providedChecksum</code></td>
+<td align="center">bool</td>
+<td align="center"><code>FALSE</code></td>
+<td align="left">Indicate whether or not the checksum is provided with the barcode text. (Available since 2.8.0)</td>
+</tr>
+<tr>
 <td align="left"><code>text</code></td>
 <td align="center">string</td>
 <td align="center"><code>NULL</code></td>
@@ -417,11 +425,31 @@ options have a corresponding getter prefixed with "get" (e.g. <code>getBarHeight
 </tr>
 </tbody>
 </table></div>
+<h3>Text with checksum</h3>
+<blockquote>
+<p>Available since 2.8.0</p>
+</blockquote>
+<p>With barcodes where checksum is mandatory
+(<em>EAN</em> 8, <em>EAN</em> 13, <em>ITF</em> 14, Leitcode, Identcode, <em>UPC</em>-A, <em>UPC</em>-E, Postnet, Royalmail)
+you can provide text with checksum:</p>
+<pre><code class="language-php">$barcode = new Ean13([
+    'text' =&gt; '1234567890128',
+    'providedChecksum' =&gt; true,
+]);
+</code></pre>
+
+<p>where <code>8</code> is checksum. Without checksum it will be:</p>
+<pre><code class="language-php">$barcode = new Ean13([
+    'text' =&gt; '123456789012',
+]);
+</code></pre>
+
+<p>and the final result of the rendered barcode is the same.</p>
 <h3>Setting a common font for all objects</h3>
 <p>You can set a common font for all your objects by using the static method
 <code>Zend\Barcode\Barcode::setBarcodeFont()</code>. This value can be always be overridden
 for individual objects by using the <code>setFont()</code> method.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Barcode\Barcode;
+<pre><code class="language-php">use Zend\Barcode\Barcode;
 
 // In your bootstrap:
 Barcode::setBarcodeFont('my_font.ttf');
@@ -441,7 +469,9 @@ Barcode::render(
         'text' =&gt; 'ZEND-FRAMEWORK',
         'font' =&gt; 3,
     ]
-); // will use the 3rd GD internal font</code></pre></p>
+); // will use the 3rd GD internal font
+</code></pre>
+
 <h2 id="common-additional-getters">Common Additional Getters</h2>
 <div class="table-responsive"><table>
 <thead>
@@ -863,7 +893,7 @@ automatically replace it with 0.</p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -871,10 +901,10 @@ automatically replace it with 0.</p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -882,27 +912,28 @@ automatically replace it with 0.</p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-barcode';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
